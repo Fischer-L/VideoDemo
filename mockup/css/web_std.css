@@ -466,16 +466,20 @@ a:hover {
 .lyt-txtAlign-ctr {
 	text-align: center;
 }
-.header {
-	width: 1280px;
+.sty-bgColor-std {
+	background-color: #f9e5fa;
+}
+.header,
+.footer {
+	width: 1040px;;
 	margin: 0 auto;
 }
 .header-bigPoster {
 	width: 1040px;
 	height: 420px;
 	margin: 0 auto;
+	top: -82px;
 	overflow: hidden;
-	background-color: #f9e5fa;
 	background-image: url(../img/big_poster.jpg);
 	background-position: 0px 0px;
 	-webkit-animation-name: bigPosterSlide;
@@ -532,9 +536,10 @@ a:hover {
 .header-controlBar {
 	width: 960px;
 	height: 82px;
-	margin: -420px auto 0px;
+	margin: 0 auto;
 	background-color: transparent;
 	overflow: visible;
+	z-index: 1;
 }
 .header-controlBar.controlBar-sty {
 	background-color: #f9f9f9;
@@ -620,4 +625,19 @@ a:hover {
 }
 .header-controlBar-srchCtrl-input:focus {
 	outline: none;
+}
+.footer {
+	height: 300px;
+}
+.footer-links {
+	margin: 0 auto;
+	padding-top: 100px;
+}
+.footer-links > li {
+	display: inline-block;
+	margin: 0 80px;
+}
+.footer-copyright {
+	width: 100%;
+	margin-top: 80px;
 }

@@ -1,6 +1,4 @@
 <div class="header lyt-pos-rel">
-	<div class="header-bigPoster">
-	</div>
 	<div class="header-controlBar lyt-pos-rel">
 		<div class="header-controlBar-settingCtrl lyt-pos-rel sty-cursor-pter">
 			<div class="header-controlBar-settingCtrl-iconWrp lyt-pos-rel">
@@ -18,4 +16,5 @@
 		</div>
 		<a class="header-controlBar-logoCtrl lyt-block"></a>
 	</div>
+	<div class="header-bigPoster lyt-pos-rel sty-bgColor-std"></div>
 </div>

@@ -24,7 +24,7 @@ class VB_PageManager {
 		$this->fileRoot = substr(__FILE__, 0, stripos(__FILE__, "php")-1);
 		
 		$this->webModulePath[self::WEB_MODULE_HEADER] = $this->fileRoot . $this->webModulePath["rootDir"] . "/header.php";
-		//$this->webModulePath[self::WEB_MODULE_FOOTER] = $this->fileRoot . $this->webModulePath["rootDir"] . "/footer.php"; // TBW...
+		$this->webModulePath[self::WEB_MODULE_FOOTER] = $this->fileRoot . $this->webModulePath["rootDir"] . "/footer.php";
 		//$this->webModulePath[self::WEB_MODULE_NAV_PANEL] = $this->fileRoot . $this->webModulePath["rootDir"] . "/nav_panel.php"; // TBW...
 	
 		$this->cssURL[self::CSS_WEB_STD] = $this->domain . $this->cssURL["rootDir"] . "/web_std.css";

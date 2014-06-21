@@ -628,6 +628,7 @@ a:hover {
 }
 .footer {
 	height: 300px;
+	margin-top: 100px;
 }
 .footer-links {
 	margin: 0 auto;
@@ -640,4 +641,39 @@ a:hover {
 .footer-copyright {
 	width: 100%;
 	margin-top: 80px;
+}
+.navPanel > li {
+	margin-bottom: 16px;
+	border: 1px dotted #000; /* To del */
+}
+.navPanel > li > h3 {
+	height: 72px;
+	line-height: 72px;
+	padding-left: 20px;
+}
+.navPanel-channel {
+	cursor: pointer;
+}
+.navPanel-channel-title,
+.navPanel-deco {
+	height: 32px;
+	line-height: 32px;
+	display: inline-block;
+}
+.navPanel-channel-title {
+	width: 160px;
+	padding-left: 16px;
+	background-color: #efefef; /* To del */
+}
+.navPanel-deco {
+	width: 32px;
+	margin-right: 10px;
+	background-color: #000; /* To del */
+	float: left;
+}
+.navPanel-deco-arw {
+	border-top: 2px solid #fff;
+	border-bottom: 2px solid #fff;
+	border-right: 2px solid #fff;
+	border-left: 2px solid #fff;
 }

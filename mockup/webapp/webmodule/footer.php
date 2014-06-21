@@ -13,5 +13,5 @@
 			<a href="#">Contact</a>
 		</li>
 	</ul>
-	<div class="footer-copyright">ViBox (c) 2014</div>
+	<div class="footer-copyright">ViBox © 2014</div>
 </div>

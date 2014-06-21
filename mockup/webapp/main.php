@@ -25,7 +25,7 @@
 		</div>
 		<div class="contentContainer-mainContent grid_12">
 		
-			<div class="contentBox">
+			<div class="contentBox channel-popular">
 				<div class="contentBox-title">Popular</div>
 				<div class="contentBox-content">					
 					<div class="contentBox-halfBox">
@@ -58,10 +58,8 @@
 				<div class="clear"></div>
 			</div>
 			
-			
-			
-			<div class="contentBox">
-				<div class="contentBox-title">Popular</div>
+			<div class="contentBox channel-jp">
+				<div class="contentBox-title">Japan</div>
 				<div class="contentBox-content">	
 					<div class="contentBox-quarterBox">
 						<a class="dramaBox dramaBox-size-S">
@@ -87,6 +85,138 @@
 						<a class="dramaBox dramaBox-size-S">
 							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
 							<div class="dramaBox-title"></div>
+						</a>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+						
+			<div class="contentBox channel-kor">
+				<div class="contentBox-title">Korea</div>
+				<div class="contentBox-content">	
+					<div class="contentBox-quarterBox">
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title">drama title</div>
+						</a>
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+					</div>			
+					<div class="contentBox-quarterBox">
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+					</div>	
+					<div class="contentBox-halfBox">
+						<a class="dramaBox dramaBox-size-L">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title">drama title</div>
+						</a>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+			<div class="contentBox channel-tw">
+				<div class="contentBox-title">Taiwan</div>
+				<div class="contentBox-content">			
+					<div class="contentBox-halfBox">
+						<a class="dramaBox dramaBox-size-L">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title">drama title</div>
+						</a>
+					</div>	
+					<div class="contentBox-quarterBox">
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title">drama title</div>
+						</a>
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+					</div>	
+					<div class="contentBox-quarterBox">
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+			<div class="contentBox channel-cn">
+				<div class="contentBox-title">China</div>
+				<div class="contentBox-content">	
+					<div class="contentBox-quarterBox">
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title">drama title</div>
+						</a>
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+					</div>				
+					<div class="contentBox-halfBox">
+						<a class="dramaBox dramaBox-size-L">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title">drama title</div>
+						</a>
+					</div>
+					<div class="contentBox-quarterBox">
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+			<div class="contentBox channel-us">
+				<div class="contentBox-title">USA</div>
+				<div class="contentBox-content">	
+					<div class="contentBox-quarterBox">
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title">drama title</div>
+						</a>
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+					</div>		
+					<div class="contentBox-quarterBox">
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+					</div>		
+					<div class="contentBox-halfBox">
+						<a class="dramaBox dramaBox-size-L">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title">drama title</div>
 						</a>
 					</div>
 				</div>

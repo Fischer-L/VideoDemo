@@ -467,7 +467,8 @@ a:hover {
 	text-align: center;
 }
 .sty-bgColor-std {
-	background-color: #f9e5fa;
+	background-color: #eaeaea;
+	background: linear-gradient(#eaeaea, #dadada);
 }
 .header,
 .footer {
@@ -561,21 +562,17 @@ a:hover {
 	margin-right: 18px;
 	padding: 4px;
 	padding-left: 8px;
-	border: 1px solid #ccc;
+	border: 1px solid #ddd;
 	border-radius: 3px;
 	background: #fff;
 }
 .header-controlBar-settingCtrl-iconWrp {
-	background-color: transparent;
+	background-color: #000;
+	background-color: rgba(0, 0, 0, 0.75);
 	border: 1px solid transparent;
-	padding: 7px;
-	top: -8px;
+	padding: 8px;
+	top: -1px;
 	z-index: 1;
-}
-.header-controlBar-settingCtrl:hover > .header-controlBar-settingCtrl-iconWrp {
-	background-color: #fff;
-	border: 1px solid #ccc;
-	border-bottom: none;
 }
 .header-controlBar-settingCtrl-icon,
 .header-controlBar-srchCtrl-icon {
@@ -583,32 +580,38 @@ a:hover {
 	background-repeat: no-repeat;
 }
 .header-controlBar-settingCtrl-icon {
-	width: 38px;
-	height: 38px;
-	background-position: -175px 0px;
+	width: 23px;
+	height: 23px;
+	background-position: -182px -2px
 }
 .header-controlBar-srchCtrl-icon {
 	width: 25px;
 	height: 25px;
-	background-position: -220px -1px;
+	background-position: -219px -2px;
 	float: left;
+}
+.header-controlBar-settingCtrl-menuWrp {
+	height: 0px;
+	overflow: hidden;
+	top: 40px;
+	left: -111px;
+	transition: height 0.5s;
+}
+.header-controlBar-settingCtrl:hover > .header-controlBar-settingCtrl-menuWrp {
+	height: 116px;
 }
 .header-controlBar-settingCtrl-menu {
 	padding: 4px 0px;
-	border: 1px solid #ccc;
-	background-color: #fff;
-	top: 44px;
-	left: -112px;
-	display:none;
-}
-.header-controlBar-settingCtrl:hover > .header-controlBar-settingCtrl-menu {
-	display: block;
+	background-color: #000;
+	background-color: rgba(0, 0, 0, 0.75);
+	color: #fff;
+	font-size: 0.9em;
 }
 .header-controlBar-settingCtrl-option {
 	width: 7.5em;
 	margin: 0px 18px;
 	padding: 18px 4px;
-	border-top: 1px solid #ccc;
+	border-top: 1px solid #aaa;
 }
 .header-controlBar-settingCtrl-option:first-child {
 	border-top: none;
@@ -616,6 +619,12 @@ a:hover {
 .header-controlBar-settingCtrl-option:hover {
 	margin: 0px;
 	padding: 18px 22px;
+	background-color: #888;
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.header-controlBar-settingCtrl-option + .header-controlBar-settingCtrl-option:hover,
+.header-controlBar-settingCtrl-option:hover + .header-controlBar-settingCtrl-option {
+	border-top: 1px solid transparent;
 }
 .header-controlBar-srchCtrl-input {
 	border: none;
@@ -626,30 +635,61 @@ a:hover {
 .header-controlBar-srchCtrl-input:focus {
 	outline: none;
 }
+.header-btmDivider {
+	border-top: 1px solid #c9c9c9;
+	margin-top: -41px;
+	margin-bottom: 41px;
+}
 .footer {
 	height: 300px;
 	margin-top: 100px;
+	border: 1px solid #dcdcdc;
 }
 .footer-links {
 	margin: 0 auto;
 	padding-top: 100px;
+	font-size: 0.9em;
+	font-weight: bold;
 }
 .footer-links > li {
 	display: inline-block;
 	margin: 0 80px;
 }
+.footer-links a,
+.footer-links a:visited {
+	color: #666;
+	text-decoration: none;
+	text-shadow: 0px 1px #fff;
+}
+.footer-links a:hover {
+	color: #333;
+}
 .footer-copyright {
 	width: 100%;
-	margin-top: 80px;
+	margin-top: 120px;
+	color: #444;
+	font-size: 0.8em;
+	text-shadow: 0px 1px #fff;
+}
+.contentContainer-mainContent {
+	border-left: 1px solid #c9c9c9;
+	margin-right: 0px;
+	margin-left: 10px;
 }
 .navPanel > li {
 	margin-bottom: 16px;
-	border: 1px dotted #000; /* To del */
+	color: #fff;
 }
 .navPanel > li > h3 {
 	height: 72px;
 	line-height: 72px;
 	padding-left: 20px;
+	border-radius: 2px;
+	background-color: #f25641;
+	/*
+	background: linear-gradient(#f25641, #e5523e);
+	text-shadow: 0px -1px #993629;
+	*/
 }
 .navPanel-channel {
 	cursor: pointer;
@@ -659,23 +699,64 @@ a:hover {
 	height: 32px;
 	line-height: 32px;
 	display: inline-block;
+	border-radius: 2px;
 }
 .navPanel-channel-title {
 	width: 160px;
 	padding-left: 16px;
-	background-color: #efefef; /* To del */
 }
 .navPanel-deco {
 	width: 32px;
 	margin-right: 10px;
-	background-color: #000; /* To del */
 	float: left;
 }
-.navPanel-deco-arw {
-	border-top: 2px solid #fff;
-	border-bottom: 2px solid #fff;
-	border-right: 2px solid #fff;
-	border-left: 2px solid #fff;
+.navPanel-channel-popular > .navPanel-channel-title,
+.navPanel-channel-popular > .navPanel-deco {
+	background-color: #f28e41;
+	/*
+	background: linear-gradient(#f28e41, #e5873e);
+	text-shadow: 0px -1px #995a29;
+	*/
+}
+.navPanel-channel-jp > .navPanel-channel-title,
+.navPanel-channel-jp > .navPanel-deco {
+	background-color: #e5c73e;
+	/*
+	background: linear-gradient(#f2d241, #e5c73e);
+	text-shadow: 0px -1px #998529;
+	*/
+}
+.navPanel-channel-kor > .navPanel-channel-title,
+.navPanel-channel-kor > .navPanel-deco {
+	background-color: #3ee57e;
+	/*
+	background: linear-gradient(#41f285, #3ee57e);
+	text-shadow: 0px -1px #299954;
+	*/
+}
+.navPanel-channel-tw > .navPanel-channel-title,
+.navPanel-channel-tw > .navPanel-deco {
+	background-color: #41c3f2;
+	/*
+	background: linear-gradient(#41c3f2, #3eb9e5);
+	text-shadow: 0px -1px #297b99;
+	*/
+}
+.navPanel-channel-cn > .navPanel-channel-title,
+.navPanel-channel-cn > .navPanel-deco {
+	background-color: #d241f2;
+	/*
+	background: linear-gradient(#d241f2, #c73ee5);
+	text-shadow: 0px -1px #852999;
+	*/
+}
+.navPanel-channel-us > .navPanel-channel-title,
+.navPanel-channel-us > .navPanel-deco {
+	background-color: #f24194;
+	/*
+	background: linear-gradient(#f24194, #e53e8c);
+	text-shadow: 0px -1px #99295d;
+	*/
 }
 /*	== The contentBox module ==
 	<div class="contentBox">
@@ -693,6 +774,12 @@ a:hover {
 */
 .contentBox {
 	margin-bottom: 96px;
+	padding-left: 20px;
+}
+.contentBox-title {
+	margin-left: 5px;
+	font-size: 1.6em;
+	font-weight: bold;
 }
 .contentBox-halfBox,
 .contentBox-quarterBox {
@@ -704,6 +791,24 @@ a:hover {
 }
 .contentBox-quarterBox {
 	width: 155px;
+}
+.contentBox.channel-popular > .contentBox-title {
+	color: #e5873e;
+}
+.contentBox.channel-jp > .contentBox-title {
+	color: #e5c73e;
+}
+.contentBox.channel-kor > .contentBox-title {
+	color: #3ee57e;
+}
+.contentBox.channel-tw > .contentBox-title {
+	color: #3eb9e5;
+}
+.contentBox.channel-cn > .contentBox-title {
+	color: #c73ee5;
+}
+.contentBox.channel-us > .contentBox-title {
+	color: #e53e8c;
 }
 /* == The dramaBox module ==
 	<a class="dramaBox dramaBox-size-L(S)">

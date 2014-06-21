@@ -677,3 +677,70 @@ a:hover {
 	border-right: 2px solid #fff;
 	border-left: 2px solid #fff;
 }
+/*	== The contentBox module ==
+	<div class="contentBox">
+		<div class="contentBox-title"></div>
+		<div class="contentBox-content">
+			[
+				// The sum of the halfBox and quarterBox has to be "one box".
+				// So 1 haflBox + 2 quarterBox is fine but 1 haflBox + 3 quarterBox is not fine.
+				<div class="contentBox-halfBox"></div>
+				<div class="contentBox-quarterBox"></div>
+			]
+		</div>
+		<div class="clear"></div> // Utilize the 960 system's CSS style
+	</div>
+*/
+.contentBox {
+	margin-bottom: 96px;
+}
+.contentBox-halfBox,
+.contentBox-quarterBox {
+	margin: 5px 5px 5px 0px;
+	float: left;
+}
+.contentBox-halfBox {
+	width: 320px;
+}
+.contentBox-quarterBox {
+	width: 155px;
+}
+/* == The dramaBox module ==
+	<a class="dramaBox dramaBox-size-L(S)">
+		<img class="dramaBox-poster" src="" />
+		<div class="dramaBox-title"></div>
+	</a>
+*/
+.dramaBox {
+	margin: 5px;
+	display: block;
+	position: relative;
+}
+.dramaBox-size-L,
+.dramaBox-size-L > .dramaBox-poster {
+	width: 320px;
+	height: 180px;
+}
+.dramaBox-size-S,
+.dramaBox-size-S > .dramaBox-poster {
+	width: 155px;
+	height: 87px;
+}
+.dramaBox-title {
+	width: 100%;
+	background-color: rgba(15, 15, 15, 0.75);
+	color: #fff;
+	position: relative;
+	text-align: center;
+}
+.dramaBox-size-L > .dramaBox-title {
+	height: 3em;
+	line-height: 3em;
+	top: -3em;
+}
+.dramaBox-size-S > .dramaBox-title {
+	height: 1.8em;
+	line-height: 1.8em;
+	top: -1.8em;
+	font-size: 0.9em;
+}

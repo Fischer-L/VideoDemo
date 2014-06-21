@@ -24,7 +24,78 @@
 			<?php $pgMgr->includeWebModule(VB_PageManager::WEB_MODULE_NAV_PANEL); ?>
 		</div>
 		<div class="contentContainer-mainContent grid_12">
+		
+			<div class="contentBox">
+				<div class="contentBox-title">Popular</div>
+				<div class="contentBox-content">					
+					<div class="contentBox-halfBox">
+						<a class="dramaBox dramaBox-size-L">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title">drama title</div>
+						</a>
+					</div>
+					<div class="contentBox-quarterBox">
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title">drama title</div>
+						</a>
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+					</div>
+					<div class="contentBox-quarterBox">
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+			
+			
+			<div class="contentBox">
+				<div class="contentBox-title">Popular</div>
+				<div class="contentBox-content">	
+					<div class="contentBox-quarterBox">
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title">drama title</div>
+						</a>
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+					</div>				
+					<div class="contentBox-halfBox">
+						<a class="dramaBox dramaBox-size-L">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title">drama title</div>
+						</a>
+					</div>
+					<div class="contentBox-quarterBox">
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+						<a class="dramaBox dramaBox-size-S">
+							<img class="dramaBox-poster" src="../img/you_from_star_L.jpg" />
+							<div class="dramaBox-title"></div>
+						</a>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
 		</div>
+		
+		<div class="clear"></div>
 	</div>
 	
 	<div class="footerContainer">

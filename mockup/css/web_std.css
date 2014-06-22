@@ -491,6 +491,14 @@ a:hover {
 .btn-sty-0:active {
 	margin-top: 2px; 
 }
+.ViBox-logo {
+	width: 158px;
+	height: 95px;
+	background-image: url(../img/icons.png);
+	background-repeat: no-repeat;
+	background-position: 0px -2px;
+	display: block;
+}
 .header,
 .footer {
 	width: 1040px;;
@@ -570,13 +578,6 @@ a:hover {
 }
 .header-controlBar.controlBar-sty {
 	background-color: #f9f9f9;
-}
-.header-controlBar-logoCtrl {
-	width: 158px;
-	height: 95px;
-	background-image: url(../img/icons.png);
-	background-repeat: no-repeat;
-	background-position: 0px -2px;
 }
 .header-controlBar-settingCtrl,
 .header-controlBar-srchCtrl {
@@ -875,4 +876,85 @@ a:hover {
 	line-height: 1.8em;
 	top: -1.8em;
 	font-size: 0.9em;
+}
+
+.signupWindowContainer {
+	width: 100%;
+	min-height: 100%;
+	position: fixed;
+	top: 0; left: 0; bottom: 0; right: 0;
+	z-index: 99999;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.85);
+	overflow: scroll;
+}
+body.signupState {
+	overflow: hidden;
+}
+body.signupState > .signupWindowContainer {
+	display: block;
+}
+.signupWindow {
+	width: 640px;
+	margin: 200px auto 0;
+}
+.signupWindow > .ViBox-logo {
+	margin: 0 auto;
+}
+/*	== The signupProcess module ==
+*/
+.signupProcess {
+	width: 640px;
+	padding: 5px;
+	margin: 36px auto 0;
+	background-color: #fff;
+}
+.signupProcess-processBoard-board {
+	float: right;
+	position: relative;
+}
+.signupProcess-processBoard-title {
+	width: 120px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	padding: 5px 10px 5px 20px;
+	background-color: #9dd3f2;
+	color: #fff;
+	font-size: 1.1em;
+	font-weight: bold;
+	position: relative;
+}
+.signupProcess-processBoard-arw {
+	position: absolute;
+	top: 0px;
+	left: 150px;
+	border: 30px solid #9dd3f2;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+}
+.signupProcess-processBoard-board.signupProcess-in > .signupProcess-processBoard-title {
+	background-color: #3aaff2;
+}
+.signupProcess-processBoard-board.signupProcess-in > .signupProcess-processBoard-arw {
+	border: 30px solid #3aaff2;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+}
+/* .signupProcess-processBoard-boardShadow */
+.signupProcess-processBoard-boardShadow {
+	position: absolute;
+	top: 0px;
+	left: 6px;
+}
+.signupProcess-processBoard-boardShadow > .signupProcess-processBoard-title {
+	background-color: #fff;
+}
+.signupProcess-processBoard-boardShadow > .signupProcess-processBoard-arw {
+	border: 30px solid #fff;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
 }

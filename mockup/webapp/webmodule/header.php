@@ -16,8 +16,10 @@
 			<div class="header-controlBar-srchCtrl-icon lyt-inlineBlock"></div>
 			<input class="header-controlBar-srchCtrl-input">
 		</div>
-		<a class="header-controlBar-logoCtrl lyt-block"></a>
+		<a class="header-controlBar-logoCtrl lyt-block" href="./main.php"></a>
 	</div>
-	<div class="header-bigPoster lyt-pos-rel sty-bgColor-std"></div>
+	<div class="header-bigPoster lyt-pos-rel sty-bgColor-std">
+		<button class="header-signUpBtn lyt-pos-rel sty-cursor-pter btn-sty-0" type="button">Free trial</button>
+	</div>
 	<div class="header-btmDivider"></div>
 </div>

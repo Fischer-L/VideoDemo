@@ -846,6 +846,7 @@ a:hover {
 	margin: 5px;
 	display: block;
 	position: relative;
+	text-decoration: none;
 }
 .dramaBox-size-L,
 .dramaBox-size-L > .dramaBox-poster {

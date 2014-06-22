@@ -30,7 +30,8 @@ class VB_PageManager {
 		$this->cssURL[self::CSS_WEB_STD] = $this->domain . $this->cssURL["rootDir"] . "/web_std.css";
 		//$this->cssURL[self::CSS_WEB_SIGNUP] = $this->domain . $this->cssURL["rootDir"] . "/web_signup.css"; // TBW...
 		
-		//$this->jsURL[self::JS_WEB_STD] = $this->domain . $this->jsURL["rootDir"] . "/web_std.js"; // TBW...
+		$this->jsURL[self::JS_STD] = $this->domain . $this->jsURL["rootDir"] . "/std.js";
+		$this->jsURL[self::JS_WEB_STD] = $this->domain . $this->jsURL["rootDir"] . "/web_std.js";
 		//$this->jsURL[self::JS_WEB_SIGNUP] = $this->domain . $this->jsURL["rootDir"] . "/web_signup.js"; // TBW...
 	}
 	
@@ -53,6 +54,7 @@ class VB_PageManager {
 	const CSS_WEB_STD = "CSS_WEB_STD";
 	const CSS_WEB_SIGNUP = "CSS_WEB_SIGNUP";
 	
+	const JS_STD = "JS_STD";
 	const JS_WEB_STD = "JS_WEB_STD";
 	const JS_WEB_SIGNUP = "JS_WEB_SIGNUP";
 	

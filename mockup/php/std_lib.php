@@ -27,6 +27,7 @@ class VB_PageManager {
 		$this->webModulePath[self::WEB_MODULE_FOOTER] = $this->fileRoot . $this->webModulePath["rootDir"] . "/footer.php";
 		$this->webModulePath[self::WEB_MODULE_NAV_PANEL] = $this->fileRoot . $this->webModulePath["rootDir"] . "/nav_panel.php";
 	
+		$this->cssURL[self::CSS_STD] = $this->domain . $this->cssURL["rootDir"] . "/std.css";
 		$this->cssURL[self::CSS_WEB_STD] = $this->domain . $this->cssURL["rootDir"] . "/web_std.css";
 		//$this->cssURL[self::CSS_WEB_SIGNUP] = $this->domain . $this->cssURL["rootDir"] . "/web_signup.css"; // TBW...
 		
@@ -51,6 +52,7 @@ class VB_PageManager {
 	const WEB_MODULE_FOOTER = "WEB_MODULE_FOOTER";
 	const WEB_MODULE_NAV_PANEL = "WEB_MODULE_NAV_PANEL";
 	
+	const CSS_STD = "CSS_STD";
 	const CSS_WEB_STD = "CSS_WEB_STD";
 	const CSS_WEB_SIGNUP = "CSS_WEB_SIGNUP";
 	

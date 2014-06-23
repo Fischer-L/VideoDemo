@@ -1,6 +1,6 @@
-/*** The reset.css of 960 System ***/
-a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,dialog,div,dl,dt,em,embed,fieldset,figcaption,figure,font,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,html,i,iframe,img,ins,kbd,label,legend,li,main,mark,menu,meter,nav,object,ol,output,p,pre,progress,q,rp,rt,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video,xmp{border:0;margin:0;padding:0;font-size:100%}html,body{height:100%}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section{display:block}b,strong{font-weight:bold}img{color:transparent;font-size:0;vertical-align:middle;-ms-interpolation-mode:bicubic}ol,ul{list-style:none}li{display:list-item}table{border-collapse:collapse;border-spacing:0}th,td,caption{font-weight:normal;vertical-align:top;text-align:left}q{quotes:none}q:before,q:after{content:'';content:none}sub,sup,small{font-size:75%}sub,sup{line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg{overflow:hidden}
-/*** The 960_16_col.css of 960 System ***/
+/***
+ ``` The 960_16_col.css of 960 System ```
+***/
 body {
   min-width: 960px;
 }
@@ -434,10 +434,8 @@ body {
 }
 
 /*** 
-
  ``` The homemade, common, stardard use of CSS ```
- > Logo gradient: #e5523e --> #fa8e7f
- 
+ > Logo gradient: #e5523e --> #fa8e7f 
 ***/
 .header,
 .footer {
@@ -638,7 +636,11 @@ div.header-bigPoster {
 	font-size: 0.8em;
 	text-shadow: 0px 1px #fff;
 }
-.contentContainer-mainContent {
+.contentContainer.container_16 {
+	width: 1001px;
+}
+.contentContainer-mainContent.grid_12 {
+	width: 740px;
 	border-left: 1px solid #e9e9e9;
 	margin-right: 0px;
 	margin-left: 10px;
@@ -754,10 +756,10 @@ div.header-bigPoster {
 	float: left;
 }
 .contentBox-halfBox {
-	width: 320px;
+	width: 353px;
 }
 .contentBox-quarterBox {
-	width: 155px;
+	width: 174px;
 }
 .contentBox.channel-popular > .contentBox-title {
 	color: #e5873e;
@@ -784,20 +786,20 @@ div.header-bigPoster {
 	</a>
 */
 .dramaBox {
-	margin: 5px;
+	margin: 5px 0;
 	display: block;
 	position: relative;
 	text-decoration: none;
 }
 .dramaBox-size-L,
 .dramaBox-size-L > .dramaBox-poster {
-	width: 320px;
-	height: 180px;
+	width: 353px;
+	height: 198px;
 }
 .dramaBox-size-S,
 .dramaBox-size-S > .dramaBox-poster {
-	width: 155px;
-	height: 87px;
+	width: 174px;
+	height: 97px;
 }
 .dramaBox-title {
 	width: 100%;
@@ -841,130 +843,7 @@ body.signupState > .signupWindowContainer {
 .signupWindow > .ViBox-logo {
 	margin: 0 auto;
 }
-/*	== The signupProcess module ==
-	<div class="signupProcess">
-		<div class="signupProcess-processBoard">
-			<div class="signupProcess-processBoard-board signupProcess-end">
-				<div class="signupProcess-processBoard-title">Watch drama</div>
-			</div>
-			<div class="signupProcess-processBoard-board signupProcess-final">
-				<div class="signupProcess-processBoard-boardShadow">
-					<div class="signupProcess-processBoard-title"></div>
-					<div class="signupProcess-processBoard-arw"></div>
-				</div>
-				<div class="signupProcess-processBoard-title">Fill info</div>
-				<div class="signupProcess-processBoard-arw"></div>
-			</div>
-			<div class="signupProcess-processBoard-board signupProcess-start signupProcess-in">
-				<div class="signupProcess-processBoard-boardShadow">
-					<div class="signupProcess-processBoard-title"></div>
-					<div class="signupProcess-processBoard-arw"></div>
-				</div>
-				<div class="signupProcess-processBoard-title">Add account</div>
-				<div class="signupProcess-processBoard-arw"></div>
-			</div>
-			<div class="clear"></div>
-		</div>
-		<form name="signupProcess-actionForm" class="signupProcess-actionForm lyt-pos-rel">
-			<div class="signupProcess-actionForm-borad signupProcess-start">
-				[ <div class="signupProcess-actionForm-boradShelf"></div> ]
-			</div>
-			<div class="signupProcess-actionForm-borad signupProcess-final">
-				[ <div class="signupProcess-actionForm-boradShelf"></div> ]
-			</div>
-			<div class="clear"></div>
-		</form>
-	</div>
-*/
-.signupProcess,
-.signupProcess-actionForm {
-	width: 487px;
-	overflow: hidden;
-}
-.signupProcess {
-	padding: 6px 5px 6px 4px;
-	margin: 36px auto 0;
-	background-color: #fff;
-}
-.signupProcess-actionForm {
-	width: 994px;
-	height: 456px;
-	left: 0%;
-	transition: left 1s;
-}
-.signupProcess-actionForm.nextProc {
-	left: -100%;
-}
-.signupProcess-processBoard-board {
-	float: right;
-	position: relative;
-}
-.signupProcess-processBoard-title,
-.signupProcess-processBoard-arw {
-	transition: background-color, border-color, 1s;
-}
-.signupProcess-processBoard-title {
-	width: 110px;
-	height: 50px;
-	line-height: 50px;
-	padding: 5px 20px 5px 20px;
-	background-color: #9dd3f2;
-	color: #fff;
-	font-size: 1.1em;
-	font-weight: bold;
-	position: relative;
-}
-.signupProcess-processBoard-arw {
-	position: absolute;
-	top: 0px;
-	left: 150px;
-	border: 30px solid #9dd3f2;
-	border-top-color: transparent;
-	border-right-color: transparent;
-	border-bottom-color: transparent;
-}
-.signupProcess-processBoard-board.signupProcess-in > .signupProcess-processBoard-title {
-	background-color: #3aaff2;
-}
-.signupProcess-processBoard-board.signupProcess-in > .signupProcess-processBoard-arw {
-	border: 30px solid #3aaff2;
-	border-top-color: transparent;
-	border-right-color: transparent;
-	border-bottom-color: transparent;
-}
-.signupProcess-processBoard-boardShadow {
-	position: absolute;
-	top: 0px;
-	left: 7px;
-}
-.signupProcess-processBoard-boardShadow > .signupProcess-processBoard-title {
-	background-color: #fff;
-}
-.signupProcess-processBoard-boardShadow > .signupProcess-processBoard-arw {
-	border: 30px solid #fff;
-	border-top-color: transparent;
-	border-right-color: transparent;
-	border-bottom-color: transparent;
-}
-.signupProcess-processBoard-board.signupProcess-final > .signupProcess-processBoard-title {
-	width: 70px;
-	padding-left: 63px;
-	padding-right: 17px;
-}
-.signupProcess-processBoard-board.signupProcess-end > .signupProcess-processBoard-title {
-	width: 115px;
-	padding-left: 50px;
-}
-.signupProcess-actionForm-borad {
-	width: 50%;
-	float: left;
-}
-.signupProcess-actionForm-boradShelf {
-	width: 324px;
-	margin: 30px auto;
-}
 
-/* The web app proprietary*/
 .signupProcess-actionForm h3 {
 	color: #444;
 	margin-bottom: 6px;
@@ -989,112 +868,4 @@ body.signupState > .signupWindowContainer {
 	width: 20px;
 	border-top: 1px solid #aaa;
 	margin: 0 6px 2px 6px;
-}
-
-.btn-sty-0,
-.btn-sty-1,
-.btn-sty-2 {
-	border: 0;
-	margin-top: 0px;
-	padding: 8px 22px;	
-	color: #fff;
-	text-shadow: 0 -1px rgba(0,0,0,0.5);
-	border-radius: 2px;
-	box-shadow: inset 0 -1px 0 rgba(0,0,0,0.3),0 1px 0 rgba(0,0,0,0.2);
-	font-size: 1.1em;
-	line-height: 1.1em;
-	font-weight: bold;
-}
-.btn-sty-0 {
-	background-color: #3aaff2;
-	background: linear-gradient(#3aaff2,#37a6e5);	
-}
-.btn-sty-1 {
-	background-color: #70cc52;
-	background: linear-gradient(#70cc52,#69bf4c);
-}
-.btn-sty-2 {
-	color: #555;
-	text-shadow: 0 -1px #fff;
-	background-color: #e5e5e5;
-	background: linear-gradient(#e5e5e5,#d9d9d9);
-}
-.btn-sty-0:focus,
-.btn-sty-1:focus,
-.btn-sty-2:focus,
-.btn-sty-0:active,
-.btn-sty-1:active,
-.btn-sty-2:active {
-	outline: none;
-}
-.btn-sty-0:hover {	
-	background-color: #3db8ff;
-	background: linear-gradient(#3db8ff,#3aaff2);
-}
-.btn-sty-1:hover {
-	background-color: #98ff75;
-	background: linear-gradient(#98ff75,#90f26f);
-}
-.btn-sty-2:hover {
-	background-color: #f2f2f2;
-	background: linear-gradient(#f2f2f2,#e5e5e5);
-}
-.btn-sty-0:active,
-.btn-sty-1:active,
-.btn-sty-2:active {
-	box-shadow: inset 0 1px 0 rgba(0,0,0,0.3),0 -1px 0 rgba(0,0,0,0.2);
-}
-.btn-sty-0:active {
-	background-color: #349cd9;
-	background: linear-gradient(#349cd9,#3193cc);
-}
-.btn-sty-1:active {
-	background-color: #81d964;
-	background: linear-gradient(#81d964,#79cc5e);
-}
-.btn-sty-2:active {
-	background-color: #e5e5e5;
-	background: linear-gradient(#e5e5e5,#d9d9d9);
-	
-	background-color: #d9d9d9;
-	background: linear-gradient(#d9d9d9,#cccccc);
-}
-.ViBox-logo {
-	width: 158px;
-	height: 95px;
-	background-image: url(../img/icons.png);
-	background-repeat: no-repeat;
-	background-position: 0px -2px;
-	display: block;
-}
-body {
-	font-family: helvetica, arial, sans-serif;
-}
-a:hover {
-	cursor: pointer;
-}
-.sty-cursor-pter {
-	cursor: pointer;
-}
-.lyt-none {
-	display: none;
-}
-.lyt-block {
-	display: block;
-}
-.lyt-inlineBlock {
-	display: inline-block;
-}
-.lyt-pos-rel {
-	position: relative;
-}
-.lyt-pos-abs {
-	position: absolute;
-}
-.lyt-txtAlign-ctr {
-	text-align: center;
-}
-.sty-bgColor-std {
-	background-color: #eaeaea;
-	background: linear-gradient(#eaeaea, #dadada);
 }

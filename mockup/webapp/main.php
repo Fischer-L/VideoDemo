@@ -8,8 +8,8 @@
 	<title></title>
 	<?php
 		$pgMgr->includeCSS(array(
-			VB_PageManager::CSS_WEB_STD,
-			VB_PageManager::CSS_WEB_SIGNUP
+			VB_PageManager::CSS_STD,
+			VB_PageManager::CSS_WEB_STD
 		));
 	?>
 </head>
@@ -34,84 +34,6 @@
 	<div class="signupWindowContainer">
 		<div class="signupWindow lyt-pos-rel">
 			<div class="ViBox-logo"></div>
-			<!--div class="signupProcess">
-				<div class="signupProcess-processBoard">
-					<div class="signupProcess-processBoard-board signupProcess-end">
-						<div class="signupProcess-processBoard-title">Watch drama</div>
-					</div>
-					<div class="signupProcess-processBoard-board signupProcess-final">
-						<div class="signupProcess-processBoard-boardShadow">
-							<div class="signupProcess-processBoard-title"></div>
-							<div class="signupProcess-processBoard-arw"></div>
-						</div>
-						<div class="signupProcess-processBoard-title">Fill info</div>
-						<div class="signupProcess-processBoard-arw"></div>
-					</div>
-					<div class="signupProcess-processBoard-board signupProcess-start signupProcess-in">
-						<div class="signupProcess-processBoard-boardShadow">
-							<div class="signupProcess-processBoard-title"></div>
-							<div class="signupProcess-processBoard-arw"></div>
-						</div>
-						<div class="signupProcess-processBoard-title">Add account</div>
-						<div class="signupProcess-processBoard-arw"></div>
-					</div>
-					<div class="clear"></div>
-				</div>
-				<form name="signupProcess-actionForm" class="signupProcess-actionForm lyt-pos-rel">
-					<div class="signupProcess-actionForm-borad signupProcess-start">						
-						<div class="signupProcess-actionForm-boradShelf">
-							<h3>E-Mail</h3>
-							<input name="signupProcess-actionForm-email" class="signupProcess-actionForm-email signupProcess-actionForm-longInput">
-						</div>					
-						<div class="signupProcess-actionForm-boradShelf">
-							<h3>Passord</h3>
-							<input name="signupProcess-actionForm-pw" class="signupProcess-actionForm-pw signupProcess-actionForm-longInput">
-						</div>
-						<div class="signupProcess-actionForm-boradShelf">
-							<h3>Confirm passord</h3>
-							<input name="signupProcess-actionForm-repw" class="signupProcess-actionForm-repw signupProcess-actionForm-longInput">
-						</div>
-						<div class="signupProcess-actionForm-boradShelf">
-							Sign up to watch drama for free for 3 days !
-						</div>
-						<div class="signupProcess-actionForm-boradShelf">
-							<button class="btn-sty-2 sty-cursor-pter" type="button">Close</button>
-							<button class="btn-sty-1 sty-cursor-pter" type="button">Next</button>
-						</div>
-					</div>
-					<div class="signupProcess-actionForm-borad signupProcess-final">						
-						<div class="signupProcess-actionForm-boradShelf">
-							<h3>Name</h3>
-							<input name="signupProcess-actionForm-name" class="signupProcess-actionForm-email signupProcess-actionForm-longInput">
-						</div>					
-						<div class="signupProcess-actionForm-boradShelf">
-							<h3>Gender</h3>
-							<label>
-								<input name="signupProcess-actionForm-gender" class="signupProcess-actionForm-gender" type="radio" value="female" checked>Female
-							</label>
-							<label>
-								<input name="signupProcess-actionForm-gender" class="signupProcess-actionForm-gender" type="radio" value="male">Male
-							</label>
-						</div>
-						<div class="signupProcess-actionForm-boradShelf">
-							<h3>Birthday</h3>
-							<input name="signupProcess-actionForm-yy" class="signupProcess-actionForm-yy signupProcess-actionForm-shortInput" placeholder="yyyy">
-							<span class="actionForm-boradShelf-spacer lyt-inlineBlock"></span>
-							<input name="signupProcess-actionForm-mm" class="signupProcess-actionForm-mm signupProcess-actionForm-shortInput" placeholder="mm">
-							<span class="actionForm-boradShelf-spacer lyt-inlineBlock"></span>
-							<input name="signupProcess-actionForm-dd" class="signupProcess-actionForm-dd signupProcess-actionForm-shortInput" placeholder="dd">
-						</div>
-						<div class="signupProcess-actionForm-boradShelf">
-							Go watching your favorite drama !
-						</div>
-						<div class="signupProcess-actionForm-boradShelf">
-							<button class="btn-sty-2 sty-cursor-pter" type="button">Colse</button>
-							<button class="btn-sty-1 sty-cursor-pter" type="button">Watch drama</button>
-						</div>
-					</div>
-					<div class="clear"></div>
-				</form>
-			</div-->
 		</div>
 	</div>
 	
@@ -235,9 +157,20 @@
 			signupWindow = ViBox.newModule("signupWindow", { signupWindow : document.querySelector(".signupWindow") });
 		/***
 		 * Build up the web app
-		 */
+		 */		
+			/*	Func: Build some UI element
+				Methods:
+					> buildDramaBox : Build the dramaBox module
+					> buildDramaContent : Build the contentBox module storing the dramaBox modules
+			*/
 		var uiBuilder = {
-				
+				/*	Arg:
+						<STR> type = Refer to the ENV_dramaType*
+						<STR> size = Refer to the ENV_dramaBoxSize
+					Return:
+						@ OK: <ELM> the UI element
+						@ NG: null
+				*/				
 				buildDramaBox : function (type, size) {
 					var data = {
 							size : size,
@@ -272,7 +205,12 @@
 					
 					return ViBox.newModule("dramaBox", data);
 				},
-				
+				/*	Arg:
+						<STR> type = Refer to the ENV_dramaType*
+					Return:
+						@ OK: <ELM> the UI element
+						@ NG: null
+				*/
 				buildDramaContent : function (type) {
 				
 					var box,
@@ -412,7 +350,8 @@
 					return contentBox;
 				}
 			},
-			
+			/*	Func: Initial the whole page. Call the public init method to start the initial process
+			*/
 			pgCtrl = {
 				
 				buildMainContent : function () {

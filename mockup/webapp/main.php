@@ -14,7 +14,7 @@
 	?>
 </head>
 
-<body class="signupState">
+<body>
 	<div class="headerContainer">
 		<?php $pgMgr->includeWebModule(VB_PageManager::WEB_MODULE_HEADER); ?>
 	</div>
@@ -34,12 +34,12 @@
 	<div class="signupWindowContainer">
 		<div class="signupWindow lyt-pos-rel">
 			<div class="ViBox-logo"></div>
-			<div class="signupProcess">
+			<!--div class="signupProcess">
 				<div class="signupProcess-processBoard">
-					<div class="signupProcess-processBoard-board">
+					<div class="signupProcess-processBoard-board signupProcess-end">
 						<div class="signupProcess-processBoard-title">Watch drama</div>
 					</div>
-					<div class="signupProcess-processBoard-board">
+					<div class="signupProcess-processBoard-board signupProcess-final">
 						<div class="signupProcess-processBoard-boardShadow">
 							<div class="signupProcess-processBoard-title"></div>
 							<div class="signupProcess-processBoard-arw"></div>
@@ -47,7 +47,7 @@
 						<div class="signupProcess-processBoard-title">Fill info</div>
 						<div class="signupProcess-processBoard-arw"></div>
 					</div>
-					<div class="signupProcess-processBoard-board signupProcess-in">
+					<div class="signupProcess-processBoard-board signupProcess-start signupProcess-in">
 						<div class="signupProcess-processBoard-boardShadow">
 							<div class="signupProcess-processBoard-title"></div>
 							<div class="signupProcess-processBoard-arw"></div>
@@ -57,7 +57,61 @@
 					</div>
 					<div class="clear"></div>
 				</div>
-			</div>
+				<form name="signupProcess-actionForm" class="signupProcess-actionForm lyt-pos-rel">
+					<div class="signupProcess-actionForm-borad signupProcess-start">						
+						<div class="signupProcess-actionForm-boradShelf">
+							<h3>E-Mail</h3>
+							<input name="signupProcess-actionForm-email" class="signupProcess-actionForm-email signupProcess-actionForm-longInput">
+						</div>					
+						<div class="signupProcess-actionForm-boradShelf">
+							<h3>Passord</h3>
+							<input name="signupProcess-actionForm-pw" class="signupProcess-actionForm-pw signupProcess-actionForm-longInput">
+						</div>
+						<div class="signupProcess-actionForm-boradShelf">
+							<h3>Confirm passord</h3>
+							<input name="signupProcess-actionForm-repw" class="signupProcess-actionForm-repw signupProcess-actionForm-longInput">
+						</div>
+						<div class="signupProcess-actionForm-boradShelf">
+							Sign up to watch drama for free for 3 days !
+						</div>
+						<div class="signupProcess-actionForm-boradShelf">
+							<button class="btn-sty-2 sty-cursor-pter" type="button">Close</button>
+							<button class="btn-sty-1 sty-cursor-pter" type="button">Next</button>
+						</div>
+					</div>
+					<div class="signupProcess-actionForm-borad signupProcess-final">						
+						<div class="signupProcess-actionForm-boradShelf">
+							<h3>Name</h3>
+							<input name="signupProcess-actionForm-name" class="signupProcess-actionForm-email signupProcess-actionForm-longInput">
+						</div>					
+						<div class="signupProcess-actionForm-boradShelf">
+							<h3>Gender</h3>
+							<label>
+								<input name="signupProcess-actionForm-gender" class="signupProcess-actionForm-gender" type="radio" value="female" checked>Female
+							</label>
+							<label>
+								<input name="signupProcess-actionForm-gender" class="signupProcess-actionForm-gender" type="radio" value="male">Male
+							</label>
+						</div>
+						<div class="signupProcess-actionForm-boradShelf">
+							<h3>Birthday</h3>
+							<input name="signupProcess-actionForm-yy" class="signupProcess-actionForm-yy signupProcess-actionForm-shortInput" placeholder="yyyy">
+							<span class="actionForm-boradShelf-spacer lyt-inlineBlock"></span>
+							<input name="signupProcess-actionForm-mm" class="signupProcess-actionForm-mm signupProcess-actionForm-shortInput" placeholder="mm">
+							<span class="actionForm-boradShelf-spacer lyt-inlineBlock"></span>
+							<input name="signupProcess-actionForm-dd" class="signupProcess-actionForm-dd signupProcess-actionForm-shortInput" placeholder="dd">
+						</div>
+						<div class="signupProcess-actionForm-boradShelf">
+							Go watching your favorite drama !
+						</div>
+						<div class="signupProcess-actionForm-boradShelf">
+							<button class="btn-sty-2 sty-cursor-pter" type="button">Colse</button>
+							<button class="btn-sty-1 sty-cursor-pter" type="button">Watch drama</button>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</form>
+			</div-->
 		</div>
 	</div>
 	
@@ -72,7 +126,7 @@
 	<script type="text/javascript">
 	(function () {
 		/***
-		 * Some enviroment vars
+		 * Declare some enviroment vars or do some preparations
 		 */
 		var ENV_dramaTypePOP = "popular",
 			ENV_dramaTypeJP = "jp",
@@ -84,10 +138,101 @@
 			ENV_dramaBoxSize = {
 				L : "L", S : "S"
 			};
+		
+		ViBox.addModule("signupWindow",
+			/*	Arg:
+					<OBJ> data = {
+						<ELM> signupWindow = the div.signupWindow
+					}
+			*/
+			function (data) {
+			
+					var startActionFormElemsHTML = [
+							'<h3>E-Mail</h3>'
+							+'<input name="signupProcess-actionForm-email" class="signupProcess-actionForm-email signupProcess-actionForm-longInput">',
+							
+							'<h3>Passord</h3>'
+							+'<input name="signupProcess-actionForm-pw" class="signupProcess-actionForm-pw signupProcess-actionForm-longInput">',
+							
+							'<h3>Confirm passord</h3>'
+							+'<input name="signupProcess-actionForm-repw" class="signupProcess-actionForm-repw signupProcess-actionForm-longInput">',
+							
+							'Sign up to watch drama for free for 3 days !',
+							
+							'<button class="closeBtn btn-sty-2 sty-cursor-pter" type="button">Close</button>'
+							+'<button class="nextBtn btn-sty-1 sty-cursor-pter" type="button">Next</button>'
+						],
+						finalActionFormElemsHTML = [
+							'<h3>Name</h3>'
+							+'<input name="signupProcess-actionForm-name" class="signupProcess-actionForm-email signupProcess-actionForm-longInput">',
+							
+							'<h3>Gender</h3>'
+							+'<label>'
+							+	'<input name="signupProcess-actionForm-gender" class="signupProcess-actionForm-gender" type="radio" value="female" checked>Female'
+							+'</label>'
+							+'<label>'
+							+	'<input name="signupProcess-actionForm-gender" class="signupProcess-actionForm-gender" type="radio" value="male">Male'
+							+'</label>',
+
+							'<h3>Birthday</h3>'
+							+'<input name="signupProcess-actionForm-yy" class="signupProcess-actionForm-yy signupProcess-actionForm-shortInput" placeholder="yyyy">'
+							+'<span class="actionForm-boradShelf-spacer lyt-inlineBlock"></span>'
+							+'<input name="signupProcess-actionForm-mm" class="signupProcess-actionForm-mm signupProcess-actionForm-shortInput" placeholder="mm">'
+							+'<span class="actionForm-boradShelf-spacer lyt-inlineBlock"></span>'
+							+'<input name="signupProcess-actionForm-dd" class="signupProcess-actionForm-dd signupProcess-actionForm-shortInput" placeholder="dd">',
+
+							'Go watching your favorite drama !',
+							
+							'<button class="closeBtn btn-sty-2 sty-cursor-pter" type="button">Colse</button>'
+							+'<button class="submitBtn btn-sty-1 sty-cursor-pter" type="button">Watch drama</button>'
+						];
+				
+				data.signupWindow.signupProcess = ViBox.newModule("signupProcess", {
+					startActionFormElemsHTML : startActionFormElemsHTML,
+					finalActionFormElemsHTML : finalActionFormElemsHTML
+				});				
+				data.signupWindow.appendChild(data.signupWindow.signupProcess);
+				return data.signupWindow;
+			},			
+			function (signupWindow) {
+			/*	== The enhancement ==
+				Methods:
+					[ Public ]
+					> open = Open the window
+					> close = close the window
+			*/
+			
+				signupWindow.open = function () {
+					signupWindow.signupProcess.goBack();
+					signupWindow.signupProcess.actionForm.reset();
+					ViBox.addClass(document.body, "signupState");
+				}
+				
+				signupWindow.close = function () {
+					ViBox.removeClass(document.body, "signupState");
+				}
+				
+				signupWindow.onclick = function (e) {
+					e = ViBox.normalizeEvent(e);
+					if (   ViBox.hasClass(e.target.className, "closeBtn")
+						|| ViBox.hasClass(e.target.className, "submitBtn")
+					) {
+						signupWindow.close();
+					} else if (ViBox.hasClass(e.target.className, "nextBtn")) {
+						signupWindow.signupProcess.goNext();
+					}
+				}
+				
+				return signupWindow;
+			}
+		);
+		
 		/***
-		 * Get the DOM element
+		 * Get the DOM elements
 		 */
-		var mainContentContainer = document.querySelector(".contentContainer-mainContent");
+		var header = document.querySelector(".header"),
+			mainContentContainer = document.querySelector(".contentContainer-mainContent"),
+			signupWindow = ViBox.newModule("signupWindow", { signupWindow : document.querySelector(".signupWindow") });
 		/***
 		 * Build up the web app
 		 */
@@ -266,7 +411,6 @@
 					}
 					return contentBox;
 				}
-				
 			},
 			
 			pgCtrl = {
@@ -288,9 +432,17 @@
 					
 					mainContentContainer.appendChild(frag);
 				},
+								
+				init : function () {	
 				
-				init : function () {					
-					this.buildMainContent();					
+					this.buildMainContent();
+					
+					header.onclick = function (e) {
+						e = ViBox.normalizeEvent(e);
+						if (ViBox.hasClass(e.target.className, "header-signUpBtn")) {
+							signupWindow.open();
+						}
+					}
 				}				
 			};
 		pgCtrl.init();

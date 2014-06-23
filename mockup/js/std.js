@@ -36,6 +36,10 @@ if(!Array.prototype.forEach){Array.prototype.forEach=function(callback,thisArg){
 		> _html2dom : Convert the HTML text into the real HTML element
 		[ public ]
 		> isStr, isFunc, isObj, isHTMLElem, isArr : Check the corresponding data type
+		> hasClass : Find out if the specified CSS classes exist in the target element's className attribute
+		> addClass : Add some CSS classes into one element's className attribute
+		> removeClass : Remoce some CSS classes from one element's className attribute
+		> normalizeEvent : Nomalize the event obj for cross-browser compatibility
 		> addModule : Add one web module
 		> newModule : Make an new module from the type added before.
 */
@@ -136,6 +140,115 @@ var ViBox = (function () {
 			return (target instanceof Array);
 		},
 		/*	Arg:
+				<STR> elemClass = the class of the dom element
+				<STR|ARR> className = classes to test in a string seperated by " " or in an array
+			Return:
+				@ Having: true
+				@ Not having: false
+		*/
+		hasClass : function (elemClass, className) {
+			var has = false;
+			
+			if (typeof elemClass == "string" && elemClass) {
+				
+				className = (typeof className == "string") ? className.split(" ") : className;
+				
+				if (className instanceof Array) {
+				
+					has = true;
+					elemClass = " " + elemClass + " ";	
+					
+					for (var i = 0; i < className.length; i++) {
+						if (typeof className[i] == "string") {
+							if (elemClass.search(" " + className[i] + " ") < 0) {
+								has = false;
+								break;
+							}
+						}
+					}
+				}
+			}
+			return has;
+		},		
+		/*	Arg:
+				<ELM> elem = the target element which is being added classes
+				<STR|ARR> newClasseses = the new classes to add, if multiple, seperated by " " or put in an array
+			Return:
+				>	OK: the newly added classes in an array
+				>	NG: false
+		*/
+		addClass : function (elem, newClasses) {
+			var addedClasses = [],
+				thisClass = elem.className;
+				
+			newClasses = this.isStr(newClasses) ? newClasses.split(" ") : newClasses;
+			
+			if (this.isArr(newClasses)) {
+				for (var i = 0, j = newClasses.length; i < j; i++) {
+					if (!this.hasClass(thisClass, newClasses[i]) ) {
+						thisClass += " " + newClasses[i];
+						addedClasses.push(newClasses[i]);
+					}
+				}
+			}
+			
+			if (addedClasses.length > 0) {
+				elem.className = thisClass.trim();
+				return addedClasses;
+			} else {
+				return false;
+			}
+		},
+		/*	Arg:
+				<ELM> elem = the target element whose classes are being removed
+				<STR|ARR> classes = the classes to remove, if multiple, seperated by " " or put in an array
+			Return:
+				>	OK: the removed classes in an array
+				>	NG: false
+		*/
+		removeClass : function (elem, classes) {
+			var removedClasses = [];
+				thisClass = " " + elem.className + " ";
+			
+			classes = this.isStr(classes) ? classes.split(" ") : classes;
+			
+			if (this.isArr(classes)) {
+				for (var i = 0, j = classes.length; i < j; i++) {
+					if (this.hasClass(thisClass, classes[i]) ) {
+						thisClass = thisClass.replace(" " + classes[i] + " ", " ");
+						removedClasses.push(classes[i]);
+					}
+				}
+			}
+
+			if (removedClasses.length > 0) {
+				elem.className = thisClass.trim();
+				return removedClasses;
+			} else {
+				return false;
+			}
+		},		
+		/*	Arg: 
+				<OBJ> e = the event object
+			Return:
+				<OBJ> The normalized event
+		*/
+		normalizeEvent : function (e) {
+			// Cope with the cross browser compatibility
+			e = e || window.event;
+			e.target = e.target || e.srcElement;
+			e.stopBubble = function () {
+				this.cancelBubble = true;
+				if (this.stopPropoagation) { this.stopPropoagation(); }
+			}
+			e.stopDefault = function () {
+				if (this.preventDefault) { this.preventDefault(); }
+				this.returnValue = false;
+				return false;
+			}
+			return e;
+		},
+		/*	Arg:
 				> moduleID, domMaker, domEnhancer = Refer to the constructor of ViBox::_cls_ModuleMaker
 		*/
 		addModule : function (moduleID, domMaker, domEnhancer) {			
@@ -171,3 +284,110 @@ var ViBox = (function () {
 		}
 	};
 }());
+
+ViBox.addModule("signupProcess",
+	/*	Arg:
+			<OBJ> data = {
+				<ARR> startActionFormElemsHTML = the array of html texts. Each html is one signup form element for the start process inside one div.signupProcess-actionForm-boradShelf 
+				<ARR> finalActionFormElemsHTML = Like the startActionFormElemsHTML arg but is for the final process
+			}
+	*/
+	function (data) {
+		
+		var startActionFormElemsHTML = finalActionFormElemsHTML = "";
+		
+		data.startActionFormElemsHTML.forEach(function (html, idx, arr) {			
+			startActionFormElemsHTML += '<div class="signupProcess-actionForm-boradShelf">' + html + '</div>';			
+		});		
+		data.finalActionFormElemsHTML.forEach(function (html, idx, arr) {			
+			finalActionFormElemsHTML += '<div class="signupProcess-actionForm-boradShelf">' + html + '</div>';			
+		});
+		
+		var html =	 '<div class="signupProcess">'
+					+	'<div class="signupProcess-processBoard">'
+					+		'<div class="signupProcess-processBoard-board signupProcess-end">'
+					+			'<div class="signupProcess-processBoard-title">Watch drama</div>'
+					+		'</div>'
+					+		'<div class="signupProcess-processBoard-board signupProcess-final">'
+					+			'<div class="signupProcess-processBoard-boardShadow">'
+					+				'<div class="signupProcess-processBoard-title"></div>'
+					+				'<div class="signupProcess-processBoard-arw"></div>'
+					+			'</div>'
+					+			'<div class="signupProcess-processBoard-title">Fill info</div>'
+					+			'<div class="signupProcess-processBoard-arw"></div>'
+					+		'</div>'
+					+		'<div class="signupProcess-processBoard-board signupProcess-start signupProcess-in">'
+					+			'<div class="signupProcess-processBoard-boardShadow">'
+					+				'<div class="signupProcess-processBoard-title"></div>'
+					+				'<div class="signupProcess-processBoard-arw"></div>'
+					+			'</div>'
+					+			'<div class="signupProcess-processBoard-title">Add account</div>'
+					+			'<div class="signupProcess-processBoard-arw"></div>'
+					+		'</div>'
+					+		'<div class="clear"></div>'
+					+	'</div>'
+					+	'<form name="signupProcess-actionForm" class="signupProcess-actionForm lyt-pos-rel">'
+					+		'<div class="signupProcess-actionForm-borad signupProcess-start">'
+					+			startActionFormElemsHTML
+					+		'</div>'
+					+		'<div class="signupProcess-actionForm-borad signupProcess-final">'
+					+			finalActionFormElemsHTML
+					+		'</div>'
+					+		'<div class="clear"></div>'
+					+	'</form>'
+					+'</div>';
+		
+		return Mustache.render(html, data);
+	},	
+	function (elem) {
+	/*	== The enhancement ==
+		Properties:
+			[ Private ]
+			<OBJ> _className = the table of the usseful CSS classes
+			<ELM> _actionForm, _startProcBoard, _finalProcBoard = the child elements
+			[ Public ]
+			<ELM> actionForm = the sign-up action form
+		Methods:
+			[ Private ]
+			> _isAtStartProc : Check if it is now at the start process
+			[ Public ]
+			> goNext : Go to the next process
+			> goBack : Go back to the previous process
+	*/
+	
+		var _className = {			
+				"nextProc" : "nextProc",
+				"signupProcess-in" : "signupProcess-in"
+			},
+			_startProcBoard = elem.querySelector(".signupProcess-processBoard-board.signupProcess-start"),
+			_finalProcBoard = elem.querySelector(".signupProcess-processBoard-board.signupProcess-final");
+		
+		elem.actionForm = elem.querySelector(".signupProcess-actionForm");
+		
+		/*	Return:
+				@ OK: true
+				@ NG: false
+		*/
+		function _isAtStartProc() {
+			return ViBox.hasClass(_startProcBoard.className, _className["signupProcess-in"]);
+		}
+		
+		elem.goNext = function (){
+			if (_isAtStartProc()) {
+				ViBox.addClass(this.actionForm, _className["nextProc"]);
+				ViBox.removeClass(_startProcBoard, _className["signupProcess-in"]);
+				ViBox.addClass(_finalProcBoard, _className["signupProcess-in"]);
+			}
+		}
+		
+		elem.goBack = function () {
+			if (!_isAtStartProc()) {
+				ViBox.removeClass(this.actionForm, _className["nextProc"]);
+				ViBox.addClass(_startProcBoard, _className["signupProcess-in"]);
+				ViBox.removeClass(_finalProcBoard, _className["signupProcess-in"]);
+			}
+		}
+		
+		return elem;
+	}
+);

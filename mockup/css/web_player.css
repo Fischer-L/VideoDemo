@@ -1,8 +1,6 @@
 .lyt-float-L {
 	float: left;
 }
-.noBigPoster > .header {
-}
 .noBigPoster .header-bigPoster,
 .noBigPoster .header-btmDivider {
 	display: none;
@@ -14,13 +12,126 @@
 	border-top: 1px solid #eee;
 	border-bottom: 1px solid #eee;
 	box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.5) inset;
-	background-color: #f5f5f5;
+	background-color: #f5f5f5;	
 }
 .playerContainer-player {
 	width: 860px;
 	height: 480px;
 	margin: 0 auto;
 	background-color: #000;
+	background-image: url(../img/player_screen.jpg);
+}
+.player-ctrlPanel {
+	width: 760px; height: 52px;
+	border-radius: 15px;
+	padding: 4px 20px;
+	margin: 0 auto;
+	top: 420px;
+	background: #000;
+	background: rgba(0, 0, 0, 0.9);
+	opacity: 1;
+	transition: opacity 1s;
+	color: #fff;
+}
+.playerContainer-player:hover > .player-ctrlPanel {
+	opacity: 1;
+}
+.player-ctrlPanel > div {
+	display: inline-block;
+	margin: 10px 6px 0px 10px;
+	float: left;
+}
+div.player-ctrlPanel-progress {
+	margin-top: 16px;
+}
+.player-ctrlPanel-playBtn {
+	width: 28px; height: 30px;
+	background-image: url(../img/icons.png);
+	background-position: -184px -43px;
+}
+.player-ctrlPanel-progressBar {
+	width: 450px;
+}
+.player-ctrlPanel-elapsedBar {
+	width: 200px;
+	top: 5px;
+}
+.progressBar-leftPonit,
+.progressBar-rightPonit,
+.elapsedBar-leftPonit,
+.elapsedBar-rightPonit {
+	width: 5px;
+	overflow: hidden;
+}
+.progressBar-leftPonit:before,
+.progressBar-rightPonit:before,
+.elapsedBar-leftPonit:before {
+	width: 10px;
+	content: "";
+	border-radius: 50%;
+	display: block;
+}
+.player-ctrlPanel-progressBar,
+.progressBar-leftPonit,
+.progressBar-rightPonit,
+.progressBar-leftPonit:before,
+.progressBar-rightPonit:before,
+.player-ctrlPanel-elapsedBar,
+.elapsedBar-leftPonit,
+.elapsedBar-leftPonit:before {
+	height: 10px;
+}
+.progressBar-leftPonit,
+.elapsedBar-leftPonit {
+	left: -5px;
+}
+.progressBar-rightPonit {
+	left: 450px;
+}
+.progressBar-rightPonit:before {
+	margin-left: -5px;
+}
+.player-ctrlPanel-progressBar,
+.progressBar-leftPonit:before,
+.progressBar-rightPonit:before {
+	background: #ccc;
+	background: rgba(255, 255, 255, 0.5);
+}
+.player-ctrlPanel-elapsedBar,
+.elapsedBar-leftPonit:before {
+	background: #00ADEF;
+}
+.player-ctrlPanel-progressDrag {
+	width: 14px; height: 14px;
+	border-radius: 50%;
+	background: #fff;
+	top: 3px;
+	left: 196px;
+}
+.player-ctrlPanel-progressInfo {
+	margin-left: 10px;
+	font-size: 0.8em;
+}
+.player-ctrlPanel-soundBtn {
+	width: 34px; height: 30px;
+	background-image: url(../img/icons.png);
+	background-position: -121px -81px;
+	/* Mute: background-position: -168px -81px; */
+}
+.player-ctrlPanel-quality {
+	vertical-align: top;
+	font-size: 1.05em;
+	font-weight: bold;
+	color: #fff;
+}
+.player-ctrlPanel-qualityBtn {
+	line-height: 30px;
+}
+.player-ctrlPanel-resizeBtn {
+	width: 27px; height: 30px;
+	background-image: url(../img/icons.png);
+	background-position: -209px -82px;
+	/* Shrink: background-position: -241px -82px; */
 }
 .currentDrama-info {
 	margin: 10px 0;

@@ -437,6 +437,15 @@ body {
  ``` The homemade, common, stardard use of CSS ```
  > Logo gradient: #e5523e --> #fa8e7f 
 ***/
+.header-strip {
+	width: 100%;
+	height: 6px;
+	background-image: url(../img/header_strip.png);
+	background-position: 0px -0px;
+	background-repeat: repeat-x;
+	position: absolute;
+	top: 0; left: 0;
+}
 div.header-bigPoster {
 	width: 1040px;
 	height: 420px;
@@ -542,12 +551,12 @@ div.header-bigPoster {
 .header-controlBar-settingCtrl-icon {
 	width: 23px;
 	height: 23px;
-	background-position: -182px -2px
+	background-position: -182px -3px
 }
 .header-controlBar-srchCtrl-icon {
 	width: 25px;
 	height: 25px;
-	background-position: -219px -2px;
+	background-position: -219px -3px;
 	float: left;
 }
 .header-controlBar-settingCtrl-menuWrp {

@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title></title>
+	<title>ViBox Demo - Player</title>
 	<?php
 		$pgMgr->includeCSS(array(
 			VB_PageManager::CSS_STD,
@@ -16,12 +16,41 @@
 </head>
 
 <body>
-	<div class="headerContainer noBigPoster">
+	<div class="headerContainer noBigPoster">		
 		<?php $pgMgr->includeWebModule(VB_PageManager::WEB_MODULE_HEADER); ?>
 	</div>
 	
 	<div class="playerContainer">
-		<div class="playerContainer-player">
+		<div class="playerContainer-player lyt-pos-rel">
+			<div class="player-ctrlPanel lyt-pos-rel">
+				<div class="player-ctrlPanel-playBtn"></div
+				
+				><div class="player-ctrlPanel-progress lyt-pos-rel">
+					<div class="player-ctrlPanel-progressBar lyt-pos-rel lyt-inlineBlock">
+						<div class="progressBar-leftPonit lyt-pos-abs"></div>
+						<div class="progressBar-rightPonit lyt-pos-abs"></div>
+					</div>
+					<div class="player-ctrlPanel-elapsedBar lyt-pos-abs">
+						<div class="elapsedBar-leftPonit lyt-pos-abs"></div>
+					</div>
+					<div class="player-ctrlPanel-progressDrag lyt-pos-abs"></div>
+					<div class="player-ctrlPanel-progressInfo lyt-inlineBlock">30:12 / 50:22</div>
+				</div
+				
+				><div class="player-ctrlPanel-sound lyt-pos-rel">
+					<div class="player-ctrlPanel-soundBtn"></div>
+					<ul class="player-ctrlPanel-soundMenu lyt-pos-abs"></ul>
+				</div
+				
+				><div class="player-ctrlPanel-quality lyt-pos-rel">
+					<div class="player-ctrlPanel-qualityBtn">1080P</div>
+					<ul class="player-ctrlPanel-qualityMenu lyt-pos-abs"></ul>
+				</div
+				
+				><div class="player-ctrlPanel-resizeBtn"></div>
+				
+				<div class="clear"></div>
+			</div>
 		</div>
 	</div>
 	
@@ -30,18 +59,12 @@
 			<?php $pgMgr->includeWebModule(VB_PageManager::WEB_MODULE_NAV_PANEL); ?>
 		</div>
 		<div class="contentContainer-mainContent grid_12">
-		</div>		
+		</div>
 		<div class="clear"></div>
 	</div>
 	
 	<div class="footerContainer">
 		<?php $pgMgr->includeWebModule(VB_PageManager::WEB_MODULE_FOOTER); ?>
-	</div>
-	
-	<div class="signupWindowContainer">
-		<div class="signupWindow lyt-pos-rel">
-			<div class="ViBox-logo"></div>
-		</div>
 	</div>
 	
 	<?php	

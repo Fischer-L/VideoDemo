@@ -22,7 +22,7 @@
 	
 	<div class="playerContainer">
 		<div class="playerContainer-player lyt-pos-rel">
-			<div class="player-ctrlPanel lyt-pos-rel">
+			<div class="player-ctrlPanel lyt-pos-rel sty-cursor-pter">
 				<div class="player-ctrlPanel-playBtn"></div
 				
 				><div class="player-ctrlPanel-progress lyt-pos-rel">
@@ -34,12 +34,18 @@
 						<div class="elapsedBar-leftPonit lyt-pos-abs"></div>
 					</div>
 					<div class="player-ctrlPanel-progressDrag lyt-pos-abs"></div>
-					<div class="player-ctrlPanel-progressInfo lyt-inlineBlock">30:12 / 50:22</div>
+					<div class="player-ctrlPanel-progressInfo lyt-inlineBlock">22:12 / 50:22</div>
 				</div
 				
-				><div class="player-ctrlPanel-sound lyt-pos-rel">
-					<div class="player-ctrlPanel-soundBtn"></div>
-					<ul class="player-ctrlPanel-soundMenu lyt-pos-abs"></ul>
+				><div class="player-ctrlPanel-volume lyt-pos-rel">
+					<div class="player-ctrlPanel-volumeBtn"></div>
+					<ul class="player-ctrlPanel-volumeSettings lyt-pos-abs">
+						<li class="volumeSettings-100"></li>
+						<li class="volumeSettings-75"></li>
+						<li class="volumeSettings-50"></li>
+						<li class="volumeSettings-25"></li>
+						<li class="volumeSettings-0"></li>
+					</ul>
 				</div
 				
 				><div class="player-ctrlPanel-quality lyt-pos-rel">

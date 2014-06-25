@@ -416,6 +416,8 @@ ViBox.addModule("player",
 		var _openTime,
 			_maxOpenDuration = 2000,
 			_className = {
+				pause : "pause",
+				playBtn : "player-ctrlPanel-playBtn",
 				playerPresent : "present",
 				menuPresent : "present",
 				volumePrefix : "volume-",
@@ -433,6 +435,7 @@ ViBox.addModule("player",
 		
 		
 		var _ctrlPanel = player.querySelector(".player-ctrlPanel"),
+			_playBtn = player.querySelector(".player-ctrlPanel-playBtn"),
 			_volumeCtrl = player.querySelector(".player-ctrlPanel-volume");
 		
 		_volumeCtrl.currentVolume = _volumes[3];
@@ -464,6 +467,14 @@ ViBox.addModule("player",
 				ViBox.removeClass(_ctrlPanel, _className.playerPresent);		
 				_openTime = null;
 			}			
+		}
+		
+		player.play = function () {
+			ViBox.removeClass(_playBtn, _className.pause);
+		}
+		
+		player.pause = function () {
+			ViBox.addClass(_playBtn, _className.pause);		
 		}
 		
 		player.setVolume = function (volume) {
@@ -517,6 +528,14 @@ ViBox.addModule("player",
 			} else if (ViBox.hasClass(e.target, _className.qualityMid)) {
 				
 				player.setQuality("mid");
+				
+			} else if (ViBox.hasClass(e.target, _className.playBtn)) {
+				
+				if (ViBox.hasClass(e.target, _className.pause)) {
+					player.play();				
+				} else {
+					player.pause();
+				}
 				
 			}
 			

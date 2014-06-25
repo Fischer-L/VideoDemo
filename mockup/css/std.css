@@ -7,7 +7,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
  ``` The homemade, common, stardard use of CSS ```
  > Logo gradient: #e5523e --> #fa8e7f 
 ***/
-body {
+body, button {
 	font-family: helvetica, arial, sans-serif;
 }
 a:hover {
@@ -211,27 +211,8 @@ a:hover {
 	width: 324px;
 	margin: 30px auto;
 }
-
-.sty-cursor-pter {
-	cursor: pointer;
-}
-.lyt-none {
-	display: none;
-}
-.lyt-block {
-	display: block;
-}
-.lyt-inlineBlock {
-	display: inline-block;
-}
-.lyt-pos-rel {
-	position: relative;
-}
-.lyt-pos-abs {
-	position: absolute;
-}
-.lyt-txtAlign-ctr {
-	text-align: center;
+.signupProcess-actionForm-boradShelf > button {
+	margin-right: 12px;
 }
 
 /*	== The player module == 
@@ -313,7 +294,10 @@ div.player-ctrlPanel-progress {
 .player-ctrlPanel-playBtn {
 	width: 28px; height: 30px;
 	background-image: url(../img/icons.png);
-	background-position: -184px -43px;
+	background-position: -184px -43px;	
+}
+.player-ctrlPanel-playBtn.pause {
+	background-position: -221px -43px;
 }
 .player-ctrlPanel-progressBar {
 	width: 450px;
@@ -389,6 +373,7 @@ div.player-ctrlPanel-progress {
 div.player-ctrlPanel-quality {
 	width: 46px;
 	margin-top: 12px;
+	margin-left: 0px;
 	vertical-align: top;
 	font-size: 1.05em;
 	font-weight: bold;
@@ -406,12 +391,14 @@ div.player-ctrlPanel-resizeBtn {
 	/* Shrink: background-position: -241px -112px; */
 }
 .player-ctrlPanel-menuWrp {
-	width: 56px;
 	padding: 10px 0px 35px;
 	position: absolute;	
 	top: -110px;
 	left: -14px;
 	display: none;
+}
+.player-ctrlPanel-volume > .player-ctrlPanel-menuWrp {	
+	width: 56px;
 }
 .player-ctrlPanel-quality > .player-ctrlPanel-menuWrp {
 	top: -124px;
@@ -486,5 +473,29 @@ div.player-ctrlPanel-resizeBtn {
 }
 .player-ctrlPanel-qualitySettings > li {
 	margin: 2px 5px;
+	text-align: center;
+}
+
+
+
+.sty-cursor-pter {
+	cursor: pointer;
+}
+.lyt-none {
+	display: none;
+}
+.lyt-block {
+	display: block;
+}
+.lyt-inlineBlock {
+	display: inline-block;
+}
+.lyt-pos-rel {
+	position: relative;
+}
+.lyt-pos-abs {
+	position: absolute;
+}
+.lyt-txtAlign-ctr {
 	text-align: center;
 }

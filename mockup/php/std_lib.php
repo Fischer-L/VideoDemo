@@ -26,22 +26,24 @@ class VB_PageManager {
 		$this->webModulePath[self::WEB_MODULE_HEADER] = $this->fileRoot . $this->webModulePath["rootDir"] . "/header.php";
 		$this->webModulePath[self::WEB_MODULE_FOOTER] = $this->fileRoot . $this->webModulePath["rootDir"] . "/footer.php";
 		$this->webModulePath[self::WEB_MODULE_NAV_PANEL] = $this->fileRoot . $this->webModulePath["rootDir"] . "/nav_panel.php";
-	
+		$this->webModulePath[self::MOBILE_MODULE_HEADER] = $this->fileRoot . $this->mobileModulePath["rootDir"] . "/header.php";
+		
 		$this->cssURL[self::CSS_STD] = $this->domain . $this->cssURL["rootDir"] . "/std.css";
 		$this->cssURL[self::CSS_WEB_STD] = $this->domain . $this->cssURL["rootDir"] . "/web_std.css";
 		$this->cssURL[self::CSS_WEB_PLAYER] = $this->domain . $this->cssURL["rootDir"] . "/web_player.css";
-		//$this->cssURL[self::CSS_WEB_SIGNUP] = $this->domain . $this->cssURL["rootDir"] . "/web_signup.css"; // TBW...
-		
+		$this->cssURL[self::CSS_MOBILE_STD] = $this->domain . $this->cssURL["rootDir"] . "/mobile_std.css";
 		
 		$this->jsURL[self::JS_STD] = $this->domain . $this->jsURL["rootDir"] . "/std.js";
 		$this->jsURL[self::JS_WEB_STD] = $this->domain . $this->jsURL["rootDir"] . "/web_std.js";
-		//$this->jsURL[self::JS_WEB_SIGNUP] = $this->domain . $this->jsURL["rootDir"] . "/web_signup.js"; // TBW...
 	}
 	
 	protected $fileRoot = "";
 	protected $domain = "//localhost/videoDemo";
 	protected $webModulePath = array(
 		"rootDir" => "/webapp/webmodule" // This is only the root dir of web modules, not of all the files.
+	);
+	protected $mobileModulePath = array(
+		"rootDir" => "/mobileapp/webmodule" // This is only the root dir of web modules, not of all the files.
 	);
 	protected $cssURL = array(
 		"rootDir" => "/css" // This is only the root dir of css resources, not of all the files.
@@ -53,15 +55,15 @@ class VB_PageManager {
 	const WEB_MODULE_HEADER = "WEB_MODULE_HEADER";
 	const WEB_MODULE_FOOTER = "WEB_MODULE_FOOTER";
 	const WEB_MODULE_NAV_PANEL = "WEB_MODULE_NAV_PANEL";
+	const MOBILE_MODULE_HEADER = "MOBILE_MODULE_HEADER";
 	
 	const CSS_STD = "CSS_STD";
 	const CSS_WEB_STD = "CSS_WEB_STD";
 	const CSS_WEB_PLAYER = "CSS_WEB_PLAYER";
-	const CSS_WEB_SIGNUP = "CSS_WEB_SIGNUP";
+	const CSS_MOBILE_STD = "CSS_MOBILE_STD";
 	
 	const JS_STD = "JS_STD";
 	const JS_WEB_STD = "JS_WEB_STD";
-	const JS_WEB_SIGNUP = "JS_WEB_SIGNUP";
 	
 	/*	Return:
 			@ In the debug mode: true

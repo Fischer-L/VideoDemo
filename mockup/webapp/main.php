@@ -40,8 +40,7 @@
 	<?php	
 		$pgMgr->includeJS(array(
 			VB_PageManager::JS_STD,
-			VB_PageManager::JS_WEB_STD,
-			VB_PageManager::JS_WEB_SIGNUP
+			VB_PageManager::JS_WEB_STD
 		));
 	?>
 	

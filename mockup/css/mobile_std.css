@@ -1,0 +1,100 @@
+body {
+	font-size: 14px;
+}
+.phone {
+	width: 289px;
+	height: 600px;
+	position: relative;
+	top: 50%;
+	margin: -300px auto 0px;
+	background-image: url(../img/iphone.png);
+}
+.phone-screen {
+	width: 234px;
+	height: 406px;
+	position: relative;
+	background: #fff;
+	top: 101px;
+	left: 27px;
+	border: 2px solid #666;
+	border-top: none;
+	overflow: hidden;
+}
+
+.header,
+.header-navBtn,
+.header-nav-title,
+.header-nav-search {
+	height: 36px;
+}
+.header,
+.header-nav-search {
+	width: 100%;
+	background-color: #e5523e;
+	background: linear-gradient(#fa8e7f, #e5523e);
+	border-bottom: 1px solid #cc4837;
+}
+.header-navBtn {
+	width: 36px;
+	display: inline-block;
+	cursor: pointer;
+}
+.header-navBtn-backBtn {
+	background-image: url(../img/icons.png);
+	background-position: -204px -108px;
+}
+.menuBtn-strip {
+	border-bottom: 3px solid #fff;
+	padding-top: 4px;
+	width: 18px;
+}
+.menuBtn-strip:first-child {
+	padding-top: 9px;
+}
+.menuNav .header-navBtn-backBtn {
+	display: none;
+}
+.backNav .header-navBtn-menuBtn {
+	display: none;
+}
+.header-nav-title {
+	color: #fff;
+	line-height: 36px;
+	vertical-align: top;
+	font-weight: bold;
+	font-size: 1.2em;
+	margin-left: -8px;
+}
+.header-nav-search {
+	border-bottom: none;
+	left: 194px;
+	transition: left 1s;
+}
+.header-nav-search.present {
+	left: 0px;
+}
+.header-nav-searchBtn {
+	background-image: url(../img/icons.png);
+	background-position: -239px -110px;
+}
+.header-nav-searchHolder {
+	width: 180px;
+	height: 5px;
+	margin-left: 6px;
+	border: 1px solid #fff;
+	border-top: none;
+	top: -7px;
+}
+.header-nav-searchInput {
+	width: 158px;
+	border: none;
+	background-color: transparent;
+	color: #fff;
+	margin: 0;
+	top: -13px;
+	left: 10px;
+}
+.header-nav-searchInput:focus,
+.header-nav-searchInput:active {
+	outline: none;
+}

@@ -16,3 +16,14 @@
 		</div>
 	</div>
 </div>
+
+<ul class="header-menu lyt-pos-abs">
+	<li class="in">Explore</li>
+	<li>Popular</li>
+	<li>Japan</li>
+	<li>Korea</li>
+	<li>Taiwan</li>
+	<li>China</li>
+	<li>USA</li>
+	<li>Settings</li>
+</ul>

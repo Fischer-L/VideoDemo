@@ -70,6 +70,9 @@ body {
 	left: 194px;
 	transition: left 1s;
 }
+.noSearch .header-nav-search {
+	display: none;
+}
 .header-nav-search.present {
 	left: 0px;
 }
@@ -97,4 +100,32 @@ body {
 .header-nav-searchInput:focus,
 .header-nav-searchInput:active {
 	outline: none;
+}
+.header-menu {
+	width: 100%; height: 408px;
+	background: #2a2a2a;
+	color: #f0f0f0;
+	top: 37px;
+	z-index: 998;
+	font-size: 1.2em;
+	font-weight: bold;
+	left: -250px;
+	transition: left 1s;
+}
+.header-menu.present {
+	left: -38px;
+}
+.header-menu > li {
+	padding: 12px 0 12px 100px;
+	border-top: 1px solid #4a4a4a;
+	border-bottom: 1px solid #1a1a1a;
+}
+.header-menu > li.in {
+	background-color: #4a4a4a;
+}
+.header-menu > li:first-child {
+	border-top: none;
+}
+.header-menu > li:last-child {
+	border-bottom: none;
 }

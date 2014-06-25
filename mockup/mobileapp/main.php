@@ -18,7 +18,7 @@
 
 	<div class="phone">
 		<div class="phone-screen">
-			<div class="header">
+			<div class="header lyt-pos-rel">
 				<?php $pgMgr->includeWebModule(VB_PageManager::MOBILE_MODULE_HEADER); ?>
 			</div>
 		</div>

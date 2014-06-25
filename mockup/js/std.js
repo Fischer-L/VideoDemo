@@ -35,7 +35,7 @@ if(!Array.prototype.forEach){Array.prototype.forEach=function(callback,thisArg){
 		[ Private ]
 		> _html2dom : Convert the HTML text into the real HTML element
 		[ public ]
-		> isStr, isFunc, isObj, isHTMLElem, isArr : Check the corresponding data type
+		> isStr, isFunc, isObj, isHTMLElem, isArr, isDate : Check the corresponding data type
 		> hasClass : Find out if the specified CSS classes exist in the target element's className attribute
 		> addClass : Add some CSS classes into one element's className attribute
 		> removeClass : Remoce some CSS classes from one element's className attribute
@@ -140,14 +140,24 @@ var ViBox = (function () {
 			return (target instanceof Array);
 		},
 		/*	Arg:
-				<STR> elemClass = the class of the dom element
+				<*> target = the target to test
+			Return:
+				@ OK: true
+				@ NG: false
+		*/	
+		isDate : function (target) {
+			return (target instanceof Date);
+		},		
+		/*	Arg:
+				<STR|ELM> target = the test target, could be the class of dom element or the dom element
 				<STR|ARR> className = classes to test in a string seperated by " " or in an array
 			Return:
 				@ Having: true
 				@ Not having: false
 		*/
-		hasClass : function (elemClass, className) {
-			var has = false;
+		hasClass : function (target, className) {
+			var has = false,
+				elemClass = this.isHTMLElem(target) ? target.className : target;
 			
 			if (typeof elemClass == "string" && elemClass) {
 				
@@ -389,5 +399,129 @@ ViBox.addModule("signupProcess",
 		}
 		
 		return elem;
+	}
+);
+
+ViBox.addModule("player",
+	/*	Arg:
+			<OBJ> data = {
+				<ELM> player : the player DOM element
+			}
+	*/
+	function (data) {
+		return data.player;
+	},
+	function (player) {
+	
+		var _openTime,
+			_maxOpenDuration = 2000,
+			_className = {
+				playerPresent : "present",
+				menuPresent : "present",
+				volumePrefix : "volume-",
+				volumeBtn : "player-ctrlPanel-volumeBtn",
+				qualityBest : "qualitySettings-best",
+				qualityHight : "qualitySettings-hight",
+				qualityMid : "qualitySettings-mid"
+			},			
+			_qualities = {
+				"mid" : 480,
+				"hight" : 720,
+				"best" : 1080 
+			},
+			_volumes = [ 0, 20, 40, 60, 80, 100 ];
+		
+		
+		var _ctrlPanel = player.querySelector(".player-ctrlPanel"),
+			_volumeCtrl = player.querySelector(".player-ctrlPanel-volume");
+		
+		_volumeCtrl.currentVolume = _volumes[3];
+		
+		function _closeCountDown() {
+			if (ViBox.isDate(_openTime)) {
+				if ((new Date()).getTime() - _openTime.getTime() > _maxOpenDuration) {
+					player.closeCtrlPanel();
+				} else {
+					setTimeout(_closeCountDown, _maxOpenDuration);
+				}
+			}
+		}
+		
+		player.isCtrlPanelOpen = function () {
+			return ViBox.hasClass(_ctrlPanel.className, _className.playerPresent);
+		}
+		
+		player.openCtrlPanel = function () {			
+			if (!this.isCtrlPanelOpen()) {				
+				_openTime = new Date();
+				ViBox.addClass(_ctrlPanel, _className.playerPresent);
+				_closeCountDown();
+			}
+		}
+		
+		player.closeCtrlPanel = function () {		
+			if (this.isCtrlPanelOpen()) {
+				ViBox.removeClass(_ctrlPanel, _className.playerPresent);		
+				_openTime = null;
+			}			
+		}
+		
+		player.setVolume = function (volume) {
+			var lv = volume / 20,
+				classes = [];
+			
+			_volumes.forEach(function (volume, idx, arr) {
+				classes.push(_className.volumePrefix + volume);
+			});
+			ViBox.removeClass(_volumeCtrl, classes);
+			ViBox.addClass(_volumeCtrl, _className.volumePrefix + _volumes[lv]);
+			
+			if (lv >= 1) {
+				_volumeCtrl.currentVolume = _volumes[lv];
+			}
+		}
+		
+		player.isMute = function () {
+			return ViBox.hasClass(_volumeCtrl, _className.volumePrefix + _volumes[0]);
+		}
+		
+		player.setQuality = function (quality) {			
+			this.querySelector(".player-ctrlPanel-qualityBtn").innerHTML = _qualities[quality] + "p";
+		}
+		
+		player.onmouseover = function (e) {
+			this.openCtrlPanel();
+		}
+		
+		_ctrlPanel.onclick = function (e) {
+			e = ViBox.normalizeEvent(e);
+			
+			_openTime = new Date(); // Reset the time of opening while clicking on the control panel
+			
+			if (ViBox.hasClass(e.target, _className.volumeBtn)) {
+			
+				if (player.isMute()) {
+					player.setVolume(_volumeCtrl.currentVolume);
+				} else {
+					player.setVolume(0);
+				}
+				
+			} else if (ViBox.hasClass(e.target, _className.qualityBest)) {
+				
+				player.setQuality("best");
+			
+			} else if (ViBox.hasClass(e.target, _className.qualityHight)) {
+			
+				player.setQuality("hight");
+			
+			} else if (ViBox.hasClass(e.target, _className.qualityMid)) {
+				
+				player.setQuality("mid");
+				
+			}
+			
+		}
+		
+		return player;
 	}
 );

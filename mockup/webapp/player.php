@@ -21,7 +21,7 @@
 	</div>
 	
 	<div class="playerContainer">
-		<div class="playerContainer-player lyt-pos-rel">
+		<div class="playerContainer-player player lyt-pos-rel">
 			<div class="player-ctrlPanel lyt-pos-rel sty-cursor-pter">
 				<div class="player-ctrlPanel-playBtn"></div
 				
@@ -37,20 +37,28 @@
 					<div class="player-ctrlPanel-progressInfo lyt-inlineBlock">22:12 / 50:22</div>
 				</div
 				
-				><div class="player-ctrlPanel-volume lyt-pos-rel">
+				><div class="player-ctrlPanel-volume volume-60 lyt-pos-rel">
 					<div class="player-ctrlPanel-volumeBtn"></div>
-					<ul class="player-ctrlPanel-volumeSettings lyt-pos-abs">
-						<li class="volumeSettings-100"></li>
-						<li class="volumeSettings-75"></li>
-						<li class="volumeSettings-50"></li>
-						<li class="volumeSettings-25"></li>
-						<li class="volumeSettings-0"></li>
-					</ul>
+					<div class="player-ctrlPanel-menuWrp">
+						<ul class="player-ctrlPanel-volumeSettings player-ctrlPanel-menu">
+							<li class="volumeSettings-100"></li>
+							<li class="volumeSettings-80"></li>
+							<li class="volumeSettings-60"></li>
+							<li class="volumeSettings-40"></li>
+							<li class="volumeSettings-20"></li>
+						</ul>
+					</div>
 				</div
 				
 				><div class="player-ctrlPanel-quality lyt-pos-rel">
 					<div class="player-ctrlPanel-qualityBtn">1080P</div>
-					<ul class="player-ctrlPanel-qualityMenu lyt-pos-abs"></ul>
+					<div class="player-ctrlPanel-menuWrp">
+						<ul class="player-ctrlPanel-qualitySettings player-ctrlPanel-menu">
+							<li class="qualitySettings-best">1080p</li>
+							<li class="qualitySettings-hight">720p</li>
+							<li class="qualitySettings-mid">480p</li>
+						</ul>
+					</div>
 				</div
 				
 				><div class="player-ctrlPanel-resizeBtn"></div>
@@ -91,7 +99,8 @@
 		/***
 		 * Get the DOM element
 		 */
-		var mainContentContainer = document.querySelector(".contentContainer-mainContent");
+		var mainContentContainer = document.querySelector(".contentContainer-mainContent"),
+			player = ViBox.newModule("player", { player : document.querySelector(".player.playerContainer-player") });			
 		
 		/***
 		 * Build up the web app

@@ -1,4 +1,4 @@
-<div class="header-nav lyt-pos-rel backNav">
+<div class="header-nav lyt-pos-rel backNav noSearch">
 
 	<div class="header-navBtn header-navBtn-backBtn"></div>
 	<ul class="header-navBtn header-navBtn-menuBtn">
@@ -7,7 +7,7 @@
 		<li class="menuBtn-strip"></li>
 	</ul	
 	
-	><div class="header-nav-title lyt-inlineBlock">Drama title</div
+	><div class="header-nav-title lyt-inlineBlock">Sign up</div
 	
 	><div class="header-nav-search lyt-inlineBlock lyt-pos-abs">
 		<div class="header-navBtn header-nav-searchBtn"></div

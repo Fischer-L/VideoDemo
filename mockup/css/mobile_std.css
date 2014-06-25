@@ -129,3 +129,51 @@ body {
 .header-menu > li:last-child {
 	border-bottom: none;
 }
+.signupProcess, .signupProcess-actionForm {
+	width: 234px;
+	padding: 2px 0px;
+}
+.signupProcess {
+	margin: 0;
+	text-align: center;
+}
+.signupProcess-processBoard-title {
+	padding: 4px 6px;
+	padding: 6px 5px 6px 11px;	
+	width: 54px;
+	font-size: 0.9em;
+	height: 32px;
+	line-height: normal;
+}
+.signupProcess-processBoard-arw,
+.signupProcess-processBoard-boardShadow > .signupProcess-processBoard-arw,
+.signupProcess-processBoard-board.signupProcess-in > .signupProcess-processBoard-arw {
+	border-width: 22px;
+}
+.signupProcess-processBoard-arw,
+.signupProcess-processBoard-boardShadow > .signupProcess-processBoard-arw {
+	left: 70px;
+}
+.signupProcess-processBoard-boardShadow {
+	left: 3px;
+}
+.signupProcess-processBoard-board.signupProcess-final > .signupProcess-processBoard-title {
+	padding-left: 37px;	
+	padding-right: 10px;
+	width: 26px;
+}
+.signupProcess-processBoard-board.signupProcess-final > .signupProcess-processBoard-arw {
+	left: 73px;
+}
+.signupProcess-processBoard-board.signupProcess-final > .signupProcess-processBoard-boardShadow {	
+	left: 6px;
+}
+.signupProcess-processBoard-board.signupProcess-end > .signupProcess-processBoard-title {
+	width: 44px;	
+	padding-left: 34px;
+	padding-right: 13px;
+}
+
+.signupProcess-processBoard-title, .signupProcess-processBoard-arw {
+	transition: background-color, border-color, 0s; /* To Del */
+}

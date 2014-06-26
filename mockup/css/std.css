@@ -109,33 +109,33 @@ a:hover {
 			<div class="clear"></div>
 		</div>
 		<form name="signupProcess-actionForm" class="signupProcess-actionForm lyt-pos-rel">
-			<div class="signupProcess-actionForm-borad signupProcess-start">
-				<div class="signupProcess-actionForm-boradShelf">
+			<div class="signupProcess-actionForm-board signupProcess-start">
+				<div class="signupProcess-actionForm-boardShelf">
 					<h3>E-Mail</h3>
 					<input name="signupProcess-actionForm-email" class="signupProcess-actionForm-email signupProcess-actionForm-longInput">
 				</div>
-				<div class="signupProcess-actionForm-boradShelf">
+				<div class="signupProcess-actionForm-boardShelf">
 					<h3>Passord</h3>
 					<input name="signupProcess-actionForm-pw" class="signupProcess-actionForm-pw signupProcess-actionForm-longInput">
 				</div>
-				<div class="signupProcess-actionForm-boradShelf">							
+				<div class="signupProcess-actionForm-boardShelf">							
 					<h3>Confirm passord</h3>
 					<input name="signupProcess-actionForm-repw" class="signupProcess-actionForm-repw signupProcess-actionForm-longInput">
 				</div>
-				<div class="signupProcess-actionForm-boradShelf">							
+				<div class="signupProcess-actionForm-boardShelf">							
 					Sign up to watch drama for free for 3 days !
 				</div>
-				<div class="signupProcess-actionForm-boradShelf">							
+				<div class="signupProcess-actionForm-boardShelf">							
 					<button class="closeBtn btn-sty-2 sty-cursor-pter" type="button">Close</button>
 					<button class="nextBtn btn-sty-1 sty-cursor-pter" type="button">Next</button>
 				</div>
 			</div>
-			<div class="signupProcess-actionForm-borad signupProcess-final">
-				<div class="signupProcess-actionForm-boradShelf">
+			<div class="signupProcess-actionForm-board signupProcess-final">
+				<div class="signupProcess-actionForm-boardShelf">
 					<h3>Name</h3>
 					<input name="signupProcess-actionForm-name" class="signupProcess-actionForm-email signupProcess-actionForm-longInput">
 				</div>
-				<div class="signupProcess-actionForm-boradShelf">								
+				<div class="signupProcess-actionForm-boardShelf">								
 					<h3>Gender</h3>
 					<label>
 						<input name="signupProcess-actionForm-gender" class="signupProcess-actionForm-gender" type="radio" value="female" checked>Female
@@ -144,18 +144,18 @@ a:hover {
 						<input name="signupProcess-actionForm-gender" class="signupProcess-actionForm-gender" type="radio" value="male">Male
 					</label>
 				</div>
-				<div class="signupProcess-actionForm-boradShelf">	
+				<div class="signupProcess-actionForm-boardShelf">	
 					<h3>Birthday</h3>
 					<input name="signupProcess-actionForm-yy" class="signupProcess-actionForm-yy signupProcess-actionForm-shortInput" placeholder="yyyy">
-					<span class="actionForm-boradShelf-spacer lyt-inlineBlock"></span>
+					<span class="actionForm-boardShelf-spacer lyt-inlineBlock"></span>
 					<input name="signupProcess-actionForm-mm" class="signupProcess-actionForm-mm signupProcess-actionForm-shortInput" placeholder="mm">
-					<span class="actionForm-boradShelf-spacer lyt-inlineBlock"></span>
+					<span class="actionForm-boardShelf-spacer lyt-inlineBlock"></span>
 					<input name="signupProcess-actionForm-dd" class="signupProcess-actionForm-dd signupProcess-actionForm-shortInput" placeholder="dd">
 				</div>
-				<div class="signupProcess-actionForm-boradShelf">	
+				<div class="signupProcess-actionForm-boardShelf">	
 					Go watching your favorite drama !
 				</div>
-				<div class="signupProcess-actionForm-boradShelf">								
+				<div class="signupProcess-actionForm-boardShelf">								
 					<button class="closeBtn btn-sty-2 sty-cursor-pter" type="button">Colse</button>
 					<button class="submitBtn btn-sty-1 sty-cursor-pter" type="button">Watch drama</button>
 				</div>
@@ -243,15 +243,15 @@ a:hover {
 	width: 115px;
 	padding-left: 50px;
 }
-.signupProcess-actionForm-borad {
+.signupProcess-actionForm-board {
 	width: 50%;
 	float: left;
 }
-.signupProcess-actionForm-boradShelf {
+.signupProcess-actionForm-boardShelf {
 	width: 324px;
 	margin: 30px auto;
 }
-.signupProcess-actionForm-boradShelf > button {
+.signupProcess-actionForm-boardShelf > button {
 	margin-right: 12px;
 }
 .signupProcess-actionForm h3 {
@@ -274,7 +274,7 @@ a:hover {
 	width: 15px;
 	height: 15px;
 }
-.actionForm-boradShelf-spacer {
+.actionForm-boardShelf-spacer {
 	width: 20px;
 	border-top: 1px solid #aaa;
 	margin: 0 6px 2px 6px;

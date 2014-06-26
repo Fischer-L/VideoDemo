@@ -39,6 +39,7 @@ if(!Array.prototype.forEach){Array.prototype.forEach=function(callback,thisArg){
 		> hasClass : Find out if the specified CSS classes exist in the target element's className attribute
 		> addClass : Add some CSS classes into one element's className attribute
 		> removeClass : Remoce some CSS classes from one element's className attribute
+		> addEvt : Add event to one element with the extra care for the cross browser compatibility handle
 		> normalizeEvent : Nomalize the event obj for cross-browser compatibility
 		> addModule : Add one web module
 		> newModule : Make an new module from the type added before.
@@ -87,7 +88,9 @@ var ViBox = (function () {
 				korDramaPoster : "../img/you_from_star_L.jpg",
 				twDramaPoster  : "../img/love_myself_L.jpg",
 				cnDramaPoster  : "../img/lianlinking_L.jpg",
-				usDramaPoster  : "../img/game_of_thrones_L.jpg"		
+				usDramaPoster  : "../img/game_of_thrones_L.jpg",
+				mobile_mainPage : "./main.php",
+				mobile_startPage : "./start.php"
 			}
 		},
 		/*	Arg:
@@ -237,7 +240,23 @@ var ViBox = (function () {
 			} else {
 				return false;
 			}
-		},		
+		},
+		/*	Arg:
+				<ELM> elem = the elem to which the event is being added
+				<STR> evt = the event name, like "click" for the onclick event
+				<FN> eHandle = the event handler				
+		*/
+		addEvt : function (elem, evt, eHandle) {
+			var that = this,
+				proxyHandle = function (e) {
+					eHandle.call(elem, that.normalizeEvent(e));
+				};
+			if (elem.addEventListener) {
+				elem.addEventListener(evt, proxyHandle);
+			} else if (elem.attachEvent) { // The IE 8 case
+				elem.attachEvent("on" + evt, proxyHandle);
+			}
+		},
 		/*	Arg: 
 				<OBJ> e = the event object
 			Return:
@@ -298,22 +317,11 @@ var ViBox = (function () {
 ViBox.addModule("signupProcess",
 	/*	Arg:
 			<OBJ> data = {
-				<ARR> startActionFormElemsHTML = the array of html texts. Each html is one signup form element for the start process inside one div.signupProcess-actionForm-boradShelf 
+				<ARR> startActionFormElemsHTML = the array of html texts. Each html is one signup form element for the start process inside one div.signupProcess-actionForm-boardShelf 
 				<ARR> finalActionFormElemsHTML = Like the startActionFormElemsHTML arg but is for the final process
 			}
 	*/
 	function (data) {
-		/* OLD
-		var startActionFormElemsHTML = finalActionFormElemsHTML = "";
-		
-		data.startActionFormElemsHTML.forEach(function (html, idx, arr) {			
-			startActionFormElemsHTML += '<div class="signupProcess-actionForm-boradShelf">' + html + '</div>';			
-		});		
-		data.finalActionFormElemsHTML.forEach(function (html, idx, arr) {			
-			finalActionFormElemsHTML += '<div class="signupProcess-actionForm-boradShelf">' + html + '</div>';			
-		});
-		
-		
 		var html =	 '<div class="signupProcess">'
 					+	'<div class="signupProcess-processBoard">'
 					+		'<div class="signupProcess-processBoard-board signupProcess-end">'
@@ -338,122 +346,33 @@ ViBox.addModule("signupProcess",
 					+		'<div class="clear"></div>'
 					+	'</div>'
 					+	'<form name="signupProcess-actionForm" class="signupProcess-actionForm lyt-pos-rel">'
-					+		'<div class="signupProcess-actionForm-borad signupProcess-start">'
-					+			startActionFormElemsHTML
-					+		'</div>'
-					+		'<div class="signupProcess-actionForm-borad signupProcess-final">'
-					+			finalActionFormElemsHTML
-					+		'</div>'
-					+		'<div class="clear"></div>'
-					+	'</form>'
-					+'</div>';
-		
-		return Mustache.render(html, data);
-		
-		
-		
-		var startActionFormElemsHTML = ''
-						+'<div class="signupProcess-actionForm-boradShelf">'
-						+	'<h3>E-Mail</h3>'
-						+	'<input name="signupProcess-actionForm-email" class="signupProcess-actionForm-email signupProcess-actionForm-longInput">'
-						+'</div>'
-						+'<div class="signupProcess-actionForm-boradShelf">'
-						+	'<h3>Passord</h3>'
-						+	'<input name="signupProcess-actionForm-pw" class="signupProcess-actionForm-pw signupProcess-actionForm-longInput">'
-						+'</div>'
-						+'<div class="signupProcess-actionForm-boradShelf">'							
-						+	'<h3>Confirm passord</h3>'
-						+	'<input name="signupProcess-actionForm-repw" class="signupProcess-actionForm-repw signupProcess-actionForm-longInput">'
-						+'</div>'
-						+'<div class="signupProcess-actionForm-boradShelf">'							
-						+	'Sign up to watch drama for free for 3 days !'
-						+'</div>'
-						+'<div class="signupProcess-actionForm-boradShelf">'							
-						+	'<button class="closeBtn btn-sty-2 sty-cursor-pter" type="button">Close</button>'
-						+	'<button class="nextBtn btn-sty-1 sty-cursor-pter" type="button">Next</button>'
-						+'</div>';
-		var finalActionFormElemsHTML = ''
-						+'<div class="signupProcess-actionForm-boradShelf">'
-						+	'<h3>Name</h3>'
-						+	'<input name="signupProcess-actionForm-name" class="signupProcess-actionForm-email signupProcess-actionForm-longInput">'
-						+'</div>'
-						+'<div class="signupProcess-actionForm-boradShelf">'								
-						+	'<h3>Gender</h3>'
-						+	'<label>'
-						+		'<input name="signupProcess-actionForm-gender" class="signupProcess-actionForm-gender" type="radio" value="female" checked>Female'
-						+	'</label>'
-						+	'<label>'
-						+		'<input name="signupProcess-actionForm-gender" class="signupProcess-actionForm-gender" type="radio" value="male">Male'
-						+	'</label>'
-						+'</div>'
-						+'<div class="signupProcess-actionForm-boradShelf">'	
-						+	'<h3>Birthday</h3>'
-						+	'<input name="signupProcess-actionForm-yy" class="signupProcess-actionForm-yy signupProcess-actionForm-shortInput" placeholder="yyyy">'
-						+	'<span class="actionForm-boradShelf-spacer lyt-inlineBlock"></span>'
-						+	'<input name="signupProcess-actionForm-mm" class="signupProcess-actionForm-mm signupProcess-actionForm-shortInput" placeholder="mm">'
-						+	'<span class="actionForm-boradShelf-spacer lyt-inlineBlock"></span>'
-						+	'<input name="signupProcess-actionForm-dd" class="signupProcess-actionForm-dd signupProcess-actionForm-shortInput" placeholder="dd">'
-						+'</div>'
-						+'<div class="signupProcess-actionForm-boradShelf">'	
-						+	'Go watching your favorite drama !'
-						+'</div>'
-						+'<div class="signupProcess-actionForm-boradShelf">'								
-						+	'<button class="closeBtn btn-sty-2 sty-cursor-pter" type="button">Colse</button>'
-						+	'<button class="submitBtn btn-sty-1 sty-cursor-pter" type="button">Watch drama</button>'
-						+'</div>';
-		*/
-		
-		var html =	 '<div class="signupProcess">'
-					+	'<div class="signupProcess-processBoard">'
-					+		'<div class="signupProcess-processBoard-board signupProcess-end">'
-					+			'<div class="signupProcess-processBoard-title">Watch drama</div>'
-					+		'</div>'
-					+		'<div class="signupProcess-processBoard-board signupProcess-final">'
-					+			'<div class="signupProcess-processBoard-boardShadow">'
-					+				'<div class="signupProcess-processBoard-title"></div>'
-					+				'<div class="signupProcess-processBoard-arw"></div>'
-					+			'</div>'
-					+			'<div class="signupProcess-processBoard-title">Fill info</div>'
-					+			'<div class="signupProcess-processBoard-arw"></div>'
-					+		'</div>'
-					+		'<div class="signupProcess-processBoard-board signupProcess-start signupProcess-in">'
-					+			'<div class="signupProcess-processBoard-boardShadow">'
-					+				'<div class="signupProcess-processBoard-title"></div>'
-					+				'<div class="signupProcess-processBoard-arw"></div>'
-					+			'</div>'
-					+			'<div class="signupProcess-processBoard-title">Add account</div>'
-					+			'<div class="signupProcess-processBoard-arw"></div>'
-					+		'</div>'
-					+		'<div class="clear"></div>'
-					+	'</div>'
-					+	'<form name="signupProcess-actionForm" class="signupProcess-actionForm lyt-pos-rel">'
-					+		'<div class="signupProcess-actionForm-borad signupProcess-start">'
-					+			'<div class="signupProcess-actionForm-boradShelf">'
+					+		'<div class="signupProcess-actionForm-board signupProcess-start">'
+					+			'<div class="signupProcess-actionForm-boardShelf">'
 					+				'<h3>E-Mail</h3>'
 					+				'<input name="signupProcess-actionForm-email" class="signupProcess-actionForm-email signupProcess-actionForm-longInput">'
 					+			'</div>'
-					+			'<div class="signupProcess-actionForm-boradShelf">'
+					+			'<div class="signupProcess-actionForm-boardShelf">'
 					+				'<h3>Passord</h3>'
 					+				'<input name="signupProcess-actionForm-pw" class="signupProcess-actionForm-pw signupProcess-actionForm-longInput">'
 					+			'</div>'
-					+			'<div class="signupProcess-actionForm-boradShelf">'							
+					+			'<div class="signupProcess-actionForm-boardShelf">'							
 					+				'<h3>Confirm passord</h3>'
 					+				'<input name="signupProcess-actionForm-repw" class="signupProcess-actionForm-repw signupProcess-actionForm-longInput">'
 					+			'</div>'
-					+			'<div class="signupProcess-actionForm-boradShelf">'							
+					+			'<div class="signupProcess-actionForm-boardShelf">'							
 					+				'Sign up to watch drama for free for 3 days !'
 					+			'</div>'
-					+			'<div class="signupProcess-actionForm-boradShelf">'							
+					+			'<div class="signupProcess-actionForm-boardShelf">'							
 					+				'<button class="closeBtn btn-sty-2 sty-cursor-pter" type="button">Close</button>'
 					+				'<button class="nextBtn btn-sty-1 sty-cursor-pter" type="button">Next</button>'
 					+			'</div>'
 					+		'</div>'
-					+		'<div class="signupProcess-actionForm-borad signupProcess-final">'
-					+			'<div class="signupProcess-actionForm-boradShelf">'
+					+		'<div class="signupProcess-actionForm-board signupProcess-final">'
+					+			'<div class="signupProcess-actionForm-boardShelf">'
 					+				'<h3>Name</h3>'
 					+				'<input name="signupProcess-actionForm-name" class="signupProcess-actionForm-email signupProcess-actionForm-longInput">'
 					+			'</div>'
-					+			'<div class="signupProcess-actionForm-boradShelf">'								
+					+			'<div class="signupProcess-actionForm-boardShelf">'								
 					+				'<h3>Gender</h3>'
 					+				'<label>'
 					+					'<input name="signupProcess-actionForm-gender" class="signupProcess-actionForm-gender" type="radio" value="female" checked>Female'
@@ -462,18 +381,18 @@ ViBox.addModule("signupProcess",
 					+					'<input name="signupProcess-actionForm-gender" class="signupProcess-actionForm-gender" type="radio" value="male">Male'
 					+				'</label>'
 					+			'</div>'
-					+			'<div class="signupProcess-actionForm-boradShelf">'	
+					+			'<div class="signupProcess-actionForm-boardShelf">'	
 					+				'<h3>Birthday</h3>'
 					+				'<input name="signupProcess-actionForm-yy" class="signupProcess-actionForm-yy signupProcess-actionForm-shortInput" placeholder="yyyy">'
-					+				'<span class="actionForm-boradShelf-spacer lyt-inlineBlock"></span>'
+					+				'<span class="actionForm-boardShelf-spacer lyt-inlineBlock"></span>'
 					+				'<input name="signupProcess-actionForm-mm" class="signupProcess-actionForm-mm signupProcess-actionForm-shortInput" placeholder="mm">'
-					+				'<span class="actionForm-boradShelf-spacer lyt-inlineBlock"></span>'
+					+				'<span class="actionForm-boardShelf-spacer lyt-inlineBlock"></span>'
 					+				'<input name="signupProcess-actionForm-dd" class="signupProcess-actionForm-dd signupProcess-actionForm-shortInput" placeholder="dd">'
 					+			'</div>'
-					+			'<div class="signupProcess-actionForm-boradShelf">'	
+					+			'<div class="signupProcess-actionForm-boardShelf">'	
 					+				'Go watching your favorite drama !'
 					+			'</div>'
-					+			'<div class="signupProcess-actionForm-boradShelf">'								
+					+			'<div class="signupProcess-actionForm-boardShelf">'								
 					+				'<button class="closeBtn btn-sty-2 sty-cursor-pter" type="button">Colse</button>'
 					+				'<button class="submitBtn btn-sty-1 sty-cursor-pter" type="button">Watch drama</button>'
 					+			'</div>'
@@ -516,7 +435,7 @@ ViBox.addModule("signupProcess",
 			return ViBox.hasClass(_startProcBoard.className, _className["signupProcess-in"]);
 		}
 		
-		elem.goNext = function (){
+		elem.goNext = function () {
 			if (_isAtStartProc()) {
 				ViBox.addClass(this.actionForm, _className["nextProc"]);
 				ViBox.removeClass(_startProcBoard, _className["signupProcess-in"]);

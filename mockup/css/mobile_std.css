@@ -179,16 +179,16 @@ body {
 	width: 200%;
 }
 
-.signupProcess-actionForm-boradShelf {
+.signupProcess-actionForm-boardShelf {
 	width: 90%;
 	margin: 6% auto;
 	text-align: left;
 }
-.signupProcess-actionForm-boradShelf > button {
+.signupProcess-actionForm-boardShelf > button {
 	width: 100%;
 	margin: 0;
 }
-.signupProcess-actionForm-boradShelf > label {
+.signupProcess-actionForm-boardShelf > label {
 	height: 30px;
 	display: inline-block;
 	padding-top: 5px;
@@ -212,7 +212,7 @@ body {
 	border-radius: 2px;
 	border: 1px solid #aaa;
 }
-.actionForm-boradShelf-spacer {
+.actionForm-boardShelf-spacer {
 	width: 10px;
 }
 /* END */

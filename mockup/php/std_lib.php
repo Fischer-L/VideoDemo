@@ -35,6 +35,7 @@ class VB_PageManager {
 		
 		$this->jsURL[self::JS_STD] = $this->domain . $this->jsURL["rootDir"] . "/std.js";
 		$this->jsURL[self::JS_WEB_STD] = $this->domain . $this->jsURL["rootDir"] . "/web_std.js";
+		$this->jsURL[self::JS_MOBILE_STD] = $this->domain . $this->jsURL["rootDir"] . "/mobile_std.js";		
 	}
 	
 	protected $fileRoot = "";
@@ -64,6 +65,7 @@ class VB_PageManager {
 	
 	const JS_STD = "JS_STD";
 	const JS_WEB_STD = "JS_WEB_STD";
+	const JS_MOBILE_STD = "JS_MOBILE_STD";
 	
 	/*	Return:
 			@ In the debug mode: true

@@ -97,9 +97,9 @@
 
 							'<h3>Birthday</h3>'
 							+'<input name="signupProcess-actionForm-yy" class="signupProcess-actionForm-yy signupProcess-actionForm-shortInput" placeholder="yyyy">'
-							+'<span class="actionForm-boradShelf-spacer lyt-inlineBlock"></span>'
+							+'<span class="actionForm-boardShelf-spacer lyt-inlineBlock"></span>'
 							+'<input name="signupProcess-actionForm-mm" class="signupProcess-actionForm-mm signupProcess-actionForm-shortInput" placeholder="mm">'
-							+'<span class="actionForm-boradShelf-spacer lyt-inlineBlock"></span>'
+							+'<span class="actionForm-boardShelf-spacer lyt-inlineBlock"></span>'
 							+'<input name="signupProcess-actionForm-dd" class="signupProcess-actionForm-dd signupProcess-actionForm-shortInput" placeholder="dd">',
 
 							'Go watching your favorite drama !',

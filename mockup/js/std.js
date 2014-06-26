@@ -90,7 +90,8 @@ var ViBox = (function () {
 				cnDramaPoster  : "../img/lianlinking_L.jpg",
 				usDramaPoster  : "../img/game_of_thrones_L.jpg",
 				mobile_mainPage : "./main.php",
-				mobile_startPage : "./start.php"
+				mobile_startPage : "./start.php",
+				mobile_signupPage : "./signup.php"
 			}
 		},
 		/*	Arg:
@@ -383,11 +384,11 @@ ViBox.addModule("signupProcess",
 					+			'</div>'
 					+			'<div class="signupProcess-actionForm-boardShelf">'	
 					+				'<h3>Birthday</h3>'
-					+				'<input name="signupProcess-actionForm-yy" class="signupProcess-actionForm-yy signupProcess-actionForm-shortInput" placeholder="yyyy">'
+					+				'<input name="signupProcess-actionForm-yy" class="signupProcess-actionForm-yy signupProcess-actionForm-shortInput" placeholder="yyyy" maxlength="4">'
 					+				'<span class="actionForm-boardShelf-spacer lyt-inlineBlock"></span>'
-					+				'<input name="signupProcess-actionForm-mm" class="signupProcess-actionForm-mm signupProcess-actionForm-shortInput" placeholder="mm">'
+					+				'<input name="signupProcess-actionForm-mm" class="signupProcess-actionForm-mm signupProcess-actionForm-shortInput" placeholder="mm" maxlength="2">'
 					+				'<span class="actionForm-boardShelf-spacer lyt-inlineBlock"></span>'
-					+				'<input name="signupProcess-actionForm-dd" class="signupProcess-actionForm-dd signupProcess-actionForm-shortInput" placeholder="dd">'
+					+				'<input name="signupProcess-actionForm-dd" class="signupProcess-actionForm-dd signupProcess-actionForm-shortInput" placeholder="dd" maxlength="2">'
 					+			'</div>'
 					+			'<div class="signupProcess-actionForm-boardShelf">'	
 					+				'Go watching your favorite drama !'

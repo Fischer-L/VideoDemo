@@ -93,9 +93,7 @@
 		 * Build up the mobile app
 		 */
 		 
-		var uiBuilder = {
-			},
-			pgCtrl = {
+		var pgCtrl = {
 				init : function () {					
 					// Add the final(1st) back task
 					ViBox.taskStack.push(function () {

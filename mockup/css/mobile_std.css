@@ -20,7 +20,37 @@ body {
 	border-top: none;
 	overflow: hidden;
 }
-
+.phone-screen.startPage {
+	background: #e5523e;
+	background: radial-gradient(circle, #fa8e7f, #e5523e);
+}
+/* Start page */
+.phone-screen.startPage:before {
+	content: " ";
+	width: 146px;
+	height: 41px;
+	position: relative;
+	left: 50%;
+	top: 30%;
+	margin-left: -72px;
+	display: block;
+	background: url(../img/icons.png);
+	background-position: -9px -102px;
+}
+.phone-screen.startPage > button {
+	width: 97%;
+	margin: 15px auto;
+}
+.phone-screen.startPage > button:first-child {
+	margin-top: 245px;
+}
+.phone-screen.startPage > .divider {
+	color: #fff;
+	text-shadow: 0px -1px #993629;
+	font-weight: bold;
+}
+/* END */
+/* Header */
 .header,
 .header-navBtn,
 .header-nav-title,
@@ -129,6 +159,8 @@ body {
 .header-menu > li:last-child {
 	border-bottom: none;
 }
+/* END */
+
 /* Overwrite the standard signupProcess style */
 .signupProcess {
 	width: 234px;
@@ -216,8 +248,3 @@ body {
 	width: 10px;
 }
 /* END */
-
-
-.signupProcess-processBoard-title, .signupProcess-processBoard-arw {
-	transition: background-color, border-color, 0s; /* To Del */
-}

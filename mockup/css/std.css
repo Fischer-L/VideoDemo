@@ -37,6 +37,9 @@ a:hover {
 .btn-sty-1 {
 	background-color: #70cc52;
 	background: linear-gradient(#70cc52,#69bf4c);
+	
+	background-color: #7ee55c;
+	background: linear-gradient(#7ee55c,#77d957);
 }
 .btn-sty-2 {
 	color: #555;
@@ -55,10 +58,16 @@ a:hover {
 .btn-sty-0:hover {	
 	background-color: #3db8ff;
 	background: linear-gradient(#3db8ff,#3aaff2);
+	
+	background-color: #3db8ff;
+	background: linear-gradient(#3db8ff,#3cb4fa);
 }
 .btn-sty-1:hover {
 	background-color: #98ff75;
 	background: linear-gradient(#98ff75,#90f26f);
+	
+	background-color: #85f261;
+	background: linear-gradient(#85f261,#7ee55c);
 }
 .btn-sty-2:hover {
 	background-color: #f2f2f2;
@@ -78,9 +87,6 @@ a:hover {
 	background: linear-gradient(#81d964,#79cc5e);
 }
 .btn-sty-2:active {
-	background-color: #e5e5e5;
-	background: linear-gradient(#e5e5e5,#d9d9d9);
-	
 	background-color: #d9d9d9;
 	background: linear-gradient(#d9d9d9,#cccccc);
 }

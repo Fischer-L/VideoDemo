@@ -67,7 +67,7 @@
 					}
 			*/
 			function (data) {
-			
+					/* // To del
 					var startActionFormElemsHTML = [
 							'<h3>E-Mail</h3>'
 							+'<input name="signupProcess-actionForm-email" class="signupProcess-actionForm-email signupProcess-actionForm-longInput">',
@@ -112,6 +112,11 @@
 					startActionFormElemsHTML : startActionFormElemsHTML,
 					finalActionFormElemsHTML : finalActionFormElemsHTML
 				});				
+				data.signupWindow.appendChild(data.signupWindow.signupProcess);
+				return data.signupWindow;
+				*/
+				
+				data.signupWindow.signupProcess = ViBox.newModule("signupProcess", {});				
 				data.signupWindow.appendChild(data.signupWindow.signupProcess);
 				return data.signupWindow;
 			},			

@@ -850,32 +850,6 @@ body.signupState > .signupWindowContainer {
 	margin: 0 auto;
 }
 
-.signupProcess-actionForm h3 {
-	color: #444;
-	margin-bottom: 6px;
-	font-size: 1.2em;
-}
-.signupProcess-actionForm label {
-	margin-right: 30px;
-}
-.signupProcess-actionForm input.signupProcess-actionForm-longInput {
-	width: 300px;
-	padding: 10px;
-}
-.signupProcess-actionForm input.signupProcess-actionForm-shortInput {
-	width: 55px;
-	padding: 10px;
-}
-.signupProcess-actionForm input[type=radio] {
-	width: 15px;
-	height: 15px;
-}
-.actionForm-boradShelf-spacer {
-	width: 20px;
-	border-top: 1px solid #aaa;
-	margin: 0 6px 2px 6px;
-}
-
 .sty-bgColor-std {
 	background-color: #eaeaea;
 	/* background: linear-gradient(#eaeaea, #dadada); */

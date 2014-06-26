@@ -23,8 +23,8 @@
 				<?php $pgMgr->includeWebModule(VB_PageManager::MOBILE_MODULE_HEADER); ?>
 			</div>
 		
-			<div class="content">
-			
+			<div class="content signupWindowContainer">
+								
 				<div class="signupProcess">
 					<div class="signupProcess-processBoard">
 						<div class="signupProcess-processBoard-board signupProcess-end">
@@ -48,12 +48,62 @@
 						</div>
 						<div class="clear"></div>
 					</div>
-					<form name="signupProcess-actionForm" class="signupProcess-actionForm lyt-pos-rel">
+					<form name="signupProcess-actionForm" class="signupProcess-actionForm lyt-pos-rel nextProc">
 						<div class="signupProcess-actionForm-borad signupProcess-start">
-							 <div class="signupProcess-actionForm-boradShelf"></div> 
+							<div class="signupProcess-actionForm-boradShelf">
+								<h3>E-Mail</h3>
+								<input name="signupProcess-actionForm-email" class="signupProcess-actionForm-email signupProcess-actionForm-longInput">
+							</div>
+							<div class="signupProcess-actionForm-boradShelf">
+								<h3>Passord</h3>
+								<input name="signupProcess-actionForm-pw" class="signupProcess-actionForm-pw signupProcess-actionForm-longInput">
+							</div>
+							<div class="signupProcess-actionForm-boradShelf">
+								<h3>Confirm passord</h3>
+								<input name="signupProcess-actionForm-repw" class="signupProcess-actionForm-repw signupProcess-actionForm-longInput">
+							</div>
+							<div class="signupProcess-actionForm-boradShelf">
+								Sign up to watch drama for free for 3 days !
+							</div>
+							<div class="signupProcess-actionForm-boradShelf">
+								<button class="nextBtn btn-sty-1 sty-cursor-pter" type="button">Next</button>
+							</div>
 						</div>
 						<div class="signupProcess-actionForm-borad signupProcess-final">
-							 <div class="signupProcess-actionForm-boradShelf"></div> 
+							<div class="signupProcess-actionForm-boradShelf">
+								<h3>Name</h3>
+								<input name="signupProcess-actionForm-name" class="signupProcess-actionForm-email signupProcess-actionForm-longInput">
+							</div>
+							
+							<div class="signupProcess-actionForm-boradShelf">
+								<h3>Gender</h3>
+								<label>
+									<input name="signupProcess-actionForm-gender" class="signupProcess-actionForm-gender" type="radio" value="female" checked>Female
+								</label>
+								<label>
+									<input name="signupProcess-actionForm-gender" class="signupProcess-actionForm-gender" type="radio" value="male">Male
+								</label>
+							</div>
+
+							
+							<div class="signupProcess-actionForm-boradShelf">
+								<h3 class="thinMargin">Birthday</h3>
+								<input name="signupProcess-actionForm-yy" class="signupProcess-actionForm-yy signupProcess-actionForm-shortInput" placeholder="yyyy">
+								<span class="actionForm-boradShelf-spacer lyt-inlineBlock"></span>
+								<input name="signupProcess-actionForm-mm" class="signupProcess-actionForm-mm signupProcess-actionForm-shortInput" placeholder="mm">
+								<span class="actionForm-boradShelf-spacer lyt-inlineBlock"></span>
+								<input name="signupProcess-actionForm-dd" class="signupProcess-actionForm-dd signupProcess-actionForm-shortInput" placeholder="dd">
+							</div>
+
+							
+							<div class="signupProcess-actionForm-boradShelf">
+								Go watching your favorite<br/>drama !
+							</div>
+							
+							
+							<div class="signupProcess-actionForm-boradShelf">
+								<button class="submitBtn btn-sty-1 sty-cursor-pter" type="button">Watch drama</button>
+							</div>
 						</div>
 						<div class="clear"></div>
 					</form>
@@ -69,5 +119,23 @@
 			VB_PageManager::JS_STD
 		));
 	?>
+	
+	<script type="text.javasscript">
+	(function () {
+		
+		/***
+		 * Build up the mobile app
+		 */
+		 
+		var uiBuilder = {
+				buildSignupProcess : function () {
+					// Add .thinMargin, remove .closeBtn, write 'Go watching your favorite<br/>drama !'
+					var elem = ViBox.newModule("signupProcess");
+					
+				}
+			};
+		
+	}());
+	</script>
 </body>
 </html>

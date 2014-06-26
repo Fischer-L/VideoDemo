@@ -129,9 +129,10 @@ body {
 .header-menu > li:last-child {
 	border-bottom: none;
 }
-.signupProcess, .signupProcess-actionForm {
+/* Overwrite the standard signupProcess style */
+.signupProcess {
 	width: 234px;
-	padding: 2px 0px;
+	padding: 1px 0px;
 }
 .signupProcess {
 	margin: 0;
@@ -173,6 +174,49 @@ body {
 	padding-left: 34px;
 	padding-right: 13px;
 }
+
+.signupProcess-actionForm {
+	width: 200%;
+}
+
+.signupProcess-actionForm-boradShelf {
+	width: 90%;
+	margin: 6% auto;
+	text-align: left;
+}
+.signupProcess-actionForm-boradShelf > button {
+	width: 100%;
+	margin: 0;
+}
+.signupProcess-actionForm-boradShelf > label {
+	height: 30px;
+	display: inline-block;
+	padding-top: 5px;
+}
+.signupProcess-actionForm h3 {
+	font-size: 1.1em;
+	width: 90%;
+}
+.signupProcess-actionForm h3.thinMargin {
+	margin-bottom: 5px;
+}
+.signupProcess-actionForm input.signupProcess-actionForm-longInput {
+	width: 94%;
+	padding: 3%;
+	border-radius: 2px;
+	border: 1px solid #aaa;
+}
+.signupProcess-actionForm input.signupProcess-actionForm-shortInput {
+	width: 18%;
+	padding: 3% 2%;
+	border-radius: 2px;
+	border: 1px solid #aaa;
+}
+.actionForm-boradShelf-spacer {
+	width: 10px;
+}
+/* END */
+
 
 .signupProcess-processBoard-title, .signupProcess-processBoard-arw {
 	transition: background-color, border-color, 0s; /* To Del */

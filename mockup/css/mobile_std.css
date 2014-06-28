@@ -411,3 +411,74 @@ body {
 	cursor: pointer;
 }
 /* END */
+
+/*	== The episodeList module == 
+	<ul class="episodeList">
+		<li class="episodeList-title"></li>
+		<li class="epsidoeList-episode">
+			<a>
+				<img class="epsidoeList-episode-poster" />
+				<div class="epsidoeList-playIcon"></div>
+			</a
+			><span class="epsidoeList-episode-title"></span>
+		</li>
+	</ul>
+*/
+.episodeList {
+	padding: 6px;
+}
+.episodeList-title {
+	padding-left: 3px;
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #494949;
+}
+.epsidoeList-episode {
+	width: 206px;
+	background: #fff;
+	padding: 8px;
+	margin-top: 8px;
+	border: 1px solid #e5e5e5;
+	border-bottom-color: #aaa;
+	border-right-color: #aaa;
+	position: relative;
+}
+.epsidoeList-episode-poster,
+.epsidoeList-episode-title {
+	display: inline-block;
+}
+.epsidoeList-episode-poster {
+	width: 92px;
+}
+.epsidoeList-playIcon {
+	width: 30px;
+	height: 30px;
+	background: #333;
+	background: rgba(0, 0, 0, 0.7);
+	border-radius: 50%;
+	position: absolute;
+	top: 18px;
+	left: 38px;
+	cursor: pointer;
+}
+.epsidoeList-playIcon:after {
+	content: "";
+	display: block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	background: url(../img/icons.png);
+	top: 8px;
+	left: 11px;
+	background-position: -256px -51px;
+	cursor: pointer;
+}
+.epsidoeList-episode-title {
+	width: 100px;
+	height: 52px;
+	margin-left: 6px;
+	font-size: 0.9em;
+	vertical-align: top;
+	color: #333;
+}
+/* END */

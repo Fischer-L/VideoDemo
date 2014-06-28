@@ -92,6 +92,7 @@ var ViBox = (function () {
 				mobile_mainPage : "./main.php",
 				mobile_startPage : "./start.php",
 				mobile_dramaPage : "./drama.php",
+				mobile_playerPage : "./player.php",
 				mobile_signupPage : "./signup.php"
 			}
 		},

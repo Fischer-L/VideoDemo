@@ -27,63 +27,8 @@
 		.drama-info-title {
 			font-weight: bold;
 		}
-		
-		.episodeList {
-			padding: 6px;
-		}
-		.episodeList-title {
-			padding-left: 3px;
-			font-size: 1.1em;
-			font-weight: bold;
-			color: #494949;
-		}
-		.epsidoeList-episode {
-			width: 206px;
-			background: #fff;
-			padding: 8px;
-			margin-top: 8px;
-			border: 1px solid #e5e5e5;
-			border-bottom-color: #aaa;
-			border-right-color: #aaa;
-			position: relative;
-		}
-		.epsidoeList-episode-poster,
-		.epsidoeList-episode-title {
-			display: inline-block;
-		}
-		.epsidoeList-episode-poster {
-			width: 92px;
-		}
-		.epsidoeList-playIcon {
-			width: 30px;
-			height: 30px;
-			background: #333;
-			background: rgba(0, 0, 0, 0.7);
-			border-radius: 50%;
-			position: absolute;
-			top: 18px;
-			left: 38px;
-			cursor: pointer;
-		}
-		.epsidoeList-playIcon:after {
-			content: "";
-			display: block;
-			width: 15px;
-			height: 15px;
-			position: absolute;
-			background: url(../img/icons.png);
-			top: 8px;
-			left: 11px;
-			background-position: -256px -51px;
-			cursor: pointer;
-		}
-		.epsidoeList-episode-title {
-			width: 100px;
-			height: 52px;
-			margin-left: 6px;
-			font-size: 0.9em;
-			vertical-align: top;
-			color: #333;
+		.contentShelf-bigPoster {
+			background-position: -234px 0px;
 		}
 	</style>
 </head>
@@ -107,20 +52,7 @@
 							<span class="drama-info-title">Summary:</span>&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 						</div>
 					</div>
-					<div class="contentShelf-shelf">
-						
-						<ul class="episodeList">
-							<li class="episodeList-title">Episodes</li>
-							<li class="epsidoeList-episode">
-								<a>
-									<img class="epsidoeList-episode-poster" src="../img/love_myself_L.jpg" />
-								</a
-								><span class="epsidoeList-episode-title">Episode 10: Epsisode title</span>
-								<div class="epsidoeList-playIcon"></div>
-							</li>
-						</ul>
-						
-					</div>
+					<div class="contentShelf-shelf episodesContainer"></div>
 				</div>
 			
 			</div>			
@@ -141,49 +73,13 @@
 		 */
 		var ENV_url = {
 				mainPage : ViBox.RESRC.url.mobile_mainPage,
-				jpDramaPoster  :  ViBox.RESRC.url.jpDramaPoster,
-				korDramaPoster :  ViBox.RESRC.url.korDramaPoster,
-				twDramaPoster  :  ViBox.RESRC.url.twDramaPoster,
-				cnDramaPoster  :  ViBox.RESRC.url.cnDramaPoster,
-				usDramaPoster  :  ViBox.RESRC.url.usDramaPoster
+				playerPage : ViBox.RESRC.url.mobile_playerPage,
+				twDramaPoster  :  ViBox.RESRC.url.twDramaPoster
 			},
-			ENV_dramaWallSettings = [
-				{
-					wallTitle : "Popular",
-					posterURLs : [
-						ENV_url.jpDramaPoster, ENV_url.korDramaPoster, ENV_url.twDramaPoster, ENV_url.usDramaPoster
-					]
-				},
-				{
-					wallTitle : "Japan",
-					posterURLs : [
-						ENV_url.jpDramaPoster, ENV_url.jpDramaPoster, ENV_url.jpDramaPoster, ENV_url.jpDramaPoster
-					]
-				},
-				{
-					wallTitle : "Korea",
-					posterURLs : [
-						ENV_url.korDramaPoster, ENV_url.korDramaPoster, ENV_url.korDramaPoster, ENV_url.korDramaPoster
-					]
-				},
-				{
-					wallTitle : "Taiwan",
-					posterURLs : [
-						ENV_url.twDramaPoster, ENV_url.twDramaPoster, ENV_url.twDramaPoster, ENV_url.twDramaPoster
-					]
-				},
-				{
-					wallTitle : "China",
-					posterURLs : [
-						ENV_url.cnDramaPoster, ENV_url.cnDramaPoster, ENV_url.cnDramaPoster, ENV_url.cnDramaPoster
-					]
-				},
-				{
-					wallTitle : "USA",
-					posterURLs : [
-						ENV_url.usDramaPoster, ENV_url.usDramaPoster, ENV_url.usDramaPoster, ENV_url.usDramaPoster
-					]
-				}				
+			ENV_episodeTitles = [
+				"Episode 1: Episode title", "Episode 2: Episode title", "Episode 3: Episode title",
+				"Episode 4: Episode title", "Episode 5: Episode title", "Episode 6: Episode title",
+				"Episode 7: Episode title", "Episode 8: Episode title", "Episode 9: Episode title", "Episode 10: Episode title"
 			];
 		
 		/***
@@ -196,41 +92,25 @@
 		 */
 		 
 		var uiBuilder = {
-				buildContentContainer : function () {
-					
-					var data = {
-							animation : true,
-							contentsOnShelfs : []
-						};
-						
-					ENV_dramaWallSettings.forEach(function (attr, idx, arr) {
-						
-						var dramas = [];
-						
-						attr.posterURLs.forEach(function (posterURL, idx, arr) {							
-							dramas.push({
-								title : "Drama title",
-								posterURL : posterURL,
-								dstURL : ENV_url.dramaPage
-							});							
-						});
-						
-						data.contentsOnShelfs.push(ViBox.newModule(
-							"dramaWall",
-							{
-								wallTitle : attr.wallTitle,
-								dramas : dramas
-							}
-						));
-					});
+				buildEpisodesContainer : function () {
 				
-					return ViBox.newModule("contentShelf", data);
+					var episodes = [];
+					
+					ENV_episodeTitles.forEach(function (title, idx, arr) {
+						episodes.push({
+							title : title,
+							dstURL : ENV_url.playerPage,
+							posterURL : ENV_url.twDramaPoster
+						});						
+					});
+					
+					document.querySelector(".episodesContainer").appendChild(ViBox.newModule("episodeList", { episodes : episodes }));
 				}
 			},
 			pgCtrl = {
 				init : function () {
 				
-					document.querySelector(".contentContainer").appendChild(uiBuilder.buildContentContainer());
+					uiBuilder.buildEpisodesContainer();
 					
 					ViBox.taskStack.push(function () {
 						location.assign(ENV_url.mainPage);

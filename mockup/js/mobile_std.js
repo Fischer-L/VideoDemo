@@ -258,3 +258,40 @@ ViBox.addModule("dramaWall",
 	}
 );
 
+ViBox.addModule("episodeList",
+	/*	Arg:
+			<OBJ> data = {
+				<ARR> episodes : the array of episodes. Each element is an obj storing one episode's info as below:
+									 <STR> title = the episode title
+									 <STR> dstURL = the URL to go when clicking on the episode's link
+									 <STR> posterURL = the URL to the episode's poster
+								 The 1st element is in the top-most of the list
+			}
+	*/
+	function (data) {
+	
+		var field = {
+				episodes : {
+					__if : "{{#episodes}}",
+					__endif : "{{/episodes}}",
+					title : "{{title}}",
+					dstURL : "{{dstURL}}",
+					posterURL : "{{posterURL}}"
+				}
+			},
+			html =	'<ul class="episodeList">'
+					+	'<li class="episodeList-title">Episodes</li>'
+					+	field.episodes.__if
+					+		'<li class="epsidoeList-episode">'
+					+			'<a href="' + field.episodes.dstURL + '">'
+					+				'<img class="epsidoeList-episode-poster" src="' + field.episodes.posterURL + '"/>'
+					+				'<div class="epsidoeList-playIcon"></div>'
+					+			'</a>'
+					+			'<span class="epsidoeList-episode-title">' + field.episodes.title + '</span>'
+					+		'</li>'
+					+	field.episodes.__endif
+					+'</ul>';
+		
+		return Mustache.render(html, data);
+	}
+);

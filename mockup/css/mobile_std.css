@@ -7,7 +7,7 @@ body {
 	position: relative;
 	top: 50%;
 	margin: -300px auto 0px;
-	background: url(../img/iphone_case2.png);
+	background: url(../img/iphone_case.png);
 	background-repeat: no-repeat;
 }
 .phone-screen {
@@ -326,7 +326,7 @@ body {
 	}
 }
 .contentShelf-shelf {
-	margin: 15px auto;
+	margin: 20px auto;
 }
 /* END */
 
@@ -358,9 +358,14 @@ body {
 	padding: 6px;
 }
 .dramaWall > h3 {
-	color: #555;
+	color: #494949;
 	font-size: 1.1em;
 	padding-left: 2px;
+}
+.dramaWall a,
+.dramaWall a:hover,
+.dramaWall a:visited {
+	text-decoration: none;
 }
 .dramaWall-tiles {
 	width: 206px;

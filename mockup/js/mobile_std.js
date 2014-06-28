@@ -152,7 +152,7 @@ ViBox.addModule("contentShelf",
 			<OBJ> data = {
 				<BOO> [unscrollable] = true means the contentShelf is unable to scroll; default is false
 				<BOO> [animation] = true means the big poster animation runs; default is false
-				<ARR> [contentsOnShelf] = the array of elements which are to be placed inside the div.contentShelf-shelf. One element is for one shelf. The first one is for the first shelf. 
+				<ARR> [contentsOnShelfs] = the array of elements which are to be placed inside the div.contentShelf-shelf elements. One element is for one shelf. The first one is for the first shelf. 
 			}
 	*/
 	function (data) {
@@ -167,7 +167,7 @@ ViBox.addModule("contentShelf",
 					__endif : "{{/animation}}"
 				}
 			},
-			html = 	+'<div '
+			html = 	 '<div '
 					+	'class="contentShelf' + field.unscrollable.__if + ' unscrollable' + field.unscrollable.__endif + '"'
 					+'>'				
 					+	'<div '
@@ -179,9 +179,9 @@ ViBox.addModule("contentShelf",
 	},
 	function (contentShelf, data) {
 		
-		if (ViBox.isObj(data) && ViBox.isArr(data.contentsOnShelf)) {
+		if (ViBox.isObj(data) && ViBox.isArr(data.contentsOnShelfs)) {
 			
-			data.contentsOnShelf.forEach(function (elem, idx, arr) {
+			data.contentsOnShelfs.forEach(function (elem, idx, arr) {
 				
 				if (ViBox.isHTMLElem(elem)) {					
 					var div = document.createElement("DIV");
@@ -225,14 +225,14 @@ ViBox.addModule("dramaWall",
 					
 					if (idx % 2 == 0) {
 						tiles.push(
-							+'<a class="dramaWall-tile dramaWall-tile-leftTile" href="' + drama.dstURL + '">'
+							 '<a class="dramaWall-tile dramaWall-tile-leftTile" href="' + drama.dstURL + '">'
 							+	'<img class="dramaWall-tile-poster" src="' + drama.posterURL + '" />'
 							+	'<div class="dramaWall-tile-title">' + drama.title + '</div>'
 							+'</a>'
 						); 
 					} else {
 						tiles.push(
-							+'<a class="dramaWall-tile dramaWall-tile-rightTile" href="' + drama.dstURL + '">'
+							 '<a class="dramaWall-tile dramaWall-tile-rightTile" href="' + drama.dstURL + '">'
 							+	'<img class="dramaWall-tile-poster" src="' + drama.posterURL + '" />'
 							+	'<div class="dramaWall-tile-title">' + drama.title + '</div>'
 							+'</a>'

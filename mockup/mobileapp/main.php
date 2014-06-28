@@ -23,9 +23,9 @@
 				<?php $pgMgr->includeWebModule(VB_PageManager::MOBILE_MODULE_HEADER); ?>
 			</div>
 		
-			<!--div class="contentContainer">
+			<div class="contentContainer">
 			
-				<div class="contentShelf scrollable">
+				<!--div class="contentShelf scrollable">
 					
 					<div class="contentShelf-bigPoster"></div>
 					
@@ -102,9 +102,9 @@
 							</div>
 					</div>
 					
-				</div>
+				</div-->
 			
-			</div-->
+			</div>
 			
 		</div>
 	</div>
@@ -121,15 +121,52 @@
 		/***
 		 * Declare some enviroment vars
 		 */
-		var ENV_className = {
-				nextBtn : "nextBtn",
-				submitBtn : "submitBtn",
-				thinMargin : "thinMargin"
+		var ENV_url = {
+				dramaPage : ViBox.RESRC.url.mobile_dramaPage,
+				jpDramaPoster  :  ViBox.RESRC.url.jpDramaPoster,
+				korDramaPoster :  ViBox.RESRC.url.korDramaPoster,
+				twDramaPoster  :  ViBox.RESRC.url.twDramaPoster,
+				cnDramaPoster  :  ViBox.RESRC.url.cnDramaPoster,
+				usDramaPoster  :  ViBox.RESRC.url.usDramaPoster
 			},
-			ENV_url = {
-				mainPage : ViBox.RESRC.url.mobile_mainPage,		
-				startPage : ViBox.RESRC.url.mobile_startPage	
-			};
+			ENV_dramaWallSettings = [
+				{
+					wallTitle : "Popular",
+					posterURLs : [
+						ENV_url.jpDramaPoster, ENV_url.korDramaPoster, ENV_url.twDramaPoster, ENV_url.usDramaPoster
+					]
+				},
+				{
+					wallTitle : "Japan",
+					posterURLs : [
+						ENV_url.jpDramaPoster, ENV_url.jpDramaPoster, ENV_url.jpDramaPoster, ENV_url.jpDramaPoster
+					]
+				},
+				{
+					wallTitle : "Korea",
+					posterURLs : [
+						ENV_url.korDramaPoster, ENV_url.korDramaPoster, ENV_url.korDramaPoster, ENV_url.korDramaPoster
+					]
+				},
+				{
+					wallTitle : "Taiwan",
+					posterURLs : [
+						ENV_url.twDramaPoster, ENV_url.twDramaPoster, ENV_url.twDramaPoster, ENV_url.twDramaPoster
+					]
+				},
+				{
+					wallTitle : "China",
+					posterURLs : [
+						ENV_url.cnDramaPoster, ENV_url.cnDramaPoster, ENV_url.cnDramaPoster, ENV_url.cnDramaPoster
+					]
+				},
+				{
+					wallTitle : "USA",
+					posterURLs : [
+						ENV_url.usDramaPoster, ENV_url.usDramaPoster, ENV_url.usDramaPoster, ENV_url.usDramaPoster
+					]
+				}				
+			];
 		
 		/***
 		 * Get the DOM element
@@ -140,8 +177,42 @@
 		 * Build up the mobile app
 		 */
 		 
-		var pgCtrl = {
+		var uiBuilder = {
+				buildContentContainer : function () {
+					
+					var data = {
+							animation : true,
+							contentsOnShelfs : []
+						};
+						
+					ENV_dramaWallSettings.forEach(function (attr, idx, arr) {
+						
+						var dramas = [];
+						
+						attr.posterURLs.forEach(function (posterURL, idx, arr) {							
+							dramas.push({
+								title : "Drama title",
+								posterURL : posterURL,
+								dstURL : ENV_url.dramaPage
+							});							
+						});
+						
+						data.contentsOnShelfs.push(ViBox.newModule(
+							"dramaWall",
+							{
+								wallTitle : attr.wallTitle,
+								dramas : dramas
+							}
+						));
+					});
+				
+					return ViBox.newModule("contentShelf", data);
+				}
+			},
+			pgCtrl = {
 				init : function () {
+				
+					document.querySelector(".contentContainer").appendChild(uiBuilder.buildContentContainer());
 				}
 			};
 		pgCtrl.init();

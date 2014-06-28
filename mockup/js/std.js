@@ -91,6 +91,7 @@ var ViBox = (function () {
 				usDramaPoster  : "../img/game_of_thrones_L.jpg",
 				mobile_mainPage : "./main.php",
 				mobile_startPage : "./start.php",
+				mobile_dramaPage : "./drama.php",
 				mobile_signupPage : "./signup.php"
 			}
 		},

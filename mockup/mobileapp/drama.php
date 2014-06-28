@@ -12,6 +12,80 @@
 			VB_PageManager::CSS_MOBILE_STD
 		));
 	?>
+	<style type="text/css">
+		.drama-info {
+			padding: 20px 10px 30px;
+			margin-top: 0;
+			background: #fff;
+			font-size: 0.9em;
+			border-bottom: 1px solid #aaa;
+		}
+		.drama-info > div {
+			line-height: 1.5em;
+			color: #333;
+		}
+		.drama-info-title {
+			font-weight: bold;
+		}
+		
+		.episodeList {
+			padding: 6px;
+		}
+		.episodeList-title {
+			padding-left: 3px;
+			font-size: 1.1em;
+			font-weight: bold;
+			color: #494949;
+		}
+		.epsidoeList-episode {
+			width: 206px;
+			background: #fff;
+			padding: 8px;
+			margin-top: 8px;
+			border: 1px solid #e5e5e5;
+			border-bottom-color: #aaa;
+			border-right-color: #aaa;
+			position: relative;
+		}
+		.epsidoeList-episode-poster,
+		.epsidoeList-episode-title {
+			display: inline-block;
+		}
+		.epsidoeList-episode-poster {
+			width: 92px;
+		}
+		.epsidoeList-playIcon {
+			width: 30px;
+			height: 30px;
+			background: #333;
+			background: rgba(0, 0, 0, 0.7);
+			border-radius: 50%;
+			position: absolute;
+			top: 18px;
+			left: 38px;
+			cursor: pointer;
+		}
+		.epsidoeList-playIcon:after {
+			content: "";
+			display: block;
+			width: 15px;
+			height: 15px;
+			position: absolute;
+			background: url(../img/icons.png);
+			top: 8px;
+			left: 11px;
+			background-position: -256px -51px;
+			cursor: pointer;
+		}
+		.epsidoeList-episode-title {
+			width: 100px;
+			height: 52px;
+			margin-left: 6px;
+			font-size: 0.9em;
+			vertical-align: top;
+			color: #333;
+		}
+	</style>
 </head>
 
 <body>
@@ -21,7 +95,35 @@
 			<div class="headerContainer lyt-pos-rel">
 				<?php $pgMgr->includeWebModule(VB_PageManager::MOBILE_MODULE_HEADER); ?>
 			</div>		
-			<div class="contentContainer"></div>			
+			<div class="contentContainer">
+			
+				<div class="contentShelf">
+					<div class="contentShelf-bigPoster"></div>
+					<div class="contentShelf-shelf drama-info">
+						<div>
+							<span class="drama-info-title">Actors:</span>&nbsp;&nbsp;&nbsp;actroA, actorB, actorC
+						</div>
+						<div>
+							<span class="drama-info-title">Summary:</span>&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						</div>
+					</div>
+					<div class="contentShelf-shelf">
+						
+						<ul class="episodeList">
+							<li class="episodeList-title">Episodes</li>
+							<li class="epsidoeList-episode">
+								<a>
+									<img class="epsidoeList-episode-poster" src="../img/love_myself_L.jpg" />
+								</a
+								><span class="epsidoeList-episode-title">Episode 10: Epsisode title</span>
+								<div class="epsidoeList-playIcon"></div>
+							</li>
+						</ul>
+						
+					</div>
+				</div>
+			
+			</div>			
 		</div>
 	</div>
 	
@@ -38,7 +140,7 @@
 		 * Declare some enviroment vars
 		 */
 		var ENV_url = {
-				dramaPage : ViBox.RESRC.url.mobile_dramaPage,
+				mainPage : ViBox.RESRC.url.mobile_mainPage,
 				jpDramaPoster  :  ViBox.RESRC.url.jpDramaPoster,
 				korDramaPoster :  ViBox.RESRC.url.korDramaPoster,
 				twDramaPoster  :  ViBox.RESRC.url.twDramaPoster,
@@ -87,7 +189,7 @@
 		/***
 		 * Get the DOM element
 		 */
-		var header = ViBox.newModule("header", { header : document.querySelector(".header"), title : "Explore", navMode : ["menuNav", "searchNav"]});
+		var header = ViBox.newModule("header", { header : document.querySelector(".header"), title : "Drama title", navMode : ["backNav", "searchNav"]});
 		 
 		/***
 		 * Build up the mobile app
@@ -129,6 +231,10 @@
 				init : function () {
 				
 					document.querySelector(".contentContainer").appendChild(uiBuilder.buildContentContainer());
+					
+					ViBox.taskStack.push(function () {
+						location.assign(ENV_url.mainPage);
+					});
 				}
 			};
 		pgCtrl.init();

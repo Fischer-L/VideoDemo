@@ -826,6 +826,7 @@ div.header-bigPoster {
 	font-size: 0.9em;
 }
 
+/* The signupContainer */
 .signupWindowContainer {
 	width: 100%;
 	min-height: 100%;
@@ -849,6 +850,7 @@ body.signupState > .signupWindowContainer {
 .signupWindow > .ViBox-logo {
 	margin: 0 auto;
 }
+/* END */
 
 .sty-bgColor-std {
 	background-color: #eaeaea;

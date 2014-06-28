@@ -19,11 +19,11 @@
 	<div class="phone">
 		<div class="phone-screen">
 			
-			<div class="header lyt-pos-rel">
+			<div class="headerContainer lyt-pos-rel">
 				<?php $pgMgr->includeWebModule(VB_PageManager::MOBILE_MODULE_HEADER); ?>
 			</div>
 		
-			<div class="content signupWindowContainer"></div>
+			<div class="contentContainer signupWindowContainer"></div>
 			
 		</div>
 	</div>
@@ -86,7 +86,8 @@
 		/***
 		 * Get the DOM element
 		 */
-		var signupWindowContainer = document.querySelector(".signupWindowContainer"),
+		var header = ViBox.newModule("header", { header : document.querySelector(".header"), navMode : "backNav", title : "Sign up" }),
+			signupWindowContainer = document.querySelector(".signupWindowContainer"),
 			mobileSignupProcess = ViBox.newModule("mobileSignupProcess", { stdSignupProcess : ViBox.newModule("signupProcess") });
 		
 		/***
@@ -119,11 +120,6 @@
 						location.assign(ENV_url.mainPage);
 						}
 					});
-					
-					// When clicking the navigation back btn, pop out one task to go back to the previous state
-					document.querySelector(".header-navBtn-backBtn").onclick = function () {
-						ViBox.taskStack.pop();
-					}
 				}
 			};
 		pgCtrl.init();

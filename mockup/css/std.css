@@ -57,15 +57,9 @@ a:hover {
 }
 .btn-sty-0:hover {	
 	background-color: #3db8ff;
-	background: linear-gradient(#3db8ff,#3aaff2);
-	
-	background-color: #3db8ff;
 	background: linear-gradient(#3db8ff,#3cb4fa);
 }
 .btn-sty-1:hover {
-	background-color: #98ff75;
-	background: linear-gradient(#98ff75,#90f26f);
-	
 	background-color: #85f261;
 	background: linear-gradient(#85f261,#7ee55c);
 }

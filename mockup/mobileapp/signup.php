@@ -12,12 +12,6 @@
 			VB_PageManager::CSS_MOBILE_STD
 		));
 	?>
-	<style type="text/css">
-		.phone-screen,
-		.signupProcess, .signupProcess-actionForm {
-			Aoverflow: visible;
-		}
-	</style>
 </head>
 
 <body>

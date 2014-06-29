@@ -51,7 +51,7 @@
 				</div
 				
 				><div class="player-ctrlPanel-quality lyt-pos-rel">
-					<div class="player-ctrlPanel-qualityBtn">1080P</div>
+					<div class="player-ctrlPanel-qualityBtn">1080p</div>
 					<div class="player-ctrlPanel-menuWrp">
 						<ul class="player-ctrlPanel-qualitySettings player-ctrlPanel-menu">
 							<li class="qualitySettings-best">1080p</li>

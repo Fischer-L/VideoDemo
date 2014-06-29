@@ -16,7 +16,7 @@
 </head>
 
 <body>
-	<div class="headerContainer noBigPoster">		
+	<div class="headerContainer noBigPoster login">		
 		<?php $pgMgr->includeWebModule(VB_PageManager::WEB_MODULE_HEADER); ?>
 	</div>
 	

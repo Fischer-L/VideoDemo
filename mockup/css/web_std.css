@@ -595,6 +595,14 @@ div.header-bigPoster {
 .header-controlBar-settingCtrl-option:hover + .header-controlBar-settingCtrl-option {
 	border-top: 1px solid transparent;
 }
+.settingCtrl-signout,
+.login .settingCtrl-signin,
+.login .header-signUpBtn {
+	display: none;
+}
+.login .settingCtrl-signout {
+	display: block;
+}
 .header-controlBar-srchCtrl-input {
 	border: none;
 	margin-left: 6px;

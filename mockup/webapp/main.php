@@ -66,56 +66,7 @@
 						<ELM> signupWindow = the div.signupWindow
 					}
 			*/
-			function (data) {
-					/* // To del
-					var startActionFormElemsHTML = [
-							'<h3>E-Mail</h3>'
-							+'<input name="signupProcess-actionForm-email" class="signupProcess-actionForm-email signupProcess-actionForm-longInput">',
-							
-							'<h3>Passord</h3>'
-							+'<input name="signupProcess-actionForm-pw" class="signupProcess-actionForm-pw signupProcess-actionForm-longInput">',
-							
-							'<h3>Confirm passord</h3>'
-							+'<input name="signupProcess-actionForm-repw" class="signupProcess-actionForm-repw signupProcess-actionForm-longInput">',
-							
-							'Sign up to watch drama for free for 3 days !',
-							
-							'<button class="closeBtn btn-sty-2 sty-cursor-pter" type="button">Close</button>'
-							+'<button class="nextBtn btn-sty-1 sty-cursor-pter" type="button">Next</button>'
-						],
-						finalActionFormElemsHTML = [
-							'<h3>Name</h3>'
-							+'<input name="signupProcess-actionForm-name" class="signupProcess-actionForm-email signupProcess-actionForm-longInput">',
-							
-							'<h3>Gender</h3>'
-							+'<label>'
-							+	'<input name="signupProcess-actionForm-gender" class="signupProcess-actionForm-gender" type="radio" value="female" checked>Female'
-							+'</label>'
-							+'<label>'
-							+	'<input name="signupProcess-actionForm-gender" class="signupProcess-actionForm-gender" type="radio" value="male">Male'
-							+'</label>',
-
-							'<h3>Birthday</h3>'
-							+'<input name="signupProcess-actionForm-yy" class="signupProcess-actionForm-yy signupProcess-actionForm-shortInput" placeholder="yyyy">'
-							+'<span class="actionForm-boardShelf-spacer lyt-inlineBlock"></span>'
-							+'<input name="signupProcess-actionForm-mm" class="signupProcess-actionForm-mm signupProcess-actionForm-shortInput" placeholder="mm">'
-							+'<span class="actionForm-boardShelf-spacer lyt-inlineBlock"></span>'
-							+'<input name="signupProcess-actionForm-dd" class="signupProcess-actionForm-dd signupProcess-actionForm-shortInput" placeholder="dd">',
-
-							'Go watching your favorite drama !',
-							
-							'<button class="closeBtn btn-sty-2 sty-cursor-pter" type="button">Colse</button>'
-							+'<button class="submitBtn btn-sty-1 sty-cursor-pter" type="button">Watch drama</button>'
-						];
-				
-				data.signupWindow.signupProcess = ViBox.newModule("signupProcess", {
-					startActionFormElemsHTML : startActionFormElemsHTML,
-					finalActionFormElemsHTML : finalActionFormElemsHTML
-				});				
-				data.signupWindow.appendChild(data.signupWindow.signupProcess);
-				return data.signupWindow;
-				*/
-				
+			function (data) {				
 				data.signupWindow.signupProcess = ViBox.newModule("signupProcess", {});				
 				data.signupWindow.appendChild(data.signupWindow.signupProcess);
 				return data.signupWindow;
@@ -140,11 +91,17 @@
 				
 				signupWindow.onclick = function (e) {
 					e = ViBox.normalizeEvent(e);
-					if (   ViBox.hasClass(e.target.className, "closeBtn")
-						|| ViBox.hasClass(e.target.className, "submitBtn")
-					) {
+					if (ViBox.hasClass(e.target.className, "closeBtn")) {
+					
 						signupWindow.close();
+						
+					} else if (ViBox.hasClass(e.target.className, "submitBtn")) {
+					
+						signupWindow.close();
+						ViBox.addClass(document.querySelector(".headerContainer"), "login");
+						
 					} else if (ViBox.hasClass(e.target.className, "nextBtn")) {
+					
 						signupWindow.signupProcess.goNext();
 					}
 				}

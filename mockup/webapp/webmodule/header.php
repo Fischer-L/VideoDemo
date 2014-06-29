@@ -9,7 +9,7 @@
 				<ul class="header-controlBar-settingCtrl-menu lyt-txtAlign-ctr">
 					<li class="header-controlBar-settingCtrl-option settingCtrl-member">Member center</li>
 					<li class="header-controlBar-settingCtrl-option settingCtrl-signin">Sign in</li>
-					<li class="header-controlBar-settingCtrl-option settingCtrl-signout lyt-none">Sign out</li>
+					<li class="header-controlBar-settingCtrl-option settingCtrl-signout">Sign out</li>
 				</ul>
 			</div>
 		</div>

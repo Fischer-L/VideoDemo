@@ -207,11 +207,9 @@ body {
 	padding-left: 34px;
 	padding-right: 13px;
 }
-
 .signupProcess-actionForm {
 	width: 200%;
 }
-
 .signupProcess-actionForm-boardShelf {
 	width: 90%;
 	margin: 7% auto;
@@ -230,8 +228,13 @@ body {
 	font-size: 1.1em;
 	width: 90%;
 }
-.signupProcess-actionForm h3.thinMargin {
-	margin-bottom: 5px;
+.signupProcess-actionForm-boardShelf > label {
+	height: 20px;
+	padding: 3% 2%;
+}
+.signupProcess-actionForm input.signupProcess-actionForm-longInput,
+.signupProcess-actionForm input.signupProcess-actionForm-shortInput {
+	height: 18px;
 }
 .signupProcess-actionForm input.signupProcess-actionForm-longInput {
 	width: 94%;

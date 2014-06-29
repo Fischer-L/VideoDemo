@@ -468,6 +468,28 @@ ViBox.addModule("player",
 		return data.player;
 	},
 	function (player) {
+	/*	Properties:
+			[ Private ]
+			<DAT> _openTime = the time at which the control panel opens
+			<NUM> _maxOpenDuration = the max duration for opening the control panel used for count down
+			<OBJ> _className = the table of the CSS class name
+			<OBJ> _qualities = the video quality table: mid, high, best
+			<ARR> _volumes = the volume level array
+			<ELM> _ctrlPanel, _playBtn, _volumeCtrl = the control components
+		Methods:
+			[ Private ]
+			> _closeCountDown : Close the control panel when the count down ends
+			[ Public ]
+			> isMobileMode : Check if in the mobile mode
+			> isCtrlPanelOpen : Check if the control panel is open
+			> openCtrlPanel : Open the control panel
+			> closeCtrlPanel : Close the control panel
+			> play : Play the video
+			> pause : Pause the video
+			> setVolume : Set the video volume (In the mobile mode we ignore this function so useless)
+			> isMute : Check if mute (In the mobile mode we ignore this function so useless)
+			> setQuality : Set the video quality
+	*/
 	
 		var _openTime,
 			_maxOpenDuration = 2000,
@@ -478,13 +500,17 @@ ViBox.addModule("player",
 				menuPresent : "present",
 				volumePrefix : "volume-",
 				volumeBtn : "player-ctrlPanel-volumeBtn",
+				qualityBtn : "player-ctrlPanel-qualityBtn",
 				qualityBest : "qualitySettings-best",
-				qualityHight : "qualitySettings-hight",
-				qualityMid : "qualitySettings-mid"
+				qualityHigh : "qualitySettings-high",
+				qualityMid : "qualitySettings-mid",
+				mobileMode : "mobile",
+				mobile_qualityHD : "HD",
+				mobile_backBtn : "player-mobileNavPanel-backBtn"
 			},
 			_qualities = {
 				"mid" : 480,
-				"hight" : 720,
+				"high" : 720,
 				"best" : 1080
 			},
 			_volumes = [ 0, 20, 40, 60, 80, 100 ];
@@ -494,8 +520,8 @@ ViBox.addModule("player",
 			_playBtn = player.querySelector(".player-ctrlPanel-playBtn"),
 			_volumeCtrl = player.querySelector(".player-ctrlPanel-volume");
 		
-		_volumeCtrl.currentVolume = _volumes[3];
-		
+		/*
+		*/
 		function _closeCountDown() {
 			if (ViBox.isDate(_openTime)) {
 				if ((new Date()).getTime() - _openTime.getTime() > _maxOpenDuration) {
@@ -505,11 +531,22 @@ ViBox.addModule("player",
 				}
 			}
 		}
-		
+		/*	Return:
+				@ OK: true
+				@ NG: false
+		*/
+		player.isMobileMode = function () {
+			return ViBox.hasClass(this, _className.mobileMode);
+		}
+		/*	Return:
+				@ OK: true
+				@ NG: false
+		*/
 		player.isCtrlPanelOpen = function () {
 			return ViBox.hasClass(_ctrlPanel.className, _className.playerPresent);
 		}
-		
+		/*
+		*/
 		player.openCtrlPanel = function () {			
 			if (!this.isCtrlPanelOpen()) {				
 				_openTime = new Date();
@@ -517,23 +554,30 @@ ViBox.addModule("player",
 				_closeCountDown();
 			}
 		}
-		
+		/*
+		*/
 		player.closeCtrlPanel = function () {		
 			if (this.isCtrlPanelOpen()) {
 				ViBox.removeClass(_ctrlPanel, _className.playerPresent);		
 				_openTime = null;
 			}			
 		}
-		
+		/*
+		*/
 		player.play = function () {
 			ViBox.removeClass(_playBtn, _className.pause);
 		}
-		
+		/*
+		*/
 		player.pause = function () {
 			ViBox.addClass(_playBtn, _className.pause);		
-		}
-		
+		}		
+		/*
+		*/
 		player.setVolume = function (volume) {
+			
+			if (this.isMobileMode()) return; // In the mobile mode we ignore this function
+			
 			var lv = volume / 20,
 				classes = [];
 			
@@ -547,22 +591,37 @@ ViBox.addModule("player",
 				_volumeCtrl.currentVolume = _volumes[lv];
 			}
 		}
-		
+		/*	Return:
+				@ The mobile mode: undefined
+				@ Mute under the web mode: true 
+				@ Not mute under the web mode: false
+		*/
 		player.isMute = function () {
-			return ViBox.hasClass(_volumeCtrl, _className.volumePrefix + _volumes[0]);
+			return this.isMobileMode() ? undefined : ViBox.hasClass(_volumeCtrl, _className.volumePrefix + _volumes[0]);
 		}
-		
+		/*	Arg:
+				<STR> quality = the quality to set, refer to this::_qualities for the available qualites. Under the mobile mode, any quality exceeds the mid quality(not inlcuded) would set to the HD quality
+		*/
 		player.setQuality = function (quality) {			
-			this.querySelector(".player-ctrlPanel-qualityBtn").innerHTML = _qualities[quality] + "p";
-		}
-		
-		player.onmouseover = function (e) {
-			this.openCtrlPanel();
+			var qualityBtn = this.querySelector("." + _className.qualityBtn);
+			
+			if (this.isMobileMode()) {
+				
+				if (quality != "mid") {
+					ViBox.addClass(qualityBtn.parentNode, _className.mobile_qualityHD);
+				} else {
+					ViBox.removeClass(qualityBtn.parentNode, _className.mobile_qualityHD);
+				}
+				
+			} else {
+				qualityBtn.innerHTML = _qualities[quality] + "p";
+			}
 		}
 		
 		_ctrlPanel.onclick = function (e) {
 			e = ViBox.normalizeEvent(e);
 			
+			/* OLD
 			_openTime = new Date(); // Reset the time of opening while clicking on the control panel
 			
 			if (ViBox.hasClass(e.target, _className.volumeBtn)) {
@@ -577,9 +636,9 @@ ViBox.addModule("player",
 				
 				player.setQuality("best");
 			
-			} else if (ViBox.hasClass(e.target, _className.qualityHight)) {
+			} else if (ViBox.hasClass(e.target, _className.qualityHigh)) {
 			
-				player.setQuality("hight");
+				player.setQuality("high");
 			
 			} else if (ViBox.hasClass(e.target, _className.qualityMid)) {
 				
@@ -594,7 +653,72 @@ ViBox.addModule("player",
 				}
 				
 			}
+			*/
 			
+			_openTime = new Date(); // Reset the time of opening while clicking on the control panel
+			
+			if (ViBox.hasClass(e.target, _className.playBtn)) {
+				
+				if (ViBox.hasClass(e.target, _className.pause)) {
+					player.play();				
+				} else {
+					player.pause();
+				}				
+			}
+			
+			if (player.isMobileMode()) {
+				
+				if (ViBox.hasClass(e.target, _className.qualityBtn)) {
+				
+					if (ViBox.hasClass(this.querySelector(".player-ctrlPanel-quality"), _className.mobile_qualityHD)) {
+						player.setQuality("mid");
+					} else {
+						player.setQuality("high");
+					}					
+				
+				} else if (ViBox.hasClass(e.target, _className.mobile_backBtn)) {
+					
+					ViBox.taskStack.pop();
+					
+				}
+			
+			} else {
+			
+				if (ViBox.hasClass(e.target, _className.volumeBtn)) {
+				
+					if (player.isMute()) {
+						player.setVolume(_volumeCtrl.currentVolume);
+					} else {
+						player.setVolume(0);
+					}
+					
+				} else if (ViBox.hasClass(e.target, _className.qualityBest)) {
+					
+					player.setQuality("best");
+				
+				} else if (ViBox.hasClass(e.target, _className.qualityHigh)) {
+				
+					player.setQuality("high");
+				
+				} else if (ViBox.hasClass(e.target, _className.qualityMid)) {
+					
+					player.setQuality("mid");
+					
+				}			
+			}				
+		}
+		
+		if (player.isMobileMode()) {			
+			player.onclick = function (e) {
+				this.openCtrlPanel();
+			}			
+		} else {
+			
+			_volumeCtrl.currentVolume = _volumes[3];
+			
+			player.onmouseover = function (e) {
+				this.openCtrlPanel();
+			}
 		}
 		
 		return player;

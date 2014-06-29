@@ -42,6 +42,12 @@
 		<div class="phone-screen">
 			<div class="player mobile lyt-pos-rel">
 				<div class="player-ctrlPanel lyt-pos-rel sty-cursor-pter">
+				
+					<div class="player-mobileNavPanel lyt-pos-abs">
+						<div class="player-mobileNavPanel-backBtn"></div
+						><div class="player-mobileNavPanel-title">Episode 10: Episode title</div>
+					</div>
+					
 					<div class="player-ctrlPanel-playBtn pause"></div
 					
 					><div class="player-ctrlPanel-progress lyt-pos-rel">
@@ -56,24 +62,11 @@
 						<div class="player-ctrlPanel-progressInfo lyt-inlineBlock">22:12 / 50:22</div>
 					</div
 					
-					><div class="player-ctrlPanel-volume volume-60 lyt-pos-rel">
-						<div class="player-ctrlPanel-volumeBtn"></div>
-						<div class="player-ctrlPanel-menuWrp">
-							<ul class="player-ctrlPanel-volumeSettings player-ctrlPanel-menu">
-								<li class="volumeSettings-100"></li>
-								<li class="volumeSettings-80"></li>
-								<li class="volumeSettings-60"></li>
-								<li class="volumeSettings-40"></li>
-								<li class="volumeSettings-20"></li>
-							</ul>
-						</div>
-					</div
-					
-					><div class="player-ctrlPanel-quality lyt-pos-rel">
+					><div class="player-ctrlPanel-quality lyt-pos-rel HD">
 						<div class="player-ctrlPanel-qualityBtn">HD</div>
 					</div
 					
-					><div class="player-ctrlPanel-resizeBtn"></div>
+					>
 					
 					<div class="clear"></div>
 				</div>
@@ -94,23 +87,22 @@
 		 * Declare some enviroment vars
 		 */
 		var ENV_url = {
-				dramaPage : ViBox.RESRC.url.mobile_dramaPage,
-				twDramaPoster  :  ViBox.RESRC.url.twDramaPoster
+				dramaPage : ViBox.RESRC.url.mobile_dramaPage
 			};
 		
 		/***
 		 * Get the DOM element
 		 */
+		var player = ViBox.newModule("player", { player : document.querySelector(".player") });
 		 
 		/***
 		 * Build up the mobile app
 		 */
 		 
 		var pgCtrl = {
-				init : function () {
-					
+				init : function () {					
 					ViBox.taskStack.push(function () {
-						location.assign(ENV_url.mainPage);
+						location.assign(ENV_url.dramaPage);
 					});
 				}
 			};

@@ -55,7 +55,7 @@
 					<div class="player-ctrlPanel-menuWrp">
 						<ul class="player-ctrlPanel-qualitySettings player-ctrlPanel-menu">
 							<li class="qualitySettings-best">1080p</li>
-							<li class="qualitySettings-hight">720p</li>
+							<li class="qualitySettings-high">720p</li>
 							<li class="qualitySettings-mid">480p</li>
 						</ul>
 					</div>

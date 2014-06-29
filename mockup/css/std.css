@@ -281,7 +281,7 @@ a:hover {
 }
 
 /*	== The player module == 
-		<div class="playerContainer-player player lyt-pos-rel">
+		<div class="player lyt-pos-rel">
 			<div class="player-ctrlPanel lyt-pos-rel sty-cursor-pter">
 				<div class="player-ctrlPanel-playBtn"></div
 				
@@ -311,14 +311,20 @@ a:hover {
 				</div
 				
 				><div class="player-ctrlPanel-quality lyt-pos-rel">
-					<div class="player-ctrlPanel-qualityBtn">1080P</div>
-					<div class="player-ctrlPanel-menuWrp">
-						<ul class="player-ctrlPanel-qualitySettings player-ctrlPanel-menu">
-							<li class="qualitySettings-best">1080p</li>
-							<li class="qualitySettings-hight">720p</li>
-							<li class="qualitySettings-mid">480p</li>
-						</ul>
-					</div>
+					(
+						<div class="player-ctrlPanel-qualityBtn">HD</div> // For mobile
+						
+												or
+						
+						<div class="player-ctrlPanel-qualityBtn">1080P</div> // For web
+						<div class="player-ctrlPanel-menuWrp">
+							<ul class="player-ctrlPanel-qualitySettings player-ctrlPanel-menu">
+								<li class="qualitySettings-best">1080p</li>
+								<li class="qualitySettings-hight">720p</li>
+								<li class="qualitySettings-mid">480p</li>
+							</ul>
+						</div>
+					)
 				</div
 				
 				><div class="player-ctrlPanel-resizeBtn"></div>
@@ -377,8 +383,7 @@ div.player-ctrlPanel-progress {
 }
 .progressBar-leftPonit,
 .progressBar-rightPonit,
-.elapsedBar-leftPonit,
-.elapsedBar-rightPonit {
+.elapsedBar-leftPonit {
 	width: 5px;
 	overflow: hidden;
 }
@@ -545,6 +550,74 @@ div.player-ctrlPanel-resizeBtn {
 	text-align: center;
 }
 
+
+.player.mobile {
+	width: 406px;
+	height: 234px;
+	background-image: url(../img/mobile_player_screen.jpg);
+}
+.player.mobile .player-ctrlPanel > div {
+	margin: 10px 0px 0px 8px;
+}
+.player.mobile .player-ctrlPanel-menuWrp,
+.player.mobile .player-ctrlPanel-resizeBtn,
+.player.mobile .player-ctrlPanel-volume {
+	display: none;
+}
+.player.mobile .player-ctrlPanel {
+	top: 195px;
+	width: 406px;
+	height: 40px;
+	padding: 0;
+	border-radius: 0;
+}
+.player.mobile .player-ctrlPanel-playBtn {
+	background-position: -249px -49px;
+}
+.player.mobile .player-ctrlPanel-playBtn.pause {
+	background-position: -249px -7px;
+}
+.player.mobile .player-ctrlPanel-progress {
+	width: 316px;
+}
+ .player.mobile .player-ctrlPanel-progressBar {
+	width: 240px;
+}
+.player.mobile .player-ctrlPanel-progressBar,
+.player.mobile .progressBar-leftPonit,
+.player.mobile .progressBar-rightPonit, 
+.player.mobile .progressBar-leftPonit:before, 
+.player.mobile .progressBar-rightPonit:before, 
+.player.mobile .player-ctrlPanel-elapsedBar, 
+.player.mobile .elapsedBar-leftPonit, 
+.player.mobile .elapsedBar-leftPonit:before {
+	height: 5px;
+}
+.player.mobile .progressBar-rightPonit {
+	left: 240px;
+}
+.player.mobile .player-ctrlPanel-elapsedBar {
+	width: 100px;
+	top: 7px;
+}
+.player.mobile .player-ctrlPanel-progressDrag {
+	width: 9px;
+	height: 9px;
+	background: #fff;
+	top: 5px;
+	left: 98px;
+}
+.player.mobile .player-ctrlPanel-progressInfo {
+	float: right;
+	margin: 3px 0px 0px 0px;
+}
+.player.mobile div.player-ctrlPanel-quality {
+	margin: 4px 0px 0px 0px;
+}
+
+.player.mobile .player-ctrlPanel {
+	opacity: 1; /* To del */
+}
 
 /*	== Style obj ==
 */

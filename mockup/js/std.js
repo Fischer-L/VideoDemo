@@ -481,11 +481,11 @@ ViBox.addModule("player",
 				qualityBest : "qualitySettings-best",
 				qualityHight : "qualitySettings-hight",
 				qualityMid : "qualitySettings-mid"
-			},			
+			},
 			_qualities = {
 				"mid" : 480,
 				"hight" : 720,
-				"best" : 1080 
+				"best" : 1080
 			},
 			_volumes = [ 0, 20, 40, 60, 80, 100 ];
 		

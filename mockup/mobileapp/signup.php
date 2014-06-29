@@ -77,14 +77,6 @@
 						.querySelectorAll(".signupProcess-actionForm-boardShelf")[3]
 						.innerHTML = ENV_Go_watching_your_favorite_drama;
 				
-				// Add .thinMargin
-				ViBox.addClass(
-					mobileSignupProcess.querySelector(".signupProcess-actionForm-board.signupProcess-final")
-								.querySelectorAll(".signupProcess-actionForm-boardShelf")[2]
-								.querySelector("h3"),
-					ENV_className.thinMargin
-				);
-				
 				return mobileSignupProcess;
 			}
 		);

@@ -102,7 +102,10 @@ var ViBox = (function () {
 				mobile_startPage : _domain + "/mobileapp/start.php",
 				mobile_dramaPage : _domain + "/mobileapp/drama.php",
 				mobile_playerPage : _domain + "/mobileapp/player.php",
-				mobile_signupPage : _domain + "/mobileapp/signup.php"
+				mobile_signupPage : _domain + "/mobileapp/signup.php",
+				proposal : _domain + "/img/vibox_proposal.pdf",
+				web_wireframe : _domain + "/img/vibox_web_app_wireframe.jpg",
+				mobile_wireframe : _domain + "/img/vibox_mobile_app_wireframe.jpg"
 			}
 		},
 		/*  Func: Get the version of IE
@@ -795,10 +798,15 @@ ViBox.addModule("bulletinBoard",
 					+				'This site contains the web app mockup and the mobile app mockup of the ViBox. By look into these simple mockups, you will be able to grab the idea and the design concept of the ViBox.'
 					+			'</p>'
 					+			'<p>'
-					+			'本站含有ViBox網頁版和手機板的mockup，這些mockup會簡單、清楚地展示ViBox的產品概念以及設計功能，透過瀏覽這些mockup將有助於快速建立對ViBox的了解。'
+					+				'本站含有ViBox網頁版和手機板的mockup，這些mockup會簡單、清楚地展示ViBox的產品概念以及設計功能，透過瀏覽這些mockup將有助於快速建立對ViBox的了解。'
 					+			'</p>'
 					+		'</div>'
 					+		'<div class="bulletinBoard-actionBtns">' + btns + '</div>'
+					+		'<div class="bulletinBoard-remark">'
+					+			'<a href="' + ViBox.RESRC.url.proposal + '">Proposal</a>'
+					+			'<a href="' + ViBox.RESRC.url.web_wireframe + '">Web app wireframe</a>'
+					+			'<a href="' + ViBox.RESRC.url.mobile_wireframe + '">Mobile app wireframe</a>'
+					+		'</div>'
 					+	'</div>'
 					+'</div>';
 		

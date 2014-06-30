@@ -732,9 +732,9 @@ div.player-ctrlPanel-resizeBtn {
 	border-bottom-color: #fff;
 }
 .bulletinBoard-board {
-	width: 420px; height: 388px;
+	width: 420px; height: 468px;
 	top: 50%; left: 50%;
-	margin: -206px 0px 0px -210px;
+	margin: -234px 0px 0px -210px;
 }
 .bulletinBoard-logo {
 	width: 164px;
@@ -760,6 +760,27 @@ div.player-ctrlPanel-resizeBtn {
 	margin-right: 8px;
 	cursor: pointer;
 	font-size: 18px;
+}
+.bulletinBoard-remark {
+	margin-top: 50px; 
+}
+.bulletinBoard-remark a {
+	display: inline-block;
+	font-size: 16px;
+	margin-left: 32px;
+}
+.bulletinBoard-remark a:first-child {
+	margin-left: 0px;
+	float: left;
+}
+.bulletinBoard-remark a:last-child {
+	margin-left: 0px;
+	float: right;
+}
+.bulletinBoard-remark a,
+.bulletinBoard-remark a:hover,
+.bulletinBoard-remark a:visited {
+	color: #fff;
 }
 
 

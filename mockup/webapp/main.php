@@ -314,6 +314,17 @@
 			/*	Func: Initial the whole page. Call the public init method to start the initial process
 			*/
 			pgCtrl = {
+				handleIE : function () {
+					
+					if (!isNaN(ViBox.getIEVersion())) {
+						Array.prototype.forEach.call(
+							document.querySelectorAll(".signupProcess-processBoard-title"),
+							function (elem, idx, arr) {
+								elem.style.fontSize = "0.9em";
+							}
+						);
+					}					
+				},
 				
 				buildMainContent : function () {
 					
@@ -345,6 +356,8 @@
 							signupWindow.open();
 						}
 					}
+					
+					this.handleIE();
 				}				
 			};
 		pgCtrl.init();

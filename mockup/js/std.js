@@ -7,7 +7,9 @@
  * The browser compatibility
  */
 if(!Array.prototype.forEach){Array.prototype.forEach=function(callback,thisArg){var T,k;if(this==null){throw new TypeError(" this is null or not defined");}var O=Object(this);var len=O.length>>>0;if(typeof callback!=="function"){throw new TypeError(callback+" is not a function");}if(thisArg){T=thisArg}k=0;while(k<len){var kValue;if(k in O){kValue=O[k];callback.call(T,kValue,k,O)}k++}}}
- /**
+if(!Array.prototype.indexOf){Array.prototype.indexOf=function(searchElement,fromIndex){if(this===undefined||this===null){throw new TypeError('"this" is null or not defined');}var length=this.length>>>0;fromIndex=+fromIndex||0;if(Math.abs(fromIndex)===Infinity){fromIndex=0}if(fromIndex<0){fromIndex+=length;if(fromIndex<0){fromIndex=0}}for(;fromIndex<length;fromIndex++){if(this[fromIndex]===searchElement){return fromIndex}}return-1}}
+if (!String.prototype.trim) {String.prototype.trim = function () {return this.replace(/^\s+|\s+$/g, '');};}
+/**
  *	The ViBox Stuff
  */
 /*	Properties:
@@ -36,6 +38,7 @@ if(!Array.prototype.forEach){Array.prototype.forEach=function(callback,thisArg){
 		[ Private ]
 		> _html2dom : Convert the HTML text into the real HTML element
 		[ public ]
+		> getIEVersion : Get the IR version
 		> isStr, isFunc, isObj, isHTMLElem, isArr, isDate : Check the corresponding data type
 		> hasClass : Find out if the specified CSS classes exist in the target element's className attribute
 		> addClass : Add some CSS classes into one element's className attribute
@@ -49,7 +52,7 @@ var ViBox = (function () {
 				
 		var _GO_ONLINE = 1,
 			
-			_domain = _GO_ONLINE ? '//viboxdemo.fischerliu.net63.net' : '//localhost/videodemo';
+			_domain = _GO_ONLINE ? 'http://viboxdemo.fischerliu.net63.net' : 'http://localhost/videodemo';
 		
 		/*	Properties:
 				[ Public ]
@@ -101,6 +104,22 @@ var ViBox = (function () {
 				mobile_playerPage : _domain + "/mobileapp/player.php",
 				mobile_signupPage : _domain + "/mobileapp/signup.php"
 			}
+		},
+		/*  Func: Get the version of IE
+			Return:
+				@ Is IE: <NUM> the version of IE
+				@ Not IE: NaN
+		*/
+		getIEVersion : function () {
+			var rv = -1; // Return value assumes failure.
+			if (navigator.appName == 'Microsoft Internet Explorer') {
+				var ua = navigator.userAgent;
+				var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+				if (re.exec(ua) != null) {
+					rv = +(RegExp.$1);
+				}
+			}
+			return (rv === -1) ? NaN : rv;
 		},
 		/*	Arg:
 				<*> target = the target to test
@@ -739,7 +758,34 @@ ViBox.addModule("bulletinBoard",
 			}
 	*/
 	function (data) {
-				
+	
+		var btns = 	 '<a href="' + ViBox.RESRC.url.web_mainPage + '">'
+					+	'<button class="btn-sty-0">Web App</button>'
+					+'</a>'
+					+'<a href="' + ViBox.RESRC.url.mobile_startPage + '">'
+					+	'<button class="btn-sty-1">Mobile App</button>'
+					+'</a>';
+		
+		if (ViBox.getIEVersion() <= 8) {
+			
+			var style = 'display: inline-block; text-align: center; text-decoration: none; color: #fff; font-weight: bold; width: 110px; height: 19px; padding: 8px 22px; margin-right: 8px;',
+				blueBG = ' background-color: #3aaff2;',
+				greenBG = ' background-color: #7ee55c;';
+			
+			btns = 	 '<a'
+					+	' href="' + ViBox.RESRC.url.web_mainPage + '"'
+					+	' style="' + style + blueBG + '"'
+					+'>'
+					+	'Web App'
+					+'</a>'
+					+'<a'
+					+ ' href="' + ViBox.RESRC.url.mobile_startPage + '"'
+					+	' style="' + style + greenBG + '"'
+					+'>'
+					+	'Mobile App'
+					+'</a>'
+		}
+					
 		var html =	'<div class="bulletinBoard">'
 					+	'<div class="bulletinBoard-slideToggle lyt-none"></div>'
 					+	'<div class="bulletinBoard-board lyt-pos-abs">'
@@ -752,17 +798,10 @@ ViBox.addModule("bulletinBoard",
 					+			'本站含有ViBox網頁版和手機板的mockup，這些mockup會簡單、清楚地展示ViBox的產品概念以及設計功能，透過瀏覽這些mockup將有助於快速建立對ViBox的了解。'
 					+			'</p>'
 					+		'</div>'
-					+		'<div class="bulletinBoard-actionBtns">'
-					+			'<a href="' + ViBox.RESRC.url.web_mainPage + '">'
-					+				'<button class="btn-sty-0">Web App</button>'
-					+			'</a>'
-					+			'<a href="' + ViBox.RESRC.url.mobile_startPage + '">'
-					+				'<button class="btn-sty-1">Mobile App</button>'
-					+			'</a>'
-					+		'</div>'
+					+		'<div class="bulletinBoard-actionBtns">' + btns + '</div>'
 					+	'</div>'
 					+'</div>';
-					
+		
 		return Mustache.render(html);
 	},
 	function (bulletinBoard, data) {

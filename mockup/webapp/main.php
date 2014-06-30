@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title></title>
+	<title>ViBox Mockup - Web App</title>
 	<?php
 		$pgMgr->includeCSS(array(
 			VB_PageManager::CSS_STD,
@@ -334,7 +334,9 @@
 				},
 								
 				init : function () {	
-				
+					
+					document.body.insertBefore(ViBox.newModule("bulletinBoard", { slidable : true }), document.body.firstChild);
+					
 					this.buildMainContent();
 					
 					header.onclick = function (e) {

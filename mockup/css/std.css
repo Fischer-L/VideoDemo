@@ -650,6 +650,119 @@ div.player-ctrlPanel-resizeBtn {
 	color: #00ADEF;
 }
 
+/*	== The bulletinBorad module ==
+	<div class="bulletinBoard [slidable]"> // Assign the "slidable" to enable to the slidable mode
+		<div class="bulletinBoard-slideToggle lyt-none"></div> // Only useful in the slidable mode
+		<div class="bulletinBoard lyt-pos-abs">
+			<div class="bulletinBoard-logo"></div>
+			<div class="bulletinBoard-article">
+				<p>
+					This site contains the web app mockup and the mobile app mockup of the ViBox. By look into these simple mockups, you will be able to grab the idea and the design concept of the ViBox.
+				</p>
+				<p>
+				¢D?¡Â¡M¡±t|3ViBoxoo-?accM?a?¡ÒaOaomockup!A3o¡LCmockup¡P|A23a!B2M¡P!|aRi¢DUViBoxao2¢G?~¡P¡±cA¢DH?I3]-p¢D\¡Âa!A3z1LAsAy3o¡LCmockup¡ÓN|3¡±Uco¡±O3t?O¢Ds1iViBoxao?F¡MN!C
+				</p>
+			</div>
+			<div class="bulletinBoard-actionBtns">
+				<a>
+					<button class="btn-sty-0">Web App</button>
+				</a>
+				<a>
+					<button class="btn-sty-1">Mobile App</button>
+				</a>
+			</div>
+		</div>
+	</div>
+*/
+.bulletinBoard,
+.bulletinBoard.slidable {
+	color: #fff;
+}
+.bulletinBoard.slidable {
+	width: 100%;
+	height: 568px;
+	position: fixed;
+	border-bottom: 1px solid #D34D3B;
+	background: #e5523e;
+	background: radial-gradient(circle, #fa8e7f, #e5523e);
+	top: -570px;
+	transition: top 1s;
+	z-index: 999;
+}
+.bulletinBoard.slidable.slidable-open {
+	top: 0px;
+	box-shadow: 0px 3px 8px 0px #333;
+}
+.bulletinBoard.slidable .bulletinBoard-slideToggle {
+	width: 85px; height: 40px;
+	background: #E75744;
+	border: 1px solid #D34D3B;
+	border-top: none;
+	border-radius: 2px;
+	position: absolute;
+	top: 567px; right: -2px;
+	cursor: pointer;
+	display: block;
+	box-shadow: 0px 5px 6px 0px #666;
+	opacity: 0.5;
+}
+.bulletinBoard.slidable .bulletinBoard-slideToggle:hover,
+.bulletinBoard.slidable .bulletinBoard-slideToggle.present {
+	opacity: 1;
+}
+.bulletinBoard.slidable .bulletinBoard-slideToggle:after {
+	content: "";
+	display: block;
+	width: 0px;
+	border: 14px solid #fff;
+	position: relative;
+	top: 14px;
+	left: 28px;
+}
+.bulletinBoard.slidable .bulletinBoard-slideToggle:after {
+	border-left-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+}
+.bulletinBoard.slidable.slidable-open .bulletinBoard-slideToggle:after {
+	top: -1px;
+	border-top-color: transparent;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: #fff;
+}
+.bulletinBoard-board {
+	width: 420px; height: 388px;
+	top: 50%; left: 50%;
+	margin: -206px 0px 0px -210px;
+}
+.bulletinBoard-logo {
+	width: 164px;
+	height: 45px;
+	margin: 0 auto 31px; 
+	background: url(../img/icons.png);
+	background-position: -9px -156px;
+	background-repeat: no-repeat;
+}
+.bulletinBoard-article > p {
+	padding-bottom: 25px;
+	margin-bottom: 25px;
+	text-align: justify;
+	font-weight: bold;
+	font-size: 18px;
+}
+.bulletinBoard-actionBtns {
+	width: 324px;
+	margin: 0 auto;
+}
+.bulletinBoard-actionBtns button {
+	width: 154px;
+	margin-right: 8px;
+	cursor: pointer;
+	font-size: 18px;
+}
+
+
 /*	== Style obj ==
 */
 .ViBox-logo {

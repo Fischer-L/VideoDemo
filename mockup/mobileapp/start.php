@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title></title>
+	<title>ViBox Mockup - Mobile App</title>
 	<?php
 		$pgMgr->includeCSS(array(
 			VB_PageManager::CSS_STD,
@@ -48,6 +48,9 @@
 		 
 		var pgCtrl = {
 				init : function () {
+					
+					document.body.insertBefore(ViBox.newModule("bulletinBoard", { slidable : true }), document.body.firstChild);
+					
 					document.querySelector(".signinBtn").onclick = function (e) {
 						location.assign(ENV_url.mainPage);
 					}

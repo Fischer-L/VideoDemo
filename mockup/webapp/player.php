@@ -5,14 +5,50 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>ViBox Demo - Player</title>
+	<title>ViBox Mockup - Web App</title>
 	<?php
 		$pgMgr->includeCSS(array(
 			VB_PageManager::CSS_STD,
-			VB_PageManager::CSS_WEB_STD,
-			VB_PageManager::CSS_WEB_PLAYER
+			VB_PageManager::CSS_WEB_STD
 		));
 	?>
+	<style type="text/css">
+		.lyt-float-L {
+			float: left;
+		}
+		.noBigPoster .header-bigPoster,
+		.noBigPoster .header-btmDivider {
+			display: none;
+			background-image: none;
+		}
+		.playerContainer {
+			padding: 50px 0px;
+			margin: 0 auto 50px;
+			border-top: 1px solid #eee;
+			border-bottom: 1px solid #eee;
+			box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.5) inset;
+			background-color: #f5f5f5;	
+		}
+
+		.currentDrama-info {
+			margin: 10px 0;
+		}
+		.currentDrama-info > h3 {
+			font-size: 1.1em;
+		}
+		.currentDrama-info > p {
+			width: 500px;
+			padding-left: 10px;
+			overflow: hidden;
+		}
+		.contentBox {
+			margin-bottom: 72px;
+			padding-bottom: 72px;
+		}
+		.contentBox.currentDrama {
+			border-bottom: 1px solid #e9e9e9;
+		}
+	</style>
 </head>
 
 <body>
@@ -164,6 +200,7 @@
 			
 			pgCtrl = {
 				init : function () {
+					document.body.insertBefore(ViBox.newModule("bulletinBoard", { slidable : true }), document.body.firstChild);
 					mainContentContainer.appendChild(uiBuilder.buildCurrentDramaBox());
 					mainContentContainer.appendChild(uiBuilder.buildEpisodesBox());
 				}

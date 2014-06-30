@@ -21,11 +21,11 @@ body {
 	border-top: none;
 	overflow: hidden;
 }
+/* Start page */
 .phone-screen.startPage {
 	background: #e5523e;
 	background: radial-gradient(circle, #fa8e7f, #e5523e);
 }
-/* Start page */
 .phone-screen.startPage:before {
 	content: " ";
 	width: 146px;

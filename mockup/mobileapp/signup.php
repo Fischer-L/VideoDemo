@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title></title>
+	<title>ViBox Mock - Mobile App</title>
 	<?php
 		$pgMgr->includeCSS(array(
 			VB_PageManager::CSS_STD,
@@ -87,7 +87,10 @@
 		 */
 		 
 		var pgCtrl = {
-				init : function () {					
+				init : function () {
+					
+					document.body.insertBefore(ViBox.newModule("bulletinBoard", { slidable : true }), document.body.firstChild);
+					
 					// Add the final(1st) back task
 					ViBox.taskStack.push(function () {
 						location.assign(ENV_url.startPage);

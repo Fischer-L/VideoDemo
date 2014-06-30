@@ -12,6 +12,7 @@ if(!Array.prototype.forEach){Array.prototype.forEach=function(callback,thisArg){
  */
 /*	Properties:
 		[ Private ]
+		<STR> _domain = the domain
 		<OBJ> _modules = the table of web modules.
 		<CLS> _cls_ModuleMaker = the class in charge of making web module
 		[ Public ]
@@ -45,6 +46,8 @@ if(!Array.prototype.forEach){Array.prototype.forEach=function(callback,thisArg){
 		> newModule : Make an new module from the type added before.
 */
 var ViBox = (function () {
+		
+		var _domain = '//localhost/videodemo';
 		
 		/*	Properties:
 				[ Public ]
@@ -84,16 +87,17 @@ var ViBox = (function () {
 	return {
 		RESRC : {
 			url : {		
-				jpDramaPoster  : "../img/hanzawa_L.jpg",
-				korDramaPoster : "../img/you_from_star_L.jpg",
-				twDramaPoster  : "../img/love_myself_L.jpg",
-				cnDramaPoster  : "../img/lianlinking_L.jpg",
-				usDramaPoster  : "../img/game_of_thrones_L.jpg",
-				mobile_mainPage : "./main.php",
-				mobile_startPage : "./start.php",
-				mobile_dramaPage : "./drama.php",
-				mobile_playerPage : "./player.php",
-				mobile_signupPage : "./signup.php"
+				jpDramaPoster  : _domain + "/img/hanzawa_L.jpg",
+				korDramaPoster : _domain + "/img/you_from_star_L.jpg",
+				twDramaPoster  : _domain + "/img/love_myself_L.jpg",
+				cnDramaPoster  : _domain + "/img/lianlinking_L.jpg",
+				usDramaPoster  : _domain + "/img/game_of_thrones_L.jpg",
+				web_mainPage : _domain + "/webapp/main.php",
+				mobile_mainPage : _domain + "/mobileapp/main.php",
+				mobile_startPage : _domain + "/mobileapp/start.php",
+				mobile_dramaPage : _domain + "/mobileapp/drama.php",
+				mobile_playerPage : _domain + "/mobileapp/player.php",
+				mobile_signupPage : _domain + "/mobileapp/signup.php"
 			}
 		},
 		/*	Arg:
@@ -722,5 +726,95 @@ ViBox.addModule("player",
 		}
 		
 		return player;
+	}
+);
+
+ViBox.addModule("bulletinBoard",
+	/*	Arg:
+			<OBJ> data = {
+				<BOO> [slidable] = Enable the slidable mode
+				<BOO> [slidableOpen] = Open the slide; only valid under the slidable mode
+			}
+	*/
+	function (data) {
+				
+		var html =	'<div class="bulletinBoard">'
+					+	'<div class="bulletinBoard-slideToggle lyt-none"></div>'
+					+	'<div class="bulletinBoard-board lyt-pos-abs">'
+					+		'<div class="bulletinBoard-logo"></div>'
+					+		'<div class="bulletinBoard-article">'
+					+			'<p>'
+					+				'This site contains the web app mockup and the mobile app mockup of the ViBox. By look into these simple mockups, you will be able to grab the idea and the design concept of the ViBox.'
+					+			'</p>'
+					+			'<p>'
+					+			'本站含有ViBox網頁版和手機板的mockup，這些mockup會簡單、清楚地展示ViBox的產品概念以及設計功能，透過瀏覽這些mockup將有助於快速建立對ViBox的了解。'
+					+			'</p>'
+					+		'</div>'
+					+		'<div class="bulletinBoard-actionBtns">'
+					+			'<a href="' + ViBox.RESRC.url.web_mainPage + '">'
+					+				'<button class="btn-sty-0">Web App</button>'
+					+			'</a>'
+					+			'<a href="' + ViBox.RESRC.url.mobile_startPage + '">'
+					+				'<button class="btn-sty-1">Mobile App</button>'
+					+			'</a>'
+					+		'</div>'
+					+	'</div>'
+					+'</div>';
+					
+		return Mustache.render(html);
+	},
+	function (bulletinBoard, data) {
+	/*	Properties:
+			[ Private ]
+			<OBJ> _className = the CSS class selector table
+			<BOO> _slidable = a flag to record the slidable mode
+			<ELM> _slideToggle = the .bulletinBoard-slideToggle element
+		methods:
+			> openSlide : Open the slide; only useful under the slidable mode
+			> closeSlide : Close the slide; only useful under the slidable mode
+	*/
+		var _className = {
+				slidable : "slidable",
+				slidableOpen : "slidable-open",
+				slideTogglePresent : "present"
+			},
+			_slidable = (ViBox.isObj(data) && data.slidable == true);
+		
+		var _slideToggle = bulletinBoard.querySelector(".bulletinBoard-slideToggle");
+		
+		bulletinBoard.openSlide = function () {
+			if (_slidable) {
+				ViBox.addClass(this, _className.slidableOpen);
+				ViBox.addClass(_slideToggle, _className.slideTogglePresent);
+			}
+		}
+		
+		bulletinBoard.closeSlide = function () {
+			if (_slidable) {
+				ViBox.removeClass(this, _className.slidableOpen);
+				setTimeout(function () { // Becaue we have the 1s CSS transition for opening/closing the bulletinBoard slide, delay here
+					ViBox.removeClass(_slideToggle, _className.slideTogglePresent);
+				}, 900);
+			}
+		}
+		
+		if (_slidable) {
+				
+			ViBox.addClass(bulletinBoard, _className.slidable);
+			
+			if (data.slidableOpen == true) {
+				bulletinBoard.openSlide();
+			}
+			
+			_slideToggle.onclick = function (e) {				
+				if (ViBox.hasClass(this.parentNode, _className.slidableOpen)) {
+					this.parentNode.closeSlide();
+				} else {
+					this.parentNode.openSlide();
+				}				
+			}
+		}
+		
+		return bulletinBoard;
 	}
 );

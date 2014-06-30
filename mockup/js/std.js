@@ -46,8 +46,10 @@ if(!Array.prototype.forEach){Array.prototype.forEach=function(callback,thisArg){
 		> newModule : Make an new module from the type added before.
 */
 var ViBox = (function () {
-		
-		var _domain = '//localhost/videodemo';
+				
+		var _GO_ONLINE = 1,
+			
+			_domain = _GO_ONLINE ? '//viboxdemo.fischerliu.net63.net' : '//localhost/videodemo';
 		
 		/*	Properties:
 				[ Public ]

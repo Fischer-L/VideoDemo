@@ -2,6 +2,7 @@
 
 /*	Properties:
 		[ Protected ]
+		<NUM> static $GO_ONLINE = a flag to mark the current mode is online or local
 		<STR> $fileRoot = the root of files in the file system
 		<STR> $domain = the website domain
 		<ARR> $webModulePath = the table of paths to web modules
@@ -18,7 +19,9 @@
 		> function includeJS($jsID) : Include the specified JS resources for page's use. This has nothing to do with PHP's include function!!!
 */
 class VB_PageManager {
-
+	
+	static protected $GO_ONLINE = 1;
+	
 	function __construct() {
 
 		$this->fileRoot = substr(__FILE__, 0, stripos(__FILE__, "php")-1);
@@ -38,8 +41,6 @@ class VB_PageManager {
 		$this->jsURL[self::JS_WEB_STD] = $this->domain . $this->jsURL["rootDir"] . "/web_std.js";
 		$this->jsURL[self::JS_MOBILE_STD] = $this->domain . $this->jsURL["rootDir"] . "/mobile_std.js";		
 	}
-	
-	static protected $GO_ONLINE = 1;
 	
 	protected $fileRoot = "";
 	protected $domain = "";

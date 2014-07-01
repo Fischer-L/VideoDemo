@@ -50,9 +50,7 @@ if (!String.prototype.trim) {String.prototype.trim = function () {return this.re
 */
 var ViBox = (function () {
 				
-		var _GO_ONLINE = 1,
-			
-			_domain = _GO_ONLINE ? 'http://viboxdemo.fischerliu.net63.net' : 'http://localhost/videodemo';
+		var _domain = VIBOX_ROOT || 'http://fischerliu.net63.net/viboxdemo';
 		
 		/*	Properties:
 				[ Public ]

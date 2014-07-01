@@ -190,6 +190,7 @@ class VB_PageManager {
 		}
 		
 		if (count($urls) > 0) {
+			echo '<script type="text/javascript"> var VIBOX_ROOT = "' . $this->domain . '"; </script>';
 			foreach ($urls as $url) {
 				echo '<script type="text/javascript" src="' . $url . '"></script>';
 			}

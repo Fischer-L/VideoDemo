@@ -23,6 +23,8 @@ class VB_PageManager {
 
 		$this->fileRoot = substr(__FILE__, 0, stripos(__FILE__, "php")-1);
 		
+		$this->domain = self::$GO_ONLINE ? "http://viboxdemo.fischerliu.net63.net" : "http://localhost/videoDemo";
+		
 		$this->webModulePath[self::WEB_MODULE_HEADER] = $this->fileRoot . $this->webModulePath["rootDir"] . "/header.php";
 		$this->webModulePath[self::WEB_MODULE_FOOTER] = $this->fileRoot . $this->webModulePath["rootDir"] . "/footer.php";
 		$this->webModulePath[self::WEB_MODULE_NAV_PANEL] = $this->fileRoot . $this->webModulePath["rootDir"] . "/nav_panel.php";
@@ -37,8 +39,10 @@ class VB_PageManager {
 		$this->jsURL[self::JS_MOBILE_STD] = $this->domain . $this->jsURL["rootDir"] . "/mobile_std.js";		
 	}
 	
+	static protected $GO_ONLINE = 1;
+	
 	protected $fileRoot = "";
-	protected $domain = "//localhost/videoDemo";
+	protected $domain = "";
 	protected $webModulePath = array(
 		"rootDir" => "/webapp/webmodule" // This is only the root dir of web modules, not of all the files.
 	);

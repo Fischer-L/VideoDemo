@@ -26,7 +26,7 @@ class VB_PageManager {
 
 		$this->fileRoot = substr(__FILE__, 0, stripos(__FILE__, "php")-1);
 		
-		$this->domain = self::$GO_ONLINE ? "http://viboxdemo.fischerliu.net63.net" : "http://localhost/videoDemo";
+		$this->domain = self::$GO_ONLINE ? "http://fischerliu.net63.net/viboxdemo" : "http://localhost/videoDemo";
 		
 		$this->webModulePath[self::WEB_MODULE_HEADER] = $this->fileRoot . $this->webModulePath["rootDir"] . "/header.php";
 		$this->webModulePath[self::WEB_MODULE_FOOTER] = $this->fileRoot . $this->webModulePath["rootDir"] . "/footer.php";

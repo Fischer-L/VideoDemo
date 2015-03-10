@@ -179,7 +179,7 @@ var ViBox = (function () {
 		*/	
 		isDate : function (target) {
 			return (target instanceof Date);
-		},		
+		},
 		/*	Arg:
 				<STR|ELM> target = the test target, could be the class of dom element or the dom element
 				<STR|ARR> className = classes to test in a string seperated by " " or in an array
@@ -646,40 +646,6 @@ ViBox.addModule("player",
 		
 		_ctrlPanel.onclick = function (e) {
 			e = ViBox.normalizeEvent(e);
-			
-			/* OLD
-			_openTime = new Date(); // Reset the time of opening while clicking on the control panel
-			
-			if (ViBox.hasClass(e.target, _className.volumeBtn)) {
-			
-				if (player.isMute()) {
-					player.setVolume(_volumeCtrl.currentVolume);
-				} else {
-					player.setVolume(0);
-				}
-				
-			} else if (ViBox.hasClass(e.target, _className.qualityBest)) {
-				
-				player.setQuality("best");
-			
-			} else if (ViBox.hasClass(e.target, _className.qualityHigh)) {
-			
-				player.setQuality("high");
-			
-			} else if (ViBox.hasClass(e.target, _className.qualityMid)) {
-				
-				player.setQuality("mid");
-				
-			} else if (ViBox.hasClass(e.target, _className.playBtn)) {
-				
-				if (ViBox.hasClass(e.target, _className.pause)) {
-					player.play();				
-				} else {
-					player.pause();
-				}
-				
-			}
-			*/
 			
 			_openTime = new Date(); // Reset the time of opening while clicking on the control panel
 			

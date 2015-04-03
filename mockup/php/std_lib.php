@@ -1,5 +1,4 @@
 <?php
-
 /*	Properties:
 		[ Protected ]
 		<NUM> static $GO_ONLINE = a flag to mark the current mode is online or local

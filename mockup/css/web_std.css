@@ -1,0 +1,868 @@
+/***
+ ``` The 960_16_col.css of 960 System ```
+***/
+body {
+  min-width: 960px;
+}
+
+/* Container
+----------------------------------------------------------------------------------------------------*/
+
+.container_16 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+
+/* Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8,
+.grid_9,
+.grid_10,
+.grid_11,
+.grid_12,
+.grid_13,
+.grid_14,
+.grid_15,
+.grid_16 {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.push_1, .pull_1,
+.push_2, .pull_2,
+.push_3, .pull_3,
+.push_4, .pull_4,
+.push_5, .pull_5,
+.push_6, .pull_6,
+.push_7, .pull_7,
+.push_8, .pull_8,
+.push_9, .pull_9,
+.push_10, .pull_10,
+.push_11, .pull_11,
+.push_12, .pull_12,
+.push_13, .pull_13,
+.push_14, .pull_14,
+.push_15, .pull_15,
+.push_16, .pull_16 {
+  position: relative;
+}
+
+/* Grid >> Children (Alpha ~ First, Omega ~ Last)
+----------------------------------------------------------------------------------------------------*/
+
+.alpha {
+  margin-left: 0;
+}
+
+.omega {
+  margin-right: 0;
+}
+
+/* Grid >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_16 .grid_1 {
+  width: 40px;
+}
+
+.container_16 .grid_2 {
+  width: 100px;
+}
+
+.container_16 .grid_3 {
+  width: 160px;
+}
+
+.container_16 .grid_4 {
+  width: 220px;
+}
+
+.container_16 .grid_5 {
+  width: 280px;
+}
+
+.container_16 .grid_6 {
+  width: 340px;
+}
+
+.container_16 .grid_7 {
+  width: 400px;
+}
+
+.container_16 .grid_8 {
+  width: 460px;
+}
+
+.container_16 .grid_9 {
+  width: 520px;
+}
+
+.container_16 .grid_10 {
+  width: 580px;
+}
+
+.container_16 .grid_11 {
+  width: 640px;
+}
+
+.container_16 .grid_12 {
+  width: 700px;
+}
+
+.container_16 .grid_13 {
+  width: 760px;
+}
+
+.container_16 .grid_14 {
+  width: 820px;
+}
+
+.container_16 .grid_15 {
+  width: 880px;
+}
+
+.container_16 .grid_16 {
+  width: 940px;
+}
+
+/* Prefix Extra Space >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_16 .prefix_1 {
+  padding-left: 60px;
+}
+
+.container_16 .prefix_2 {
+  padding-left: 120px;
+}
+
+.container_16 .prefix_3 {
+  padding-left: 180px;
+}
+
+.container_16 .prefix_4 {
+  padding-left: 240px;
+}
+
+.container_16 .prefix_5 {
+  padding-left: 300px;
+}
+
+.container_16 .prefix_6 {
+  padding-left: 360px;
+}
+
+.container_16 .prefix_7 {
+  padding-left: 420px;
+}
+
+.container_16 .prefix_8 {
+  padding-left: 480px;
+}
+
+.container_16 .prefix_9 {
+  padding-left: 540px;
+}
+
+.container_16 .prefix_10 {
+  padding-left: 600px;
+}
+
+.container_16 .prefix_11 {
+  padding-left: 660px;
+}
+
+.container_16 .prefix_12 {
+  padding-left: 720px;
+}
+
+.container_16 .prefix_13 {
+  padding-left: 780px;
+}
+
+.container_16 .prefix_14 {
+  padding-left: 840px;
+}
+
+.container_16 .prefix_15 {
+  padding-left: 900px;
+}
+
+/* Suffix Extra Space >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_16 .suffix_1 {
+  padding-right: 60px;
+}
+
+.container_16 .suffix_2 {
+  padding-right: 120px;
+}
+
+.container_16 .suffix_3 {
+  padding-right: 180px;
+}
+
+.container_16 .suffix_4 {
+  padding-right: 240px;
+}
+
+.container_16 .suffix_5 {
+  padding-right: 300px;
+}
+
+.container_16 .suffix_6 {
+  padding-right: 360px;
+}
+
+.container_16 .suffix_7 {
+  padding-right: 420px;
+}
+
+.container_16 .suffix_8 {
+  padding-right: 480px;
+}
+
+.container_16 .suffix_9 {
+  padding-right: 540px;
+}
+
+.container_16 .suffix_10 {
+  padding-right: 600px;
+}
+
+.container_16 .suffix_11 {
+  padding-right: 660px;
+}
+
+.container_16 .suffix_12 {
+  padding-right: 720px;
+}
+
+.container_16 .suffix_13 {
+  padding-right: 780px;
+}
+
+.container_16 .suffix_14 {
+  padding-right: 840px;
+}
+
+.container_16 .suffix_15 {
+  padding-right: 900px;
+}
+
+/* Push Space >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_16 .push_1 {
+  left: 60px;
+}
+
+.container_16 .push_2 {
+  left: 120px;
+}
+
+.container_16 .push_3 {
+  left: 180px;
+}
+
+.container_16 .push_4 {
+  left: 240px;
+}
+
+.container_16 .push_5 {
+  left: 300px;
+}
+
+.container_16 .push_6 {
+  left: 360px;
+}
+
+.container_16 .push_7 {
+  left: 420px;
+}
+
+.container_16 .push_8 {
+  left: 480px;
+}
+
+.container_16 .push_9 {
+  left: 540px;
+}
+
+.container_16 .push_10 {
+  left: 600px;
+}
+
+.container_16 .push_11 {
+  left: 660px;
+}
+
+.container_16 .push_12 {
+  left: 720px;
+}
+
+.container_16 .push_13 {
+  left: 780px;
+}
+
+.container_16 .push_14 {
+  left: 840px;
+}
+
+.container_16 .push_15 {
+  left: 900px;
+}
+
+/* Pull Space >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_16 .pull_1 {
+  left: -60px;
+}
+
+.container_16 .pull_2 {
+  left: -120px;
+}
+
+.container_16 .pull_3 {
+  left: -180px;
+}
+
+.container_16 .pull_4 {
+  left: -240px;
+}
+
+.container_16 .pull_5 {
+  left: -300px;
+}
+
+.container_16 .pull_6 {
+  left: -360px;
+}
+
+.container_16 .pull_7 {
+  left: -420px;
+}
+
+.container_16 .pull_8 {
+  left: -480px;
+}
+
+.container_16 .pull_9 {
+  left: -540px;
+}
+
+.container_16 .pull_10 {
+  left: -600px;
+}
+
+.container_16 .pull_11 {
+  left: -660px;
+}
+
+.container_16 .pull_12 {
+  left: -720px;
+}
+
+.container_16 .pull_13 {
+  left: -780px;
+}
+
+.container_16 .pull_14 {
+  left: -840px;
+}
+
+.container_16 .pull_15 {
+  left: -900px;
+}
+
+/* `Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+/* http://sonspring.com/journal/clearing-floats */
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
+
+.clearfix:before,
+.clearfix:after,
+.container_16:before,
+.container_16:after {
+  content: '.';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  font-size: 0;
+  line-height: 0;
+  width: 0;
+  height: 0;
+}
+
+.clearfix:after,
+.container_16:after {
+  clear: both;
+}
+
+/*
+  The following zoom:1 rule is specifically for IE6 + IE7.
+  Move to separate stylesheet if invalid CSS is a problem.
+*/
+
+.clearfix,
+.container_16 {
+  zoom: 1;
+}
+
+/*** 
+ ``` The homemade, common, stardard use of CSS ```
+ > Logo gradient: #e5523e --> #fa8e7f 
+***/
+.header-strip {
+	width: 100%;
+	height: 6px;
+	background-image: url(../img/header_strip.png);
+	background-position: 0px -0px;
+	background-repeat: repeat-x;
+	position: absolute;
+	top: 0; left: 0;
+}
+div.header-bigPoster {
+	width: 1040px;
+	height: 420px;
+	margin: 0 auto;
+	top: -82px;
+	overflow: hidden;
+	background-image: url(../img/big_poster.jpg);
+	background-position: 0px 0px;
+	-webkit-animation-name: bigPosterSlide;
+	-webkit-animation-duration: 12s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-direction: alternate;
+	-webkit-animation-timing-function: linear;
+	animation-name: bigPosterSlide;
+	animation-duration: 12s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: linear;
+}
+@-webkit-keyframes bigPosterSlide {
+	0% {
+		background-position: 0px 0px;
+	}
+	25% {
+		background-position: 0px 0px;
+	}
+	40% {
+		background-position: -1040px 0px;
+	}
+	65% {
+		background-position: -1040px 0px;
+	}
+	80% {
+		background-position: -2080px 0px;
+	}
+	100% {
+		background-position: -2080px 0px;
+	}
+}
+@keyframes bigPosterSlide {
+	0% {
+		background-position: 0px 0px;
+	}
+	25% {
+		background-position: 0px 0px;
+	}
+	40% {
+		background-position: -1040px 0px;
+	}
+	65% {
+		background-position: -1040px 0px;
+	}
+	80% {
+		background-position: -2080px 0px;
+	}
+	100% {
+		background-position: -2080px 0px;
+	}
+}
+.header-signUpBtn {
+	top: 360px;
+	left: 876px;
+
+}
+.header-controlBar {
+	width: 960px;
+	height: 82px;
+	margin: 0 auto;
+	background-color: transparent;
+	overflow: visible;
+	z-index: 1;
+}
+.header-controlBar.controlBar-sty {
+	background-color: #f9f9f9;
+}
+.header-controlBar-settingCtrl,
+.header-controlBar-srchCtrl {
+	margin-top: 18px;
+	float: right;
+}
+.header-controlBar-srchCtrl {
+	margin-top: 20px;
+	margin-right: 18px;
+	padding: 4px;
+	padding-left: 8px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	background: #fff;
+}
+.header-controlBar-settingCtrl-iconWrp {
+	background-color: #000;
+	background-color: rgba(0, 0, 0, 0.75);
+	border: 1px solid transparent;
+	padding: 8px;
+	top: -1px;
+	z-index: 1;
+}
+.header-controlBar-settingCtrl-icon,
+.header-controlBar-srchCtrl-icon {
+	background-image: url(../img/icons.png);
+	background-repeat: no-repeat;
+}
+.header-controlBar-settingCtrl-icon {
+	width: 23px;
+	height: 23px;
+	background-position: -182px -3px
+}
+.header-controlBar-srchCtrl-icon {
+	width: 25px;
+	height: 25px;
+	background-position: -219px -3px;
+	float: left;
+}
+.header-controlBar-settingCtrl-menuWrp {
+	height: 0px;
+	overflow: hidden;
+	top: 40px;
+	left: -111px;
+	transition: height 0.5s;
+}
+.header-controlBar-settingCtrl:hover > .header-controlBar-settingCtrl-menuWrp {
+	height: 116px;
+}
+.header-controlBar-settingCtrl-menu {
+	padding: 4px 0px;
+	background-color: #000;
+	background-color: rgba(0, 0, 0, 0.75);
+	color: #fff;
+	font-size: 0.9em;
+}
+.header-controlBar-settingCtrl-option {
+	width: 7.5em;
+	margin: 0px 18px;
+	padding: 18px 4px;
+	border-top: 1px solid #aaa;
+}
+.header-controlBar-settingCtrl-option:first-child {
+	border-top: none;
+}
+.header-controlBar-settingCtrl-option:hover {
+	margin: 0px;
+	padding: 18px 22px;
+	background-color: #888;
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.header-controlBar-settingCtrl-option + .header-controlBar-settingCtrl-option:hover,
+.header-controlBar-settingCtrl-option:hover + .header-controlBar-settingCtrl-option {
+	border-top: 1px solid transparent;
+}
+.settingCtrl-signout,
+.login .settingCtrl-signin,
+.login .header-signUpBtn {
+	display: none;
+}
+.login .settingCtrl-signout {
+	display: block;
+}
+.header-controlBar-srchCtrl-input {
+	border: none;
+	margin-left: 6px;
+	padding: 0;
+	height: 2em;
+}
+.header-controlBar-srchCtrl-input:focus {
+	outline: none;
+}
+.header-btmDivider {
+	width: 1040px;
+	border-top: 1px solid #e9e9e9;
+	margin: -41px auto 41px;
+}
+.footerContainer {
+	margin-top: 200px;
+}
+.footer {
+	height: 300px;
+	margin-top: 100px;
+	border: 1px solid #dcdcdc;
+}
+.footer-links {
+	margin: 0 auto;
+	padding-top: 100px;
+	font-size: 0.9em;
+	font-weight: bold;
+}
+.footer-links > li {
+	display: inline-block;
+	margin: 0 80px;
+}
+.footer-links a,
+.footer-links a:visited {
+	color: #666;
+	text-decoration: none;
+}
+.footer-links a:hover {
+	color: #333;
+	text-shadow: 0px 1px #fff;
+}
+.footer-copyright {
+	width: 100%;
+	margin-top: 120px;
+	color: #444;
+	font-size: 0.8em;
+	text-shadow: 0px 1px #fff;
+}
+.contentContainer.container_16 {
+	width: 1001px;
+}
+.contentContainer-mainContent.grid_12 {
+	width: 740px;
+	border-left: 1px solid #e9e9e9;
+	margin-right: 0px;
+	margin-left: 10px;
+}
+.navPanel > li {
+	margin-bottom: 16px;
+	color: #fff;
+}
+.navPanel > li > h3 {
+	height: 72px;
+	line-height: 72px;
+	padding-left: 20px;
+	border-radius: 2px;
+	background-color: #f25641;
+	/*
+	background: linear-gradient(#f25641, #e5523e);
+	text-shadow: 0px -1px #993629;
+	*/
+}
+.navPanel-channel {
+	cursor: pointer;
+}
+.navPanel-channel-title,
+.navPanel-deco {
+	height: 32px;
+	line-height: 32px;
+	display: inline-block;
+	border-radius: 2px;
+}
+.navPanel-channel-title {
+	width: 160px;
+	padding-left: 16px;
+}
+.navPanel-deco {
+	width: 32px;
+	margin-right: 10px;
+	float: left;
+}
+.navPanel-channel-popular > .navPanel-channel-title,
+.navPanel-channel-popular > .navPanel-deco {
+	background-color: #f28e41;
+	/*
+	background: linear-gradient(#f28e41, #e5873e);
+	text-shadow: 0px -1px #995a29;
+	*/
+}
+.navPanel-channel-jp > .navPanel-channel-title,
+.navPanel-channel-jp > .navPanel-deco {
+	background-color: #e5c73e;
+	/*
+	background: linear-gradient(#f2d241, #e5c73e);
+	text-shadow: 0px -1px #998529;
+	*/
+}
+.navPanel-channel-kor > .navPanel-channel-title,
+.navPanel-channel-kor > .navPanel-deco {
+	background-color: #3ee57e;
+	/*
+	background: linear-gradient(#41f285, #3ee57e);
+	text-shadow: 0px -1px #299954;
+	*/
+}
+.navPanel-channel-tw > .navPanel-channel-title,
+.navPanel-channel-tw > .navPanel-deco {
+	background-color: #41c3f2;
+	/*
+	background: linear-gradient(#41c3f2, #3eb9e5);
+	text-shadow: 0px -1px #297b99;
+	*/
+}
+.navPanel-channel-cn > .navPanel-channel-title,
+.navPanel-channel-cn > .navPanel-deco {
+	background-color: #d241f2;
+	/*
+	background: linear-gradient(#d241f2, #c73ee5);
+	text-shadow: 0px -1px #852999;
+	*/
+}
+.navPanel-channel-us > .navPanel-channel-title,
+.navPanel-channel-us > .navPanel-deco {
+	background-color: #f24194;
+	/*
+	background: linear-gradient(#f24194, #e53e8c);
+	text-shadow: 0px -1px #99295d;
+	*/
+}
+/*	== The contentBox module ==
+	<div class="contentBox">
+		<div class="contentBox-title"></div>
+		<div class="contentBox-content">
+			[
+				// The sum of the halfBox and quarterBox has to be "one box".
+				// So 1 haflBox + 2 quarterBox is fine but 1 haflBox + 3 quarterBox is not fine.
+				<div class="contentBox-halfBox"></div>
+				<div class="contentBox-quarterBox"></div>
+			]
+		</div>
+		<div class="clear"></div> // Utilize the 960 system's CSS style
+	</div>
+*/
+.contentBox {
+	margin-bottom: 96px;
+	margin-left: 20px;
+}
+.contentBox-title {
+	font-size: 1.6em;
+	font-weight: bold;
+}
+.contentBox-halfBox,
+.contentBox-quarterBox {
+	margin: 5px 5px 5px 0px;
+	float: left;
+}
+.contentBox-halfBox {
+	width: 353px;
+}
+.contentBox-quarterBox {
+	width: 174px;
+}
+.contentBox.channel-popular > .contentBox-title {
+	color: #e5873e;
+}
+.contentBox.channel-jp > .contentBox-title {
+	color: #e5c73e;
+}
+.contentBox.channel-kor > .contentBox-title {
+	color: #3ee57e;
+}
+.contentBox.channel-tw > .contentBox-title {
+	color: #3eb9e5;
+}
+.contentBox.channel-cn > .contentBox-title {
+	color: #c73ee5;
+}
+.contentBox.channel-us > .contentBox-title {
+	color: #e53e8c;
+}
+/* == The dramaBox module ==
+	<a class="dramaBox dramaBox-size-L(S)">
+		<img class="dramaBox-poster" src="" />
+		<div class="dramaBox-title"></div>
+	</a>
+*/
+.dramaBox {
+	margin: 5px 0;
+	display: block;
+	position: relative;
+	text-decoration: none;
+}
+.dramaBox-size-L,
+.dramaBox-size-L > .dramaBox-poster {
+	width: 353px;
+	height: 198px;
+}
+.dramaBox-size-S,
+.dramaBox-size-S > .dramaBox-poster {
+	width: 174px;
+	height: 97px;
+}
+.dramaBox-title {
+	width: 100%;
+	background-color: #555;
+	background-color: rgba(15, 15, 15, 0.75);
+	color: #fff;
+	position: relative;
+	text-align: center;
+}
+.dramaBox-size-L > .dramaBox-title {
+	height: 3em;
+	line-height: 3em;
+	top: -3em;
+}
+.dramaBox-size-S > .dramaBox-title {
+	height: 1.8em;
+	line-height: 1.8em;
+	top: -1.8em;
+	font-size: 0.9em;
+}
+
+/* The signupContainer */
+.signupWindowContainer {
+	width: 100%;
+	min-height: 100%;
+	position: fixed;
+	top: 0; left: 0; bottom: 0; right: 0;
+	z-index: 99999;
+	display: none;
+	background-color: #222;
+	background-color: rgba(0, 0, 0, 0.85);
+	overflow: scroll;
+}
+body.signupState {
+	overflow: hidden;
+}
+body.signupState > .signupWindowContainer {
+	display: block;
+}
+.signupWindow {
+	width: 640px;
+	margin: 160px auto;
+}
+.signupWindow > .ViBox-logo {
+	margin: 0 auto;
+}
+/* END */
+
+.sty-bgColor-std {
+	background-color: #eaeaea;
+	/* background: linear-gradient(#eaeaea, #dadada); */
+}

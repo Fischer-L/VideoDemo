@@ -1,0 +1,487 @@
+body {
+	font-size: 12px;
+}
+.phone {
+	width: 289px;
+	height: 600px;
+	position: relative;
+	top: 50%;
+	margin: -300px auto 0px;
+	background: url(../img/iphone_case.png);
+	background-repeat: no-repeat;
+}
+.phone-screen {
+	width: 234px;
+	height: 406px;
+	position: relative;
+	background: #f5f5f5;
+	top: 101px;
+	left: 27px;
+	border: 2px solid #666;
+	border-top: none;
+	overflow: hidden;
+}
+/* Start page */
+.phone-screen.startPage {
+	background: #e5523e;
+	background: radial-gradient(circle, #fa8e7f, #e5523e);
+}
+.phone-screen.startPage:before {
+	content: " ";
+	width: 146px;
+	height: 41px;
+	position: relative;
+	left: 50%;
+	top: 30%;
+	margin-left: -72px;
+	display: block;
+	background: url(../img/icons.png);
+	background-position: -9px -102px;
+}
+.phone-screen.startPage > button {
+	width: 97%;
+	margin: 15px auto;
+}
+.phone-screen.startPage > button:first-child {
+	margin-top: 245px;
+}
+.phone-screen.startPage > .divider {
+	color: #fff;
+	text-shadow: 0px -1px #993629;
+}
+/* END */
+/* Header */
+.header,
+.header-navBtn,
+.header-nav-title,
+.header-nav-search {
+	height: 36px;
+}
+.header,
+.header-nav-search {
+	width: 100%;
+	background-color: #e5523e;
+	background: linear-gradient(#fa8e7f, #e5523e);
+	border-bottom: 1px solid #cc4837;
+}
+.header-navBtn {
+	width: 36px;
+	display: inline-block;
+	cursor: pointer;
+}
+.header-nav-search,
+.header-navBtn-backBtn,
+.header-navBtn-menuBtn {
+	display: none;
+}
+.searchNav .header-nav-search,
+.menuNav .header-navBtn-menuBtn,
+.backNav .header-navBtn-backBtn {
+	display: inline-block;
+}
+.header-navBtn-backBtn {
+	background-image: url(../img/icons.png);
+	background-position: -204px -112px;
+}
+.menuBtn-strip {
+	border-bottom: 2px solid #fff;
+	padding-top: 4px;
+	width: 18px;
+}
+.menuBtn-strip:first-child {
+	padding-top: 11px;
+}
+.header-nav-title {
+	color: #fff;
+	line-height: 36px;
+	vertical-align: top;
+	font-weight: bold;
+	font-size: 1.2em;
+	margin-left: -8px;
+}
+.header-nav-search {
+	border-bottom: none;
+	left: 194px;
+	transition: left 1s;
+}
+.header-nav-search.present {
+	left: 0px;
+}
+.header-navBtn-searchBtn {
+	background-image: url(../img/icons.png);
+	background-position: -239px -113px;
+}
+.header-nav-searchHolder {
+	width: 180px;
+	height: 5px;
+	margin-left: 6px;
+	border: 1px solid #fff;
+	border-top: none;
+	top: -7px;
+}
+.header-nav-searchInput {
+	width: 158px;
+	border: none;
+	background-color: transparent;
+	color: #fff;
+	margin: 0;
+	top: -13px;
+	left: 10px;
+}
+.header-nav-searchInput:focus,
+.header-nav-searchInput:active {
+	outline: none;
+}
+.header-menu {
+	width: 100%; height: 408px;
+	background: #2a2a2a;
+	color: #f0f0f0;
+	top: 37px;
+	z-index: 998;
+	font-size: 1.1em;
+	font-weight: bold;
+	left: -250px;
+	transition: left 1s;
+}
+.header-menu.present {
+	left: -38px;
+}
+.header-menu > li {
+	padding: 12px 0 12px 100px;
+	border-top: 1px solid #4a4a4a;
+	border-bottom: 1px solid #1a1a1a;
+}
+.header-menu > li.in {
+	background-color: #4a4a4a;
+}
+.header-menu > li:first-child {
+	border-top: none;
+}
+.header-menu > li:last-child {
+	border-bottom: none;
+}
+/* END */
+
+/* Overwrite the standard signupProcess style */
+.signupProcess {
+	width: 234px;
+	padding: 1px 0px;
+}
+.signupProcess {
+	margin: 0;
+	text-align: center;
+}
+.signupProcess-processBoard-title {
+	padding: 4px 6px;
+	padding: 6px 5px 6px 11px;	
+	width: 54px;
+	font-size: 0.9em;
+	height: 32px;
+	line-height: normal;
+}
+.signupProcess-processBoard-arw,
+.signupProcess-processBoard-boardShadow > .signupProcess-processBoard-arw,
+.signupProcess-processBoard-board.signupProcess-in > .signupProcess-processBoard-arw {
+	border-width: 22px;
+}
+.signupProcess-processBoard-arw,
+.signupProcess-processBoard-boardShadow > .signupProcess-processBoard-arw {
+	left: 70px;
+}
+.signupProcess-processBoard-boardShadow {
+	left: 3px;
+}
+.signupProcess-processBoard-board.signupProcess-final > .signupProcess-processBoard-title {
+	padding-left: 37px;	
+	padding-right: 10px;
+	width: 26px;
+}
+.signupProcess-processBoard-board.signupProcess-final > .signupProcess-processBoard-arw {
+	left: 73px;
+}
+.signupProcess-processBoard-board.signupProcess-final > .signupProcess-processBoard-boardShadow {	
+	left: 6px;
+}
+.signupProcess-processBoard-board.signupProcess-end > .signupProcess-processBoard-title {
+	width: 44px;	
+	padding-left: 34px;
+	padding-right: 13px;
+}
+.signupProcess-actionForm {
+	width: 200%;
+}
+.signupProcess-actionForm-boardShelf {
+	width: 90%;
+	margin: 7% auto;
+	text-align: left;
+}
+.signupProcess-actionForm-boardShelf > button {
+	width: 100%;
+	margin: 0;
+}
+.signupProcess-actionForm-boardShelf > label {
+	height: 30px;
+	display: inline-block;
+	padding-top: 5px;
+}
+.signupProcess-actionForm h3 {
+	font-size: 1.1em;
+	width: 90%;
+}
+.signupProcess-actionForm-boardShelf > label {
+	height: 20px;
+	padding: 3% 2%;
+}
+.signupProcess-actionForm input.signupProcess-actionForm-longInput,
+.signupProcess-actionForm input.signupProcess-actionForm-shortInput {
+	height: 18px;
+}
+.signupProcess-actionForm input.signupProcess-actionForm-longInput {
+	width: 94%;
+	padding: 3%;
+	border-radius: 2px;
+	border: 1px solid #aaa;
+}
+.signupProcess-actionForm input.signupProcess-actionForm-shortInput {
+	width: 18%;
+	padding: 3% 2%;
+	border-radius: 2px;
+	border: 1px solid #aaa;
+}
+.actionForm-boardShelf-spacer {
+	width: 10px;
+}
+/* END */
+
+/* == The contentShelf module ==	
+	<div class="contentShelf [unscrollable]">				
+		<div class="contentShelf-bigPoster [animation]"></div>
+		<div class="contentShelf-shelf"></div> [...]
+	</div>
+*/
+.contentShelf {
+	width: 252px;
+	height: 390px;
+	overflow: scroll;
+}
+.contentShelf.unscrollable {
+	width: 100%;
+	overflow: 
+}
+.contentShelf-bigPoster {
+	width: 234px;
+	height: 95px;
+	overflow: hidden;
+	border-bottom: 1px solid #e5e5e5;
+	background-image: url(../img/mobile_big_poster.jpg);
+	background-position: 0px 0px;
+}
+.contentShelf-bigPoster.animation {
+	-webkit-animation-name: bigPosterSlide;
+	-webkit-animation-duration: 12s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-direction: alternate;
+	-webkit-animation-timing-function: linear;
+	animation-name: bigPosterSlide;
+	animation-duration: 12s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: linear;
+}
+@-webkit-keyframes bigPosterSlide {
+	0% {
+		background-position: 0px 0px;
+	}
+	25% {
+		background-position: 0px 0px;
+	}
+	40% {
+		background-position: -234px 0px;
+	}
+	65% {
+		background-position: -234px 0px;
+	}
+	80% {
+		background-position: -468px 0px;
+	}
+	100% {
+		background-position: -468px 0px;
+	}
+}
+@keyframes bigPosterSlide {
+	0% {
+		background-position: 0px 0px;
+	}
+	25% {
+		background-position: 0px 0px;
+	}
+	40% {
+		background-position: -234px 0px;
+	}
+	65% {
+		background-position: -234px 0px;
+	}
+	80% {
+		background-position: -468px 0px;
+	}
+	100% {
+		background-position: -468px 0px;
+	}
+}
+.contentShelf-shelf {
+	margin: 20px auto;
+}
+/* END */
+
+/* == The dramaWall module ==
+	<div class="dramaWall">
+		[ <h3></h3> ]
+		<div class="dramaWall-tiles">
+			<a class="dramaWall-tile dramaWall-tile-leftTile">
+				<img class="dramaWall-tile-poster" />
+				<div class="dramaWall-tile-title"></div>
+			</a
+			><a class="dramaWall-tile dramaWall-tile-rightTile">
+				<img class="dramaWall-tile-poster" />
+				<div class="dramaWall-tile-title"></div>
+			</a
+			><a class="dramaWall-tile dramaWall-tile-leftTile">
+				<img class="dramaWall-tile-poster" />
+				<div class="dramaWall-tile-title"></div>
+			</a
+			><a class="dramaWall-tile dramaWall-tile-rightTile">
+				<img class="dramaWall-tile-poster" />
+				<div class="dramaWall-tile-title"></div>
+			</a>
+			<div class="dramaWall-moreBtn">More</div>
+		</div>
+	</div>
+*/
+.dramaWall {
+	padding: 6px;
+}
+.dramaWall > h3 {
+	color: #494949;
+	font-size: 1.1em;
+	padding-left: 2px;
+}
+.dramaWall a,
+.dramaWall a:hover,
+.dramaWall a:visited {
+	text-decoration: none;
+}
+.dramaWall-tiles {
+	width: 206px;
+	background: #fff;
+	padding: 8px;
+	margin-top: 6px;
+	border: 1px solid #e5e5e5;
+	border-bottom-color: #aaa;
+	border-right-color: #aaa;
+}
+.dramaWall-tile {
+	margin-bottom: 12px;
+	display: inline-block;
+}
+.dramaWall-tile,
+.dramaWall-tile-poster,
+.dramaWall-tile-title {
+	width: 100px;
+}
+.dramaWall-tile-leftTile {
+	margin-right: 3px;
+}
+.dramaWall-tile-rightTile {
+	margin-left: 3px;
+}
+.dramaWall-tile-title {
+	color: #fff;
+	background: #555;
+	height: 26px;
+	line-height: 26px;
+	text-align: center;
+	font-size: 0.9em;
+}
+.dramaWall-moreBtn {
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border-top: 1px solid #ccc;
+	padding-top: 6px;
+	color: #3193cc;
+	font-weight: bold;
+	cursor: pointer;
+}
+/* END */
+
+/*	== The episodeList module == 
+	<ul class="episodeList">
+		<li class="episodeList-title"></li>
+		<li class="epsidoeList-episode">
+			<a>
+				<img class="epsidoeList-episode-poster" />
+				<div class="epsidoeList-playIcon"></div>
+			</a
+			><span class="epsidoeList-episode-title"></span>
+		</li>
+	</ul>
+*/
+.episodeList {
+	padding: 6px;
+}
+.episodeList-title {
+	padding-left: 3px;
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #494949;
+}
+.epsidoeList-episode {
+	width: 206px;
+	background: #fff;
+	padding: 8px;
+	margin-top: 8px;
+	border: 1px solid #e5e5e5;
+	border-bottom-color: #aaa;
+	border-right-color: #aaa;
+	position: relative;
+}
+.epsidoeList-episode-poster,
+.epsidoeList-episode-title {
+	display: inline-block;
+}
+.epsidoeList-episode-poster {
+	width: 92px;
+}
+.epsidoeList-playIcon {
+	width: 30px;
+	height: 30px;
+	background: #333;
+	background: rgba(0, 0, 0, 0.7);
+	border-radius: 50%;
+	position: absolute;
+	top: 18px;
+	left: 38px;
+	cursor: pointer;
+}
+.epsidoeList-playIcon:after {
+	content: "";
+	display: block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	background: url(../img/icons.png);
+	top: 8px;
+	left: 11px;
+	background-position: -256px -51px;
+	cursor: pointer;
+}
+.epsidoeList-episode-title {
+	width: 100px;
+	height: 52px;
+	margin-left: 6px;
+	font-size: 0.9em;
+	vertical-align: top;
+	color: #333;
+}
+/* END */

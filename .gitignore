@@ -1,5 +1,2 @@
-<<<<<<< HEAD
-docs/
-=======
 docs/gitignore_doc/
->>>>>>> gh-pages
+node_modules/

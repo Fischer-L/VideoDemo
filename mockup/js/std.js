@@ -292,13 +292,18 @@ var ViBox = (function () {
 				<OBJ> The normalized event
 		*/
 		normalizeEvent : function (e) {
+		
 			// Cope with the cross browser compatibility
-			e = e || window.event;
-			e.target = e.target || e.srcElement;
+			
+			if (!e) e = window.event;
+			
+			if(!e.target) e.target = e.srcElement;
+			
 			e.stopBubble = function () {
 				this.cancelBubble = true;
 				if (this.stopPropoagation) { this.stopPropoagation(); }
 			}
+			
 			e.stopDefault = function () {
 				if (this.preventDefault) { this.preventDefault(); }
 				this.returnValue = false;

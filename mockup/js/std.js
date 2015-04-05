@@ -322,6 +322,7 @@ var ViBox = (function () {
 				_modules[moduleID] = new _cls_ModuleMaker(moduleID, domMaker, domEnhancer);
 			}
 		},
+		
 		/*	Arg:
 				<STR> moduleID = the identifier of the module to new
 				> data = Refer to ViBox::inf_DomMaker & ViBox::inf_DomEnhancer
@@ -452,7 +453,7 @@ ViBox.addModule("signupProcess",
 			> goBack : Go back to the previous process
 	*/
 	
-		var _className = {			
+		var _className = {
 				"nextProc" : "nextProc",
 				"signupProcess-in" : "signupProcess-in"
 			},

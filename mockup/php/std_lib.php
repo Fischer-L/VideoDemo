@@ -19,13 +19,21 @@
 */
 class VB_PageManager {
 	
-	static protected $GO_ONLINE = 1;
+	/*	Return:
+			@ In the debug mode: true
+			@ Not in the debug mode: false
+	*/
+	public static function isDeBugMode() {
+		return true;
+	}
+	
+	static protected $GO_ONLINE = 0;
 	
 	function __construct() {
 
 		$this->fileRoot = substr(__FILE__, 0, stripos(__FILE__, "php")-1);
 		
-		$this->domain = self::$GO_ONLINE ? "https://vibox-demo.herokuapp.com/mockup" : "http://localhost/videoDemo";
+		$this->domain = self::$GO_ONLINE ? "https://vibox-demo.herokuapp.com/mockup" : "http://localhost/videoDemo"; // Legacy: http://fischerliu.net63.net/viboxdemo
 		
 		$this->webModulePath[self::WEB_MODULE_HEADER] = $this->fileRoot . $this->webModulePath["rootDir"] . "/header.php";
 		$this->webModulePath[self::WEB_MODULE_FOOTER] = $this->fileRoot . $this->webModulePath["rootDir"] . "/footer.php";
@@ -53,7 +61,7 @@ class VB_PageManager {
 		"rootDir" => "/css" // This is only the root dir of css resources, not of all the files.
 	);
 	protected $jsURL = array(
-		"rootDir" => "/js" // This is only the root dir of js resources, not of all the files.
+		"rootDir" => "/js/build" // This is only the root dir of js resources, not of all the files.
 	);
 	
 	const WEB_MODULE_HEADER = "WEB_MODULE_HEADER";
@@ -69,13 +77,6 @@ class VB_PageManager {
 	const JS_WEB_STD = "JS_WEB_STD";
 	const JS_MOBILE_STD = "JS_MOBILE_STD";
 	
-	/*	Return:
-			@ In the debug mode: true
-			@ Not in the debug mode: false
-	*/
-	public static function isDeBugMode() {
-		return true;
-	}
 	/*	Arg:
 			<STR> $moduleID = the web module identifier, refer to this::WEB_MODULE_* for the available modules
 		Return:
@@ -170,6 +171,7 @@ class VB_PageManager {
 		
 		$url = null;
 		$urls = array();
+		$isDBG = self::isDeBugMode() ? "true" : "false";
 		
 		if (is_string($jsID)) {
 			
@@ -189,7 +191,7 @@ class VB_PageManager {
 		}
 		
 		if (count($urls) > 0) {
-			echo '<script type="text/javascript"> var VIBOX_ROOT = "' . $this->domain . '"; </script>';
+			echo '<script type="text/javascript"> var VIBOX_ROOT = "' . $this->domain . '", VIBOX_DBG = ' . $isDBG . ';</script>';
 			foreach ($urls as $url) {
 				echo '<script type="text/javascript" src="' . $url . '"></script>';
 			}

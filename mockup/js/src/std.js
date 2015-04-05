@@ -39,6 +39,7 @@ if (!String.prototype.trim) {String.prototype.trim = function () {return this.re
 		> _html2dom : Convert the HTML text into the real HTML element
 		[ public ]
 		> getIEVersion : Get the IR version
+		> isDBG : Tell if in the DBG mode
 		> isStr, isFunc, isObj, isHTMLElem, isArr, isDate : Check the corresponding data type
 		> hasClass : Find out if the specified CSS classes exist in the target element's className attribute
 		> addClass : Add some CSS classes into one element's className attribute
@@ -49,7 +50,9 @@ if (!String.prototype.trim) {String.prototype.trim = function () {return this.re
 		> newModule : Make an new module from the type added before.
 */
 var ViBox = (function () {
-				
+		
+		var _DBG = !VIBOX_DBG ? false : true;
+		
 		var _domain = VIBOX_ROOT || 'http://fischerliu.net63.net/viboxdemo';
 		
 		/*	Properties:
@@ -106,8 +109,7 @@ var ViBox = (function () {
 				mobile_wireframe : _domain + "/img/vibox_mobile_app_wireframe.jpg"
 			}
 		},
-		/*  Func: Get the version of IE
-			Return:
+		/*  Return:
 				@ Is IE: <NUM> the version of IE
 				@ Not IE: NaN
 		*/
@@ -121,6 +123,13 @@ var ViBox = (function () {
 				}
 			}
 			return (rv === -1) ? NaN : rv;
+		},
+		/*	Return:
+				@ DBG: true
+				@ Not DBG: false
+		*/
+		isDBG : function () {
+			return _DBG;
 		},
 		/*	Arg:
 				<*> target = the target to test
@@ -314,7 +323,10 @@ var ViBox = (function () {
 		/*	Arg:
 				> moduleID, domMaker, domEnhancer = Refer to the constructor of ViBox::_cls_ModuleMaker
 		*/
-		addModule : function (moduleID, domMaker, domEnhancer) {			
+		addModule : function (moduleID, domMaker, domEnhancer) {
+		
+if (this.isDBG()) return this.exp_addModule(moduleID, domMaker, domEnhancer);
+		
 			if (   moduleID
 				&& this.isStr(moduleID)
 			    && this.isFunc(domMaker)
@@ -330,6 +342,9 @@ var ViBox = (function () {
 				@ NG: false
 		*/
 		newModule : function (moduleID, data) {
+		
+if (this.isDBG()) return this.exp_newModule(moduleID, data);
+		
 			if (   this.isStr(moduleID)
 				&& _modules[moduleID] instanceof _cls_ModuleMaker
 			) {
@@ -386,13 +401,7 @@ var ViBox = (function () {
 	};
 }());
 
-ViBox.addModule("signupProcess",
-	/*	Arg:
-			<OBJ> data = {
-				<ARR> startActionFormElemsHTML = the array of html texts. Each html is one signup form element for the start process inside one div.signupProcess-actionForm-boardShelf 
-				<ARR> finalActionFormElemsHTML = Like the startActionFormElemsHTML arg but is for the final process
-			}
-	*/
+ViBox.addModule("To Delete signupProcess",
 	function (data) {
 		var html =	 '<div class="signupProcess">'
 					+	'<div class="signupProcess-processBoard">'
@@ -760,7 +769,7 @@ ViBox.addModule("player",
 	}
 );
 
-ViBox.addModule("bulletinBoard",
+ViBox.addModule("To Delete bulletinBoard",
 	/*	Arg:
 			<OBJ> data = {
 				<BOO> [slidable] = Enable the slidable mode

@@ -280,15 +280,121 @@
 	var BulletinBorad = React.createClass({
 		
 		render : function () {
+	
+			var btns = (<a href={ ViBox.RESRC.url.web_mainPage }>
+							<button className="btn-sty-0">Web App</button>
+						</a>
+						<a href={ ViBox.RESRC.url.mobile_startPage }>
+							<button className="btn-sty-1">Mobile App</button>
+						</a>);
 			
+			if (ViBox.getIEVersion() <= 8) {
 			
+				var style = 'display: inline-block; text-align: center; text-decoration: none; color: #fff; font-weight: bold; width: 110px; height: 19px; padding: 8px 22px; margin-right: 8px;',
+					blueBG = ' background-color: #3aaff2;',
+					greenBG = ' background-color: #7ee55c;';
 			
-			retunr (
+				btns = (<a
+							href={ ViBox.RESRC.url.web_mainPage }
+							style={ style + blueBG }
+						>
+							Web App
+						</a>
+						<a
+							href={ ViBox.RESRC.url.mobile_startPage }
+							style={ style + greenBG }
+						>
+							Mobile App
+						</a>);
+			}			
+			
+			return (
 				<div className="bulletinBoard">
 				
+					<div className="bulletinBoard-slideToggle lyt-none"></div>
+					
+					<div className="bulletinBoard-board lyt-pos-abs">
+						
+						<div className="bulletinBoard-logo"></div>
+						
+						<div className="bulletinBoard-article">
+							<p>This site contains the web app mockup and the mobile app mockup of the ViBox. By look into these simple mockups, you will be able to grab the idea and the design concept of the ViBox.</p>
+							<p>本站含有ViBox網頁版和手機板的mockup，這些mockup會簡單、清楚地展示ViBox的產品概念以及設計功能，透過瀏覽這些mockup將有助於快速建立對ViBox的了解。</p>
+						</div>
+						
+						<div className="bulletinBoard-actionBtns">{btns}</div>
+						
+						<div className="bulletinBoard-remark">
+							<a href={ ViBox.RESRC.url.proposal }>Proposal</a>
+							<a href={ ViBox.RESRC.url.web_wireframe }>Web app wireframe</a>
+							<a href={ ViBox.RESRC.url.mobile_wireframe }>Mobile app wireframe</a>
+						</div>
+						
+					</div>
 				</div>
 			);
 		}
-	});
+	}); {
+		
+		/*	== The enhancement ==
+			Properties:
+				[ Private ]
+				<OBJ> _className = the CSS class selector table
+				<BOO> _slidable = a flag to record the slidable mode
+				<ELM> _slideToggle = the .bulletinBoard-slideToggle element
+			methods:
+				> openSlide : Open the slide; only useful under the slidable mode
+				> closeSlide : Close the slide; only useful under the slidable mode
+		*/
+		BulletinBorad.domEnhancer = function (bulletinBoard, data) {
+		
+			var _className = {
+					slidable : "slidable",
+					slidableOpen : "slidable-open",
+					slideTogglePresent : "present"
+				},
+				_slidable = (ViBox.isObj(data) && data.slidable == true);
+			
+			var _slideToggle = bulletinBoard.querySelector(".bulletinBoard-slideToggle");
+			
+			bulletinBoard.openSlide = function () {
+				if (_slidable) {
+					ViBox.addClass(this, _className.slidableOpen);
+					ViBox.addClass(_slideToggle, _className.slideTogglePresent);
+				}
+			}
+			
+			bulletinBoard.closeSlide = function () {
+				if (_slidable) {
+					ViBox.removeClass(this, _className.slidableOpen);
+					setTimeout(function () { // Becaue we have the 1s CSS transition for opening/closing the bulletinBoard slide, delay here
+						ViBox.removeClass(_slideToggle, _className.slideTogglePresent);
+					}, 900);
+				}
+			}
+			
+			if (_slidable) {
+					
+				ViBox.addClass(bulletinBoard, _className.slidable);
+				
+				if (data.slidableOpen == true) {
+					bulletinBoard.openSlide();
+				}
+				
+				_slideToggle.onclick = function (e) {				
+					if (ViBox.hasClass(this.parentNode, _className.slidableOpen)) {
+						this.parentNode.closeSlide();
+					} else {
+						this.parentNode.openSlide();
+					}				
+				}
+			}
+			
+			return bulletinBoard;
+		}
+	}
+	
+	ViBox.addModule("signupProcess", SignupProcess, SignupProcess.domEnhancer);
+	ViBox.addModule("bulletinBoard", BulletinBorad, BulletinBorad.domEnhancer);
 	
 }(ViBox));

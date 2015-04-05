@@ -621,5 +621,3 @@ var Mustache;
   return exports;
 
 }())));
-
-sc.resrc.js.init("mustache");

@@ -9,7 +9,7 @@
 		<ARR> protected $jsURL  = the table of urls to JS resources
 	Methods:
 		[ Public ] 
-		> static function isDeBugMode() : Tell if page is in the debug mode or not
+		> static function isDBG() : Tell if page is in the debug mode or not
 		> function getPath2WebModule($moduleID) : Get the path to the specified web module
 		> function includeWebModule($moduleID, $once = true) : Include the specified web module. This is similar to call PHP's include/include_once but with some extra little work.
 		> function getURL2CSS($cssID) : Get the url to the specified css resource file
@@ -23,7 +23,7 @@ class VB_PageManager {
 			@ In the debug mode: true
 			@ Not in the debug mode: false
 	*/
-	public static function isDeBugMode() {
+	public static function isDBG() {
 		return true;
 	}
 	
@@ -44,9 +44,13 @@ class VB_PageManager {
 		$this->cssURL[self::CSS_WEB_STD] = $this->domain . $this->cssURL["rootDir"] . "/web_std.css";
 		$this->cssURL[self::CSS_MOBILE_STD] = $this->domain . $this->cssURL["rootDir"] . "/mobile_std.css";
 		
-		$this->jsURL[self::JS_STD] = $this->domain . $this->jsURL["rootDir"] . "/std.js";
-		$this->jsURL[self::JS_WEB_STD] = $this->domain . $this->jsURL["rootDir"] . "/web_std.js";
-		$this->jsURL[self::JS_MOBILE_STD] = $this->domain . $this->jsURL["rootDir"] . "/mobile_std.js";		
+		$this->jsURL[self::JS_STD] = "/std.js";
+		$this->jsURL[self::JS_WEB_STD] = "/web_std.js";
+		$this->jsURL[self::JS_MOBILE_STD] = "/mobile_std.js";		
+		
+		foreach ($this->jsURL["requires"] as $id) {
+			$this->jsURL[$id] = "/" . $id;
+		}
 	}
 	
 	protected $fileRoot = "";
@@ -61,7 +65,11 @@ class VB_PageManager {
 		"rootDir" => "/css" // This is only the root dir of css resources, not of all the files.
 	);
 	protected $jsURL = array(
-		"rootDir" => "/js/build" // This is only the root dir of js resources, not of all the files.
+		"rootDir" => "/js/build", // This is only the root dir of js resources, not of all the files.
+		
+		"requires" => array( // The required js libs
+			"react.min.js", "mustache.js"
+		)
 	);
 	
 	const WEB_MODULE_HEADER = "WEB_MODULE_HEADER";
@@ -72,7 +80,7 @@ class VB_PageManager {
 	const CSS_STD = "CSS_STD";
 	const CSS_WEB_STD = "CSS_WEB_STD";
 	const CSS_MOBILE_STD = "CSS_MOBILE_STD";
-	
+		
 	const JS_STD = "JS_STD";
 	const JS_WEB_STD = "JS_WEB_STD";
 	const JS_MOBILE_STD = "JS_MOBILE_STD";
@@ -160,7 +168,7 @@ class VB_PageManager {
 		if (   !empty($this->jsURL[$jsID])
 			&& is_string($this->jsURL[$jsID])
 		) {
-			return $this->jsURL[$jsID];
+			return $this->domain . $this->jsURL["rootDir"] . $this->jsURL[$jsID];
 		}
 		return null;
 	}
@@ -171,7 +179,7 @@ class VB_PageManager {
 		
 		$url = null;
 		$urls = array();
-		$isDBG = self::isDeBugMode() ? "true" : "false";
+		$isDBG = self::isDBG() ? "true" : "false";
 		
 		if (is_string($jsID)) {
 			
@@ -190,10 +198,19 @@ class VB_PageManager {
 			}
 		}
 		
+		foreach ($this->jsURL["requires"] as $id) {
+			echo '<script type="text/javascript" src="' . $this->getURL2JS($id) . '"></script>';
+		}
+		
 		if (count($urls) > 0) {
 			echo '<script type="text/javascript"> var VIBOX_ROOT = "' . $this->domain . '", VIBOX_DBG = ' . $isDBG . ';</script>';
 			foreach ($urls as $url) {
-				echo '<script type="text/javascript" src="' . $url . '"></script>';
+				
+				if (self::isDBG()) {
+					echo '<script type="text/jsx" src="' . $url . 'x"></script>';
+				} else {			
+					echo '<script type="text/javascript" src="' . $url . '"></script>';
+				}
 			}
 		}
 	}

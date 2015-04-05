@@ -322,7 +322,6 @@ var ViBox = (function () {
 				_modules[moduleID] = new _cls_ModuleMaker(moduleID, domMaker, domEnhancer);
 			}
 		},
-		
 		/*	Arg:
 				<STR> moduleID = the identifier of the module to new
 				> data = Refer to ViBox::inf_DomMaker & ViBox::inf_DomEnhancer
@@ -330,7 +329,7 @@ var ViBox = (function () {
 				@ OK: <ELM> the web module
 				@ NG: false
 		*/
-		newModule : function (moduleID, data) {	
+		newModule : function (moduleID, data) {
 			if (   this.isStr(moduleID)
 				&& _modules[moduleID] instanceof _cls_ModuleMaker
 			) {
@@ -345,6 +344,44 @@ var ViBox = (function () {
 				return this.isHTMLElem(module) ? module : null;
 			}
 			return null;
+		},
+		
+		exp_isReactClass : function (target) {
+			return ViBox.isFunc(target) && ViBox.isObj(target.prototype) && ViBox.isFunc(target.prototype.getDOMNode);
+		},
+		exp_addModule : function (moduleID, domMaker, domEnhancer) {		
+			if (   moduleID
+				&& this.isStr(moduleID)
+			    && (this.isFunc(domMaker) || this.exp_isReactClass(domMaker))
+			) {
+				_modules[moduleID] = new _cls_ModuleMaker(moduleID, domMaker, domEnhancer);
+			}		
+		},
+		exp_newModule : function (moduleID, data) {
+			
+			var module = null;
+			
+			if (   this.isStr(moduleID)
+				&& _modules[moduleID] instanceof _cls_ModuleMaker
+			) {
+				
+				if (this.exp_isReactClass(_modules[moduleID].domMaker)) {
+				
+					module = React.renderToStaticMarkup(React.createElement(_modules[moduleID].domMaker, { _render : data }));	
+					
+				} else {
+				
+					module = _modules[moduleID].domMaker(data);
+				}
+				
+				module = this.isStr(module) ? _html2dom(module) : this.isHTMLElem(module) ? module : null;
+				
+				if (module && _modules[moduleID].domEnhancer) {
+					module = _modules[moduleID].domEnhancer(module, data);
+				}				
+			}
+			
+			return this.isHTMLElem(module) ? module : null;
 		}
 	};
 }());

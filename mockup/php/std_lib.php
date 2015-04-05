@@ -44,7 +44,7 @@ class VB_PageManager {
 		$this->cssURL[self::CSS_WEB_STD] = $this->domain . $this->cssURL["rootDir"] . "/web_std.css";
 		$this->cssURL[self::CSS_MOBILE_STD] = $this->domain . $this->cssURL["rootDir"] . "/mobile_std.css";
 		
-		$this->jsURL[self::JS_STD] = "/std.js";
+		$this->jsURL[self::JS_STD] = array();"/std.js";
 		$this->jsURL[self::JS_WEB_STD] = "/web_std.js";
 		$this->jsURL[self::JS_MOBILE_STD] = "/mobile_std.js";		
 		
@@ -53,8 +53,8 @@ class VB_PageManager {
 		}
 	}
 	
-	protected $fileRoot = "";
 	protected $domain = "";
+	protected $fileRoot = "";
 	protected $webModulePath = array(
 		"rootDir" => "/webapp/webmodule" // This is only the root dir of web modules, not of all the files.
 	);
@@ -67,9 +67,8 @@ class VB_PageManager {
 	protected $jsURL = array(
 		"rootDir" => "/js/build", // This is only the root dir of js resources, not of all the files.
 		
-		"requires" => array( // The required js libs
-			"react.min.js", "mustache.js"
-		)
+		"requires" => array() // The required js libs
+			//"react.min.js", "mustache.js"
 	);
 	
 	const WEB_MODULE_HEADER = "WEB_MODULE_HEADER";
@@ -190,7 +189,8 @@ class VB_PageManager {
 			
 		} else if (is_array($jsID)) {
 			
-			foreach ($jsID as $id) {				
+			foreach ($jsID as $id) {
+			
 				$url = $this->getURL2JS($id);
 				if ($url) {
 					$urls[] = $url;
@@ -204,13 +204,8 @@ class VB_PageManager {
 		
 		if (count($urls) > 0) {
 			echo '<script type="text/javascript"> var VIBOX_ROOT = "' . $this->domain . '", VIBOX_DBG = ' . $isDBG . ';</script>';
-			foreach ($urls as $url) {
-				
-				if (self::isDBG()) {
-					echo '<script type="text/jsx" src="' . $url . 'x"></script>';
-				} else {			
-					echo '<script type="text/javascript" src="' . $url . '"></script>';
-				}
+			foreach ($urls as $url) {				
+				echo '<script type="text/javascript" src="' . $url . '"></script>';				
 			}
 		}
 	}

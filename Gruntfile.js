@@ -1,15 +1,34 @@
 module.exports = function(grunt) {
-
+	
+	var env = {}; {
+	
+		env.dir = {			
+			fileRoot : "./mockup",
+			localhost : "C:\\AppServ\\www\\VideoDemo",
+		
+			jsSrc : "./mockup/js/src",
+			jsBuild : "./mockup/js/build",
+			jsTmpBuild : "./mockup/js/tmpbuild"
+		};
+		
+		env.file = {
+			
+			jsSrc : {			
+				mustache : env.dir.jsSrc + "/mustache.js",			
+				react : env.dir.jsSrc + "/react.min.js",			
+				JSXTransformer : env.dir.jsSrc + "/JSXTransformer.js"			
+			},
+			
+			jsBuild : {
+				externaLib : env.dir.jsBuild + "/externaLib.js"
+			}
+		};	
+	};
+	
 	// Project configuration.
 	grunt.initConfig({
 
 		pkg: grunt.file.readJSON('package.json'),
-		
-		dir : {			
-			jsSrc : "./mockup/js/src",
-			jsBuild : "./mockup/js/build",
-			jsTmpBuild : "./mockup/js/tmpbuild"
-		},
 		
 		concat : {
 		
@@ -17,23 +36,41 @@ module.exports = function(grunt) {
 				separator : ";"
 			},
 			
-			static_mappings : {
+			for_local_test : {
+				
+				files : [
+					{ dest : env.file.jsBuild.externaLib, src : [ env.file.jsSrc.mustache, env.file.jsSrc.reacr, env.file.jsSrc.JSXTransformer ] }
+					
+					
+				]
+			},
+			
+			for_online : {
 				
 				files : [					
-					{ dest : "<%= dir.jsBuild %>/std.jsx", src : [ "<%= dir.jsSrc %>/std.js", "<%= dir.jsSrc %>/std_webModule.jsx" ] },
-					{ dest : "<%= dir.jsBuild %>/web_std.jsx", src : [ "<%= dir.jsSrc %>/web_std.js" ] },
-					{ dest : "<%= dir.jsBuild %>/mobile_std.jsx", src : [ "<%= dir.jsSrc %>/mobile_std.js" ] }					
+					{ dest : "<%= dir.jsBuild %>/std.js", src : [ "<%= dir.jsSrc %>/std.js", "<%= dir.jsTmpBuild %>/std_webModule.js" ] },
+					{ dest : "<%= dir.jsBuild %>/web_std.js", src : [ "<%= dir.jsSrc %>/web_std.js" ] },
+					{ dest : "<%= dir.jsBuild %>/mobile_std.js", src : [ "<%= dir.jsSrc %>/mobile_std.js" ] }					
 				]
 			}
 		},
 		
 		shell: {
-			'build-jsx': {
+		
+			copy_to_localhost : {
+				
+				command : "xcopy /E <%= dir.fileRoot %> <%= dir.localhost %>",
+				
+				stdout: true,
+				
+				failOnError: true
+				
+			},
+		
+			build_jsx: {
 			
 				command: [
-					//'mkdir <%= dir.jsTmpBuild %>',
-					'jsx -x jsx <%= dir.jsBuild %> <%= dir.jsBuild %>',
-					'rm -rf <%= dir.jsBuild %>/.module-cache/'
+					'jsx -x jsx <%= dir.jsSrc %> <%= dir.jsBuild %>'				
 				].join(' && '),
 				
 				stdout: true,
@@ -41,10 +78,10 @@ module.exports = function(grunt) {
 				failOnError: true
 			},
 			
-			"clean-up" : {
+			clean_up : {
 			
 				command: [				
-					'rm -rf <%= dir.jsBuild %>/*.jsx'
+					'rm -rf <%= dir.jsBuild %>/.module-cache/'
 				].join(' && '),
 				
 				stdout: true,
@@ -58,8 +95,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 
-	// Default task(s).
-	grunt.registerTask('test', ["concat"]);
-	grunt.registerTask('default', ["concat", "clean-up"]);
+	// Tasks
+	
+	var defaultasks = [ "shell:build_jsx", "shell:clean_up" ];
+	
+	grunt.registerTask('local_test', defaultasks.concat("shell:copy_to_localhost"));
+	grunt.registerTask('default', defaultasks);
 
 };

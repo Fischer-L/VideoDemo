@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 			for_local_test : {
 				
 				files : [
-					{ dest : env.file.jsBuild.externaLib, src : [ env.file.jsSrc.mustache, env.file.jsSrc.reacr, env.file.jsSrc.JSXTransformer ] }
+					{ dest : env.file.jsBuild.externaLib, src : [ env.file.jsSrc.mustache, env.file.jsSrc.react, env.file.jsSrc.JSXTransformer ] }
 					
 					
 				]

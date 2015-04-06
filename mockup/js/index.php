@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title></title>
 	<script>
-		location.replace(location.host);
+		location.replace("//" + location.host);
 	</script>
 </head>
 

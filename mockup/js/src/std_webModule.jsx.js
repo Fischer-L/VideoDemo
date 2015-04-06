@@ -111,25 +111,25 @@
 						classNames : [ "signupProcess-start" ],
 						
 						boardShelfContents : [						
-							(
-								<h3>E-Mail</h3>
-								<input name="signupProcess-actionForm-email" className="signupProcess-actionForm-email signupProcess-actionForm-longInput">
-							),						
-							(
-								<h3>Passord</h3>
-								<input name="signupProcess-actionForm-pw" className="signupProcess-actionForm-pw signupProcess-actionForm-longInput">
-							),
-							(
-								<h3>Confirm passord</h3>
-								<input name="signupProcess-actionForm-repw" className="signupProcess-actionForm-repw signupProcess-actionForm-longInput">						
-							),
-							(
+							[
+								<h3>E-Mail</h3>,
+								<input name="signupProcess-actionForm-email" className="signupProcess-actionForm-email signupProcess-actionForm-longInput" />
+							],						
+							[
+								<h3>Passord</h3>,
+								<input name="signupProcess-actionForm-pw" className="signupProcess-actionForm-pw signupProcess-actionForm-longInput" />
+							],
+							[
+								<h3>Confirm passord</h3>,
+								<input name="signupProcess-actionForm-repw" className="signupProcess-actionForm-repw signupProcess-actionForm-longInput" />						
+							],
+							[
 								<span>Sign up to watch drama for free for 3 days !</span>
-							),
-							(						
-								<button className="closeBtn btn-sty-2 sty-cursor-pter" type="button">Close</button>
+							],
+							[						
+								<button className="closeBtn btn-sty-2 sty-cursor-pter" type="button">Close</button>,
 								<button className="nextBtn btn-sty-1 sty-cursor-pter" type="button">Next</button>
-							)
+							]
 						]
 					},
 					
@@ -138,34 +138,34 @@
 						classNames : [ "signupProcess-final" ],
 						
 						boardShelfContents : [
-							(
-								<h3>Name</h3>
-								<input name="signupProcess-actionForm-name" className="signupProcess-actionForm-email signupProcess-actionForm-longInput">
-							),
-							(
-								<h3>Gender</h3>
+							[
+								<h3>Name</h3>,
+								<input name="signupProcess-actionForm-name" className="signupProcess-actionForm-email signupProcess-actionForm-longInput" />
+							],
+							[
+								<h3>Gender</h3>,
 								<label>
-									<input name="signupProcess-actionForm-gender" className="signupProcess-actionForm-gender" type="radio" value="female" checked>Female
-								</label>
+									<input name="signupProcess-actionForm-gender" className="signupProcess-actionForm-gender" type="radio" value="female" checked />Female
+								</label>,
 								<label>
-									<input name="signupProcess-actionForm-gender" className="signupProcess-actionForm-gender" type="radio" value="male">Male
+									<input name="signupProcess-actionForm-gender" className="signupProcess-actionForm-gender" type="radio" value="male" />Male
 								</label>
-							),
-							(
-								<h3>Birthday</h3>
-								<input name="signupProcess-actionForm-yy" className="signupProcess-actionForm-yy signupProcess-actionForm-shortInput" placeholder="yyyy" maxlength="4">
-								<span className="actionForm-boardShelf-spacer lyt-inlineBlock"></span>
-								<input name="signupProcess-actionForm-mm" className="signupProcess-actionForm-mm signupProcess-actionForm-shortInput" placeholder="mm" maxlength="2">
-								<span className="actionForm-boardShelf-spacer lyt-inlineBlock"></span>
-								<input name="signupProcess-actionForm-dd" className="signupProcess-actionForm-dd signupProcess-actionForm-shortInput" placeholder="dd" maxlength="2">
-							),
-							(
+							],
+							[
+								<h3>Birthday</h3>,
+								<input name="signupProcess-actionForm-yy" className="signupProcess-actionForm-yy signupProcess-actionForm-shortInput" placeholder="yyyy" maxlength="4" />,
+								<span className="actionForm-boardShelf-spacer lyt-inlineBlock"></span>,
+								<input name="signupProcess-actionForm-mm" className="signupProcess-actionForm-mm signupProcess-actionForm-shortInput" placeholder="mm" maxlength="2" />,
+								<span className="actionForm-boardShelf-spacer lyt-inlineBlock"></span>,
+								<input name="signupProcess-actionForm-dd" className="signupProcess-actionForm-dd signupProcess-actionForm-shortInput" placeholder="dd" maxlength="2" />
+							],
+							[
 								<span>Go watching your favorite drama !</span>
-							),
-							(
-								<button className="closeBtn btn-sty-2 sty-cursor-pter" type="button">Colse</button>
+							],
+							[
+								<button className="closeBtn btn-sty-2 sty-cursor-pter" type="button">Colse</button>,
 								<button className="submitBtn btn-sty-1 sty-cursor-pter" type="button">Watch drama</button>
-							)
+							]
 						]
 					};			
 				
@@ -183,7 +183,7 @@
 				[ React props ]
 				<OBJ> _render = the obj holding params for rendering:
 					> classNames = Refer to the local renderHelpClassNames function
-					<ARR<ReactElement>> boardShelfContents = the array of React elements which is being used as content inside shelf.
+					<ARR < ARR < ReactElemen > > > boardShelfContents = the array of React elements array which is being used as content inside shelfs.
 		*/
 		SignupProcess.ActionForm.Board = React.createClass({
 			
@@ -193,21 +193,27 @@
 				
 				if (Vibox.isArr(this.props._render.boardShelfContents)) {
 					
-					var i,
+					var i, j,
 						relem,
-						relems = this.props._render.boardShelfContents;
+						relems,
+						contents = this.props._render.boardShelfContents;
 					
 					boardShelfs = [];
 					
-					for (i = 0; i < relems.length ; i++) {
+					for (i = 0; i < contents.length ; i++) {
 						
-						relem = relems[i];
+						relems = contents[i];
 						
-						if (React.isValidElement(relem)) {
+						for (j = relems.length - 1; j >= 0; j--) {
+							
+							if (!React.isValidElement(relems[j])) relems.pop();
+						}
 						
-							boardShelfs.push((
-								<div class="signupProcess-actionForm-boardShelf">{relem}</div>
-							));
+						if (relems.length > 0) {
+						
+							boardShelfs.push(
+								<div class="signupProcess-actionForm-boardShelf">{relems}</div>
+							);
 						}
 					}
 					
@@ -281,12 +287,14 @@
 		
 		render : function () {
 	
-			var btns = (<a href={ ViBox.RESRC.url.web_mainPage }>
-							<button className="btn-sty-0">Web App</button>
-						</a>
-						<a href={ ViBox.RESRC.url.mobile_startPage }>
-							<button className="btn-sty-1">Mobile App</button>
-						</a>);
+			var btns = [
+							<a href={ ViBox.RESRC.url.web_mainPage }>
+								<button className="btn-sty-0">Web App</button>
+							</a>,
+							<a href={ ViBox.RESRC.url.mobile_startPage }>
+								<button className="btn-sty-1">Mobile App</button>
+							</a>
+					   ];
 			
 			if (ViBox.getIEVersion() <= 8) {
 			
@@ -294,18 +302,20 @@
 					blueBG = ' background-color: #3aaff2;',
 					greenBG = ' background-color: #7ee55c;';
 			
-				btns = (<a
-							href={ ViBox.RESRC.url.web_mainPage }
-							style={ style + blueBG }
-						>
-							Web App
-						</a>
-						<a
-							href={ ViBox.RESRC.url.mobile_startPage }
-							style={ style + greenBG }
-						>
-							Mobile App
-						</a>);
+				btns = [
+							<a
+								href={ ViBox.RESRC.url.web_mainPage }
+								style={ style + blueBG }
+							>
+								Web App
+							</a>,
+							<a
+								href={ ViBox.RESRC.url.mobile_startPage }
+								style={ style + greenBG }
+							>
+								Mobile App
+							</a>
+					   ];
 			}			
 			
 			return (

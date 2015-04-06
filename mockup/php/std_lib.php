@@ -44,12 +44,17 @@ class VB_PageManager {
 		$this->cssURL[self::CSS_WEB_STD] = $this->domain . $this->cssURL["rootDir"] . "/web_std.css";
 		$this->cssURL[self::CSS_MOBILE_STD] = $this->domain . $this->cssURL["rootDir"] . "/mobile_std.css";
 		
-		$this->jsURL[self::JS_STD] = array();"/std.js";
-		$this->jsURL[self::JS_WEB_STD] = "/web_std.js";
-		$this->jsURL[self::JS_MOBILE_STD] = "/mobile_std.js";		
+		$this->jsURL[self::JS_STD] = array("/std.js");		
+		if (self::isDBG()) {
+			$this->jsURL[self::JS_STD][] = "/std_webModule.jsx.js";
+		}		
 		
-		foreach ($this->jsURL["requires"] as $id) {
-			$this->jsURL[$id] = "/" . $id;
+		$this->jsURL[self::JS_WEB_STD] = array("/web_std.js");
+		if (self::isDBG()) {
+		}
+		
+		$this->jsURL[self::JS_MOBILE_STD] = "/mobile_std.js";	
+		if (self::isDBG()) {
 		}
 	}
 	
@@ -67,8 +72,9 @@ class VB_PageManager {
 	protected $jsURL = array(
 		"rootDir" => "/js/build", // This is only the root dir of js resources, not of all the files.
 		
-		"requires" => array() // The required js libs
-			//"react.min.js", "mustache.js"
+		// The required js libs
+		// react.min.js, mustache.js, JSXTransformer.js (for local test)
+		"requireJS" => array("/externaLib.js")
 	);
 	
 	const WEB_MODULE_HEADER = "WEB_MODULE_HEADER";
@@ -160,14 +166,20 @@ class VB_PageManager {
 	/*	Arg:
 			<STR> $jsID = the js resource identifier, refer to this::JS_* for the available resources
 		Return:
-			@ OK: <STR> the url to the specified js resource
+			@ OK: <ARR> the urls to the specified js resources in one array
 			@ NG: null
 	*/
 	function getURL2JS($jsID) {
-		if (   !empty($this->jsURL[$jsID])
-			&& is_string($this->jsURL[$jsID])
-		) {
-			return $this->domain . $this->jsURL["rootDir"] . $this->jsURL[$jsID];
+		
+		if (!empty($this->jsURL[$jsID])) {
+			
+			$urls = array();
+			
+			foreach ($this->jsURL[$jsID] as $file) {		
+				$urls[] = $this->domain . $this->jsURL["rootDir"] . $file;			
+			}
+			
+			return $urls;
 		}
 		return null;
 	}
@@ -175,39 +187,44 @@ class VB_PageManager {
 			<STR|ARR> $jsID = the resource identifier of the JS to include. If multiple, please put in one array. Refer to this::getURL2JS for the available JS resources;
 	*/
 	function includeJS($jsID) {
-		
-		$url = null;
-		$urls = array();
-		$isDBG = self::isDBG() ? "true" : "false";
-		
+				
 		if (is_string($jsID)) {
-			
-			$url = $this->getURL2JS($jsID);
-			if ($url) {
-				$urls[] = $url;
-			}
-			
-		} else if (is_array($jsID)) {
-			
+			$jsID = array($jsID);
+		}
+		
+		if (is_array($jsID)) {
+		
+			array_unshift($jsID, "requireJS");
+		
+			echo '<script> var VIBOX_ROOT = "' . $this->domain . '", VIBOX_DBG = ' . (self::isDBG() ? "true" : "false") . ';</script>';
+						
 			foreach ($jsID as $id) {
-			
-				$url = $this->getURL2JS($id);
-				if ($url) {
-					$urls[] = $url;
+				
+				$urls = $this->getURL2JS($id);
+				
+				if ($urls) {
+				
+					foreach ($urls as $url) {
+						
+						if ($this->isFileTypeJSX($url)) {
+							echo '<script type="text/jsx" src="' . $url . '"></script>';	
+						} else {
+							echo '<script src="' . $url . '"></script>';		
+						}
+					}
 				}
 			}
 		}
+	}
+	/*
+	*/
+	function isFileTypeJSX($filename) {
+	
+		$tokens = explode('.', $filename);
 		
-		foreach ($this->jsURL["requires"] as $id) {
-			echo '<script type="text/javascript" src="' . $this->getURL2JS($id) . '"></script>';
-		}
+		$num = count($tokens);
 		
-		if (count($urls) > 0) {
-			echo '<script type="text/javascript"> var VIBOX_ROOT = "' . $this->domain . '", VIBOX_DBG = ' . $isDBG . ';</script>';
-			foreach ($urls as $url) {				
-				echo '<script type="text/javascript" src="' . $url . '"></script>';				
-			}
-		}
+		return ($num >= 2 && $tokens[$num - 2] === "jsx" && $tokens[$num - 1] === "js");
 	}
 }
 

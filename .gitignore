@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-docs/
-=======
+node_modules/
 docs/gitignore_doc/
->>>>>>> gh-pages
+mockup/js/build/

@@ -50,7 +50,7 @@ if (!String.prototype.trim) {String.prototype.trim = function () {return this.re
 */
 var ViBox = (function () {
 				
-		var _domain = VIBOX_ROOT || 'http://fischerliu.net63.net/viboxdemo';
+		var _domain = VIBOX_ROOT || location.host;
 		
 		/*	Properties:
 				[ Public ]

@@ -90,7 +90,7 @@ var ViBox = (function () {
 	return {
 		RESRC : {
 			url : {		
-				jpDramaPoster  : _domain + "/img/hanzawa_L.jpg",
+				jpDramaPoster  : _domain + "/img/hz_L.jpg",
 				korDramaPoster : _domain + "/img/you_from_star_L.jpg",
 				twDramaPoster  : _domain + "/img/love_myself_L.jpg",
 				cnDramaPoster  : _domain + "/img/lianlinking_L.jpg",

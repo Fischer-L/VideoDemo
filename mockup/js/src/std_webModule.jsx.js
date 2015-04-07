@@ -284,6 +284,16 @@ if (ViBox.isDBG()) window.__sp = elem;
 	}
 
 	// TODO: Player class
+	var Player  = React.createClass({
+		
+		render : function () {
+		
+		}
+	}); {
+	
+		
+		
+	}
 	
 	var BulletinBorad = React.createClass({
 		

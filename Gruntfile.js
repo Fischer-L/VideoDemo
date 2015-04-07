@@ -9,16 +9,20 @@ module.exports = function(grunt) {
 		return theString;
 	};
 	
+	String.prototype.toWin = function () { // Maybe shall only work on Linux...
+		return this.replace(new RegExp("/", "gm"), "\\");
+	};
+	
 	var env = {}; {
 		
-		env.jsBuildMiddleExt = ".js.jsx";
+		env.jsBuildMiddleExt = ".jsx";
 		
 		env.dir = {}; {		
-			env.dir.fileRoot = ".\\mockup",
-			env.dir.localhost = "C:\\AppServ\\www\\VideoDemo",
+			env.dir.fileRoot = "./mockup",
+			env.dir.localhost = "C:/AppServ/www/VideoDemo",
 		
-			env.dir.jsSrc = env.dir.fileRoot + "\\js\\src",
-			env.dir.jsBuild = env.dir.fileRoot + "\\js\\build"
+			env.dir.jsSrc = env.dir.fileRoot + "/js/src",
+			env.dir.jsBuild = env.dir.fileRoot + "/js/build"
 		};
 		
 		env.file = {
@@ -65,7 +69,7 @@ module.exports = function(grunt) {
 				]
 			},
 			
-			for_online : {
+			for_jsBuildMiddle : {
 				
 				files : [
 					{ dest : env.file.jsBuild.externaLib, src : [ env.file.jsSrc.mustache, env.file.jsSrc.react ] },
@@ -77,13 +81,23 @@ module.exports = function(grunt) {
 		},
 		
 		shell: {
-		
-			copy_for_local_test : {
+			
+			copy_js_for_local_test : {
 			
 				command: [
-					formaStr("xcopy /E {0} {1}", env.dir.jsSrc, env.dir.jsBuild),
+					formaStr("xcopy /E {0} {1}", env.dir.jsSrc.toWin(), env.dir.jsBuild.toWin())
+				].join(' && '),
+				
+				stdout: true,
+				
+				failOnError: true				
+			},
+			
+			copy_to_localhost : {
+			
+				command: [
 					formaStr('rm -rf {0}/*', env.dir.localhost),
-					formaStr("xcopy /E {0} {1}", env.dir.fileRoot, env.dir.localhost)			
+					formaStr("xcopy /E {0} {1}", env.dir.fileRoot.toWin(), env.dir.localhost.toWin())
 				].join(' && '),
 				
 				stdout: true,
@@ -129,10 +143,13 @@ module.exports = function(grunt) {
 
 	// Load the plugins
 	grunt.loadNpmTasks('grunt-shell');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 
-	// Tasks
-	grunt.registerTask('local_test', [ "shell:set_up", "concat:for_local_test", "shell:copy_for_local_test" ] );
-	grunt.registerTask('default', [ "shell:set_up", "concat:for_online", "shell:build_jsx", "shell:clean_up" ]);
 
+	
+	// Tasks
+	grunt.registerTask('local_test', [ "shell:set_up", "concat:for_local_test", "shell:copy_js_for_local_test", "shell:copy_to_localhost" ] );
+	grunt.registerTask('local_test_compile', [ "shell:set_up", "concat:for_jsBuildMiddle", "shell:build_jsx", "shell:clean_up", "shell:copy_to_localhost" ] );
+	grunt.registerTask('default', [ "shell:set_up", "concat:for_jsBuildMiddle", "shell:build_jsx", "shell:clean_up" ]);
 };

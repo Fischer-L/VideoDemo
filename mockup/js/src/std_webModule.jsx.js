@@ -56,7 +56,7 @@
 						
 						startBoad = {						
 							title : "Add account",						
-							classNames : [ "signupProcess-in" ]
+							classNames : [ "signupProcess-start", "signupProcess-in" ]
 						};
 						
 				return (
@@ -89,13 +89,13 @@
 										</div>
 								  ),							  
 					
-					arw = (this.props._render.noArw === true) ? null : (<div class="signupProcess-processBoard-arw"></div>),
+					arw = (this.props._render.noArw === true) ? null : (<div className="signupProcess-processBoard-arw"></div>),
 					
 					title = ViBox.isStr(this.props._render.title) ? this.props._render.title : null;
 				return (
 					<div className={ "signupProcess-processBoard-board" + renderHelpClassNames(this.props._render) }>
 						{boardShadow}
-						<div class="signupProcess-processBoard-title">{title}</div>
+						<div className="signupProcess-processBoard-title">{title}</div>
 						{arw}					
 					</div>
 				);
@@ -169,7 +169,7 @@
 						]
 					};			
 				
-				retunr (
+				return (
 					<form name="signupProcess-actionForm" className="signupProcess-actionForm lyt-pos-rel">
 						<SignupProcess.ActionForm.Board _render={startBoard} />
 						<SignupProcess.ActionForm.Board _render={finalBoard} />
@@ -191,7 +191,7 @@
 			
 				var boardShelfs = null;
 				
-				if (Vibox.isArr(this.props._render.boardShelfContents)) {
+				if (ViBox.isArr(this.props._render.boardShelfContents)) {
 					
 					var i, j,
 						relem,
@@ -212,7 +212,7 @@
 						if (relems.length > 0) {
 						
 							boardShelfs.push(
-								<div class="signupProcess-actionForm-boardShelf">{relems}</div>
+								<div className="signupProcess-actionForm-boardShelf">{relems}</div>
 							);
 						}
 					}
@@ -243,7 +243,9 @@
 				> goBack : Go back to the previous process
 		*/
 		SignupProcess.domEnhancer = function (elem) {
-		
+
+if (ViBox.isDBG()) window.__sp = elem;
+
 			var _className = {
 					"nextProc" : "nextProc",
 					"signupProcess-in" : "signupProcess-in"

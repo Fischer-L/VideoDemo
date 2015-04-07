@@ -53,7 +53,7 @@ class VB_PageManager {
 		if (self::isDBG()) {
 		}
 		
-		$this->jsURL[self::JS_MOBILE_STD] = "/mobile_std.js";	
+		$this->jsURL[self::JS_MOBILE_STD] = array("/mobile_std.js");	
 		if (self::isDBG()) {
 		}
 	}
@@ -174,8 +174,7 @@ class VB_PageManager {
 		if (!empty($this->jsURL[$jsID])) {
 			
 			$urls = array();
-			
-			foreach ($this->jsURL[$jsID] as $file) {		
+			foreach ($this->jsURL[$jsID] as $file) {
 				$urls[] = $this->domain . $this->jsURL["rootDir"] . $file;			
 			}
 			

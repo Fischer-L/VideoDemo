@@ -332,8 +332,7 @@ a:hover {
 						</div>
 					)
 				</div
-				
-				><div class="player-ctrlPanel-resizeBtn"></div>
+				>(<div class="player-ctrlPanel-resizeBtn"></div>) // For web
 				
 				<div class="clear"></div>
 			</div>

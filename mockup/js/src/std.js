@@ -531,7 +531,7 @@ ViBox.addModule("To Delete signupProcess",
 	}
 );
 
-ViBox.addModule("player",
+ViBox.addModule("To Delete player",
 	/*	Arg:
 			<OBJ> data = {
 				<ELM> player : the player DOM element

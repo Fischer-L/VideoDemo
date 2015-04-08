@@ -38,7 +38,9 @@ module.exports = function(grunt) {
 			},
 			
 			jsxSrc : {
-				std_webModule : env.dir.jsSrc + "/std_webModule.jsx.js"
+				std_webModule : env.dir.jsSrc + "/std_webModule.jsx.js",
+				web_std_webModule : env.dir.jsSrc + "/web_std_webModule.jsx.js",
+				mobile_std_webModule : env.dir.jsSrc + "/mobile_std_webModule.jsx.js"
 			},
 			
 			jsBuildMiddle : {
@@ -74,8 +76,8 @@ module.exports = function(grunt) {
 				files : [
 					{ dest : env.file.jsBuild.externaLib, src : [ env.file.jsSrc.mustache, env.file.jsSrc.react ] },
 					{ dest : env.file.jsBuildMiddle.std, src : [ env.file.jsSrc.std, env.file.jsxSrc.std_webModule ] },
-					{ dest : env.file.jsBuildMiddle.web_std, src : [ env.file.jsSrc.web_std ] },
-					{ dest : env.file.jsBuildMiddle.mobile_std, src : [ env.file.jsSrc.mobile_std ] }					
+					{ dest : env.file.jsBuildMiddle.web_std, src : [ env.file.jsSrc.web_std, env.file.jsxSrc.web_std_webModule ] },
+					{ dest : env.file.jsBuildMiddle.mobile_std, src : [ env.file.jsSrc.mobile_std, env.file.jsxSrc.mobile_std_webModule ] }					
 				]
 			}
 		},
@@ -145,8 +147,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-concat');
-
-
 	
 	// Tasks
 	grunt.registerTask('local_test', [ "shell:set_up", "concat:for_local_test", "shell:copy_js_for_local_test", "shell:copy_to_localhost" ] );

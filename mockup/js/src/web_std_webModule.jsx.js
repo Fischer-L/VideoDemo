@@ -49,7 +49,7 @@
 			
 			title = ViBox.isStr(_render.title) ? _render.title : "";
 			
-			if (_render.isArr(data.boxLayout)) {
+			if (ViBox.isArr(_render.boxLayout)) {
 		
 				var i,
 					
@@ -78,7 +78,7 @@
 					
 					if (ViBox.isObj(boxLayout[type])) {
 					
-						if (type === boxLayout.halfBox) {
+						if (type === boxLayout.halfBox.type) {
 							
 							boxs.push(<div className="contentBox-halfBox"></div>);
 							
@@ -99,7 +99,7 @@
 			}
 			
 			return (
-				<div className={ "contentBox" + renderHelpClassNames(_render.boxClassName) } >					
+				<div className={ "contentBox" + renderHelpClassNames(_render.boxClassName) } >
 					<div className="contentBox-title">{title}</div>					
 					<div className="contentBox-content">{boxs}</div>
 					<div className="clear"></div>					
@@ -117,9 +117,10 @@
 				<STR> title = the title
 	*/
 	var DramaBox = React.createClass({
+	
 		render : function () {
 			
-			var _render = ViBox.isObj(this._render) ? this._render : null;
+			var _render = ViBox.isObj(this.props._render) ? this.props._render : null;
 			
 			if (!_render) return null;			
 			

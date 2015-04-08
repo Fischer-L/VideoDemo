@@ -329,15 +329,16 @@
 				buildMainContent : function () {
 					
 					var frag = document.createDocumentFragment();
-					([
+					
+					[
 						ENV_dramaTypePOP, 
 						ENV_dramaTypeJP, 
 						ENV_dramaTypeKOR, 
 						ENV_dramaTypeTW, 
 						ENV_dramaTypeCN, 
 						ENV_dramaTypeUS						
-					])
-					.forEach(function (dramaType, idx, arr) {
+					]
+					.forEach(function (dramaType, idx, arr) {					
 						frag.appendChild(uiBuilder.buildDramaContent(dramaType));
 					});
 					

@@ -287,12 +287,350 @@ if (ViBox.isDBG()) window.__sp = elem;
 	var Player  = React.createClass({
 		
 		render : function () {
-		
+			
+			var mobileNavPanel = this.props._render.isMobile ? <Player.MobileNavPanel /> : null;
+			
+			return (
+				<div className={ "player lyt-pos-rel" + this.props._render.isMobile ? " mobile" : "" }>		
+					<div className="player-ctrlPanel lyt-pos-rel sty-cursor-pter">
+						{mobileNavPanel}
+						<Player.CtrlPanel.PlayBtn />
+						<Player.CtrlPanel.Progress />
+						<Player.CtrlPanel.Volume />
+						<Player.CtrlPanel.Quality _render={this.props._render} />
+						<Player.CtrlPanel.ResizeBtn />
+						<div className="clear"></div>
+					</div>
+				</div>
+			);
 		}
 	}); {
-	
 		
+		Player.MobileNavPanel = React.createClass({
+			
+			render : function () {
+				
+				return (
+					<div className="player-mobileNavPanel lyt-pos-abs">
+						<div className="player-mobileNavPanel-backBtn"></div>
+						<div className="player-mobileNavPanel-title">Episode 10: Episode title</div>
+					</div>
+				);
+			}
+		});
+				
+		Player.CtrlPanel = {};
 		
+		Player.CtrlPanel.PlayBtn = React.createClass({
+			
+			render : function () {
+				return <div className="player-ctrlPanel-playBtn"></div>;
+			}
+		});
+		
+		Player.CtrlPanel.Progress = React.createClass({
+			
+			render : function () {
+				
+				return (
+					<div className="player-ctrlPanel-progress lyt-pos-rel">
+						<div className="player-ctrlPanel-progressBar lyt-pos-rel lyt-inlineBlock">
+							<div className="progressBar-leftPonit lyt-pos-abs"></div>
+							<div className="progressBar-rightPonit lyt-pos-abs"></div>
+						</div>
+						<div className="player-ctrlPanel-elapsedBar lyt-pos-abs">
+							<div className="elapsedBar-leftPonit lyt-pos-abs"></div>
+						</div>
+						<div className="player-ctrlPanel-progressDrag lyt-pos-abs"></div>
+						<div className="player-ctrlPanel-progressInfo lyt-inlineBlock">22:12 / 50:22</div>
+					</div>
+				);
+			}
+		});
+		
+		Player.CtrlPanel.Volume = React.createClass({
+			
+			render : function () {
+				return (
+					<div className="player-ctrlPanel-volume volume-60 lyt-pos-rel">
+						<div className="player-ctrlPanel-volumeBtn"></div>
+						<div className="player-ctrlPanel-menuWrp">
+							<ul className="player-ctrlPanel-volumeSettings player-ctrlPanel-menu">
+								<li className="volumeSettings-100"></li>
+								<li className="volumeSettings-80"></li>
+								<li className="volumeSettings-60"></li>
+								<li className="volumeSettings-40"></li>
+								<li className="volumeSettings-20"></li>
+							</ul>
+						</div>
+					</div>
+				);
+			}
+		});
+		
+		Player.CtrlPanel.Quality = React.createClass({
+			
+			render : function () {
+				
+				var btn;
+				
+				if (this.props._render.isMobile) {
+					
+					btn = <div className="player-ctrlPanel-qualityBtn">HD</div>;
+					
+				} else {
+					
+					btn = [
+						<div className="player-ctrlPanel-qualityBtn">1080P</div>,
+						
+						<div className="player-ctrlPanel-menuWrp">
+							<ul className="player-ctrlPanel-qualitySettings player-ctrlPanel-menu">
+								<li className="qualitySettings-best">1080p</li>
+								<li className="qualitySettings-high">720p</li>
+								<li className="qualitySettings-mid">480p</li>
+							</ul>
+						</div>						
+					];
+				}
+				
+				return (
+				
+					<div className={ "player-ctrlPanel-quality lyt-pos-rel"  + this.props._render.isMobile ? " HD" : "" }>
+						{btn}
+					</div>
+				);
+			}
+		});
+		
+		Player.CtrlPanel.ResizeBtn = React.createClass({
+			
+			render : function () {
+				return <div className="player-ctrlPanel-resizeBtn"></div>;
+			}
+		});
+						
+		/*	Properties:
+				[ Private ]
+				<DAT> _openTime = the time at which the control panel opens
+				<NUM> _maxOpenDuration = the max duration for opening the control panel used for count down
+				<OBJ> _className = the table of the CSS class name
+				<OBJ> _qualities = the video quality table: mid, high, best
+				<ARR> _volumes = the volume level array
+				<ELM> _ctrlPanel, _playBtn, _volumeCtrl = the control components
+			Methods:
+				[ Private ]
+				> _closeCountDown : Close the control panel when the count down ends
+				[ Public ]
+				> isMobileMode : Check if in the mobile mode
+				> isCtrlPanelOpen : Check if the control panel is open
+				> openCtrlPanel : Open the control panel
+				> closeCtrlPanel : Close the control panel
+				> play : Play the video
+				> pause : Pause the video
+				> setVolume : Set the video volume (In the mobile mode we ignore this function so useless)
+				> isMute : Check if mute (In the mobile mode we ignore this function so useless)
+				> setQuality : Set the video quality
+		*/
+		Player.domEnahncer = function (player) {
+		
+			var _openTime,
+				_maxOpenDuration = 2000,
+				_className = {
+					pause : "pause",
+					playBtn : "player-ctrlPanel-playBtn",
+					playerPresent : "present",
+					menuPresent : "present",
+					volumePrefix : "volume-",
+					volumeBtn : "player-ctrlPanel-volumeBtn",
+					qualityBtn : "player-ctrlPanel-qualityBtn",
+					qualityBest : "qualitySettings-best",
+					qualityHigh : "qualitySettings-high",
+					qualityMid : "qualitySettings-mid",
+					mobileMode : "mobile",
+					mobile_qualityHD : "HD",
+					mobile_backBtn : "player-mobileNavPanel-backBtn"
+				},
+				_qualities = {
+					"mid" : 480,
+					"high" : 720,
+					"best" : 1080
+				},
+				_volumes = [ 0, 20, 40, 60, 80, 100 ];
+			
+			
+			var _ctrlPanel = player.querySelector(".player-ctrlPanel"),
+				_playBtn = player.querySelector(".player-ctrlPanel-playBtn"),
+				_volumeCtrl = player.querySelector(".player-ctrlPanel-volume");
+			
+			/*
+			*/
+			function _closeCountDown() {
+				if (ViBox.isDate(_openTime)) {
+					if ((new Date()).getTime() - _openTime.getTime() > _maxOpenDuration) {
+						player.closeCtrlPanel();
+					} else {
+						setTimeout(_closeCountDown, _maxOpenDuration);
+					}
+				}
+			}
+			/*	Return:
+					@ OK: true
+					@ NG: false
+			*/
+			player.isMobileMode = function () {
+				return ViBox.hasClass(this, _className.mobileMode);
+			}
+			/*	Return:
+					@ OK: true
+					@ NG: false
+			*/
+			player.isCtrlPanelOpen = function () {
+				return ViBox.hasClass(_ctrlPanel.className, _className.playerPresent);
+			}
+			/*
+			*/
+			player.openCtrlPanel = function () {			
+				if (!this.isCtrlPanelOpen()) {				
+					_openTime = new Date();
+					ViBox.addClass(_ctrlPanel, _className.playerPresent);
+					_closeCountDown();
+				}
+			}
+			/*
+			*/
+			player.closeCtrlPanel = function () {		
+				if (this.isCtrlPanelOpen()) {
+					ViBox.removeClass(_ctrlPanel, _className.playerPresent);		
+					_openTime = null;
+				}			
+			}
+			/*
+			*/
+			player.play = function () {
+				ViBox.removeClass(_playBtn, _className.pause);
+			}
+			/*
+			*/
+			player.pause = function () {
+				ViBox.addClass(_playBtn, _className.pause);		
+			}		
+			/*
+			*/
+			player.setVolume = function (volume) {
+				
+				if (this.isMobileMode()) return; // In the mobile mode we ignore this function
+				
+				var lv = volume / 20,
+					classes = [];
+				
+				_volumes.forEach(function (volume, idx, arr) {
+					classes.push(_className.volumePrefix + volume);
+				});
+				ViBox.removeClass(_volumeCtrl, classes);
+				ViBox.addClass(_volumeCtrl, _className.volumePrefix + _volumes[lv]);
+				
+				if (lv >= 1) {
+					_volumeCtrl.currentVolume = _volumes[lv];
+				}
+			}
+			/*	Return:
+					@ The mobile mode: undefined
+					@ Mute under the web mode: true 
+					@ Not mute under the web mode: false
+			*/
+			player.isMute = function () {
+				return this.isMobileMode() ? undefined : ViBox.hasClass(_volumeCtrl, _className.volumePrefix + _volumes[0]);
+			}
+			/*	Arg:
+					<STR> quality = the quality to set, refer to this::_qualities for the available qualites. Under the mobile mode, any quality exceeds the mid quality(not inlcuded) would set to the HD quality
+			*/
+			player.setQuality = function (quality) {			
+				var qualityBtn = this.querySelector("." + _className.qualityBtn);
+				
+				if (this.isMobileMode()) {
+					
+					if (quality != "mid") {
+						ViBox.addClass(qualityBtn.parentNode, _className.mobile_qualityHD);
+					} else {
+						ViBox.removeClass(qualityBtn.parentNode, _className.mobile_qualityHD);
+					}
+					
+				} else {
+					qualityBtn.innerHTML = _qualities[quality] + "p";
+				}
+			}
+			
+			_ctrlPanel.onclick = function (e) {
+				e = ViBox.normalizeEvent(e);
+				
+				_openTime = new Date(); // Reset the time of opening while clicking on the control panel
+				
+				if (ViBox.hasClass(e.target, _className.playBtn)) {
+					
+					if (ViBox.hasClass(e.target, _className.pause)) {
+						player.play();				
+					} else {
+						player.pause();
+					}				
+				}
+				
+				if (player.isMobileMode()) {
+					
+					if (ViBox.hasClass(e.target, _className.qualityBtn)) {
+					
+						if (ViBox.hasClass(this.querySelector(".player-ctrlPanel-quality"), _className.mobile_qualityHD)) {
+							player.setQuality("mid");
+						} else {
+							player.setQuality("high");
+						}					
+					
+					} else if (ViBox.hasClass(e.target, _className.mobile_backBtn)) {
+						
+						ViBox.taskStack.pop();
+						
+					}
+				
+				} else {
+				
+					if (ViBox.hasClass(e.target, _className.volumeBtn)) {
+					
+						if (player.isMute()) {
+							player.setVolume(_volumeCtrl.currentVolume);
+						} else {
+							player.setVolume(0);
+						}
+						
+					} else if (ViBox.hasClass(e.target, _className.qualityBest)) {
+						
+						player.setQuality("best");
+					
+					} else if (ViBox.hasClass(e.target, _className.qualityHigh)) {
+					
+						player.setQuality("high");
+					
+					} else if (ViBox.hasClass(e.target, _className.qualityMid)) {
+						
+						player.setQuality("mid");
+						
+					}			
+				}				
+			}
+			
+			if (player.isMobileMode()) {			
+				player.onclick = function (e) {
+					this.openCtrlPanel();
+				}			
+			} else {
+				
+				_volumeCtrl.currentVolume = _volumes[3];
+				
+				player.onmouseover = function (e) {
+					this.openCtrlPanel();
+				}
+			}
+			
+			return player;
+		}
 	}
 	
 	var BulletinBorad = React.createClass({
@@ -416,6 +754,7 @@ if (ViBox.isDBG()) window.__sp = elem;
 		}
 	}
 	
+	ViBox.addModule("player", Player, Player.domEnhancer);
 	ViBox.addModule("signupProcess", SignupProcess, SignupProcess.domEnhancer);
 	ViBox.addModule("bulletinBoard", BulletinBorad, BulletinBorad.domEnhancer);
 	

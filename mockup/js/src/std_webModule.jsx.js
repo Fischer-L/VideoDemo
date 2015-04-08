@@ -243,9 +243,7 @@
 				> goBack : Go back to the previous process
 		*/
 		SignupProcess.domEnhancer = function (elem) {
-
-if (ViBox.isDBG()) window.__sp = elem;
-
+		
 			var _className = {
 					"nextProc" : "nextProc",
 					"signupProcess-in" : "signupProcess-in"
@@ -283,7 +281,6 @@ if (ViBox.isDBG()) window.__sp = elem;
 		};
 	}
 
-	// TODO: Player class
 	var Player  = React.createClass({
 		
 		render : function () {
@@ -291,7 +288,7 @@ if (ViBox.isDBG()) window.__sp = elem;
 			var mobileNavPanel = this.props._render.isMobile ? <Player.MobileNavPanel /> : null;
 			
 			return (
-				<div className={ "player lyt-pos-rel" + this.props._render.isMobile ? " mobile" : "" }>		
+				<div className={ "player lyt-pos-rel" + (this.props._render.isMobile ? " mobile" : "") }>		
 					<div className="player-ctrlPanel lyt-pos-rel sty-cursor-pter">
 						{mobileNavPanel}
 						<Player.CtrlPanel.PlayBtn />
@@ -395,7 +392,7 @@ if (ViBox.isDBG()) window.__sp = elem;
 				
 				return (
 				
-					<div className={ "player-ctrlPanel-quality lyt-pos-rel"  + this.props._render.isMobile ? " HD" : "" }>
+					<div className={ "player-ctrlPanel-quality lyt-pos-rel"  + (this.props._render.isMobile ? " HD" : "") }>
 						{btn}
 					</div>
 				);
@@ -431,7 +428,7 @@ if (ViBox.isDBG()) window.__sp = elem;
 				> isMute : Check if mute (In the mobile mode we ignore this function so useless)
 				> setQuality : Set the video quality
 		*/
-		Player.domEnahncer = function (player) {
+		Player.domEnhancer = function (player) {
 		
 			var _openTime,
 				_maxOpenDuration = 2000,
@@ -456,8 +453,7 @@ if (ViBox.isDBG()) window.__sp = elem;
 					"best" : 1080
 				},
 				_volumes = [ 0, 20, 40, 60, 80, 100 ];
-			
-			
+						
 			var _ctrlPanel = player.querySelector(".player-ctrlPanel"),
 				_playBtn = player.querySelector(".player-ctrlPanel-playBtn"),
 				_volumeCtrl = player.querySelector(".player-ctrlPanel-volume");
@@ -489,7 +485,8 @@ if (ViBox.isDBG()) window.__sp = elem;
 			}
 			/*
 			*/
-			player.openCtrlPanel = function () {			
+			player.openCtrlPanel = function () {
+			
 				if (!this.isCtrlPanelOpen()) {				
 					_openTime = new Date();
 					ViBox.addClass(_ctrlPanel, _className.playerPresent);

@@ -57,7 +57,7 @@
 	</div>
 	
 	<div class="playerContainer">
-		<div class="playerContainer-player player lyt-pos-rel">
+		<!--div class="playerContainer-player player lyt-pos-rel">
 			<div class="player-ctrlPanel lyt-pos-rel sty-cursor-pter">
 				<div class="player-ctrlPanel-playBtn"></div
 				
@@ -101,7 +101,7 @@
 				
 				<div class="clear"></div>
 			</div>
-		</div>
+		</div-->
 	</div>
 	
 	<div class="contentContainer container_16">
@@ -136,7 +136,7 @@
 		 * Get the DOM element
 		 */
 		var mainContentContainer = document.querySelector(".contentContainer-mainContent"),
-			player = ViBox.newModule("player", { player : document.querySelector(".player.playerContainer-player") });			
+			player = ViBox.newModule("player", { __render : { isMobile : false } });			
 		
 		/***
 		 * Build up the web app
@@ -203,6 +203,7 @@
 					document.body.insertBefore(ViBox.newModule("bulletinBoard", { slidable : true }), document.body.firstChild);
 					mainContentContainer.appendChild(uiBuilder.buildCurrentDramaBox());
 					mainContentContainer.appendChild(uiBuilder.buildEpisodesBox());
+					document.querySelector(".playerContainer").appendChild(player);
 				}
 			};
 			pgCtrl.init();

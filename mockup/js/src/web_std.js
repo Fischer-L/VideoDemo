@@ -1,5 +1,5 @@
 ViBox.RESRC.url.webPlayerPage = "./player.php";
-ViBox.addModule("contentBox",
+ViBox.addModule("To del contentBox",
 	/*	Arg:
 			<OBJ> data = {
 				<STR> title = the box title
@@ -63,7 +63,7 @@ ViBox.addModule("contentBox",
 		return Mustache.render(tmpl, data);
 	}
 );
-ViBox.addModule("dramaBox",
+ViBox.addModule("To Del dramaBox",
 	/*	Arg:
 			<OBJ> data = {
 				<STR> size = "L" or "S"

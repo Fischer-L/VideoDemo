@@ -1,4 +1,3 @@
-
 (function (ViBox) {
 	
 	"use strict";
@@ -6,9 +5,9 @@
 	/*	Func:
 			Help constructing the string of css class selectors from the rendering param
 		Arg:
-			> src = could be
+			> src = could be 2 types:
 				<ARR<STR>> the array of css classes being applied or
-				<OBJ> the obj holding the properpty of <ARR<STR>> classNames. This classNames property is the array of css classes being applied.
+				<OBJ> the obj holding the properpty of <ARR<STR>> classNames. This classNames property is equal to the 1st type.
 		Return:
 			@ OK: A string of css class selectors which is ready to be appended
 			@ NG: ""
@@ -33,6 +32,13 @@
 		return !ViBox.isArr(clsNames) ? "" : " " + clsNames.join(" ");
 	}
 
+	/*	Properties:
+			[ React props ]
+			<OBJ> _render = the obj holding params for rendering:
+				<STR> [title] = the borad title
+				<ARR<STR>> [boxLayout] = the layout of contentBox module, couble have the "halfBox" and "quarterBox" layout. The array element order is the layout order.
+				> [boxClassName] = Refer to the local renderHelpClassNames function
+	*/
 	var ContentBox = React.createClass({
 		
 		render : function () {
@@ -101,5 +107,34 @@
 			);
 		}
 	});
+	
+	/*	Properties:
+			[ React props ]
+			<OBJ> _render = the obj holding params for rendering:		
+				<STR> size = "L" or "S"
+				<STR> dstHref = the URLto destination when clicking on drama box
+				<STR> posterSrc = the poster's URL
+				<STR> title = the title
+	*/
+	var DramaBox = React.createClass({
+		render : function () {
+			
+			var _render = ViBox.isObj(this._render) ? this._render : null;
+			
+			if (!_render) return null;			
+			
+			var sizeClass = (_render.size === "L") ? "dramaBox-size-L" : "dramaBox-size-S";
+			
+			return (			
+				<a href={_render.dstHref} className={ "dramaBox " + sizeClass }>
+					<img className="dramaBox-poster" src={_render.posterSrc} />
+					<div className="dramaBox-title">{_render.title}</div>
+				</a>
+			);
+		}
+	});
+		
+	ViBox.addModule("dramaBox", DramaBox, null);
+	ViBox.addModule("contentBox", ContentBox, null);
 	
 }(ViBox));

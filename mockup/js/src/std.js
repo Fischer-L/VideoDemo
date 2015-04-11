@@ -356,13 +356,10 @@ if (this.isDBG()) return this.exp_newModule(moduleID, data);
 			return null;
 		},
 		
-		exp_isReactClass : function (target) {
-			return ViBox.isFunc(target) && ViBox.isObj(target.prototype) && ViBox.isFunc(target.prototype.getDOMNode);
-		},
 		exp_addModule : function (moduleID, domMaker, domEnhancer) {		
 			if (   moduleID
 				&& this.isStr(moduleID)
-			    && (this.isFunc(domMaker) || this.exp_isReactClass(domMaker))
+			    && (this.isFunc(domMaker) || this.exp_reactHelp.isReactClass(domMaker))
 			) {
 				_modules[moduleID] = new _cls_ModuleMaker(moduleID, domMaker, domEnhancer);
 			}		
@@ -375,7 +372,7 @@ if (this.isDBG()) return this.exp_newModule(moduleID, data);
 				&& _modules[moduleID] instanceof _cls_ModuleMaker
 			) {
 				
-				if (this.exp_isReactClass(_modules[moduleID].domMaker)) {
+				if (this.exp_reactHelp.isReactClass(_modules[moduleID].domMaker)) {
 				
 					module = React.renderToStaticMarkup(React.createElement(_modules[moduleID].domMaker, { _render : data }));	
 					
@@ -392,6 +389,42 @@ if (this.isDBG()) return this.exp_newModule(moduleID, data);
 			}
 			
 			return this.isHTMLElem(module) ? module : null;
+		},
+		exp_reactHelp : {
+			
+			isReactClass : function (target) {
+				return ViBox.isFunc(target) && ViBox.isObj(target.prototype) && ViBox.isFunc(target.prototype.getDOMNode);
+			},
+	
+			/*	Func:
+					Help constructing the string of css class selectors from the rendering param
+				Arg:
+					> src = could be 2 types:
+						<ARR<STR>> the array of css classes being applied or
+						<OBJ> the obj holding the properpty of <ARR<STR>> classNames. This classNames property is equal to the 1st type.
+				Return:
+					@ OK: A string of css class selectors which is ready to be appended
+					@ NG: ""
+			*/
+			function renderClassNames(src) {
+				
+				var clsNames = ViBox.isObj(src) ? src.classNames : src;
+				
+				if (ViBox.isArr(clsNames)) { 
+					
+					for (var i = clsNames.length - 1; i >= 0; i--) {				
+						if (!ViBox.isStr(clsNames[i])) clsNames.pop();
+					}
+					
+					if (clsNames.length <= 0) clsNames = null;
+					
+				} else {
+					
+					clsNames = null;
+				}
+				
+				return !ViBox.isArr(clsNames) ? "" : " " + clsNames.join(" ");
+			}			
 		}
 	};
 }());

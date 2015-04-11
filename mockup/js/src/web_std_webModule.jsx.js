@@ -1,36 +1,8 @@
-(function (ViBox) {
+(function (ViBox, reactHelp) {
 	
 	"use strict";
 	
-	/*	Func:
-			Help constructing the string of css class selectors from the rendering param
-		Arg:
-			> src = could be 2 types:
-				<ARR<STR>> the array of css classes being applied or
-				<OBJ> the obj holding the properpty of <ARR<STR>> classNames. This classNames property is equal to the 1st type.
-		Return:
-			@ OK: A string of css class selectors which is ready to be appended
-			@ NG: ""
-	*/
-	function renderHelpClassNames(src) {
-		
-		var clsNames = ViBox.isObj(src) ? src.classNames : src;
-		
-		if (ViBox.isArr(clsNames)) { 
-			
-			for (var i = clsNames.length - 1; i >= 0; i--) {				
-				if (!ViBox.isStr(clsNames[i])) clsNames.pop();
-			}
-			
-			if (clsNames.length <= 0) clsNames = null;
-			
-		} else {
-			
-			clsNames = null;
-		}
-		
-		return !ViBox.isArr(clsNames) ? "" : " " + clsNames.join(" ");
-	}
+	var renderHelpClassNames = reactHelp.renderClassNames;
 
 	/*	Properties:
 			[ React props ]
@@ -138,4 +110,4 @@
 	ViBox.addModule("dramaBox", DramaBox, null);
 	ViBox.addModule("contentBox", ContentBox, null);
 	
-}(ViBox));
+}(ViBox, ViBox.reactHelp));

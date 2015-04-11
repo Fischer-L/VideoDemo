@@ -1,29 +1,8 @@
-(function (ViBox) {
+(function (ViBox, reactHelp) {
 	
 	"use strict";
 	
-	/*	Func:
-			Help constructing the string of css class selectors from the rendering param
-		Arg:
-			<OBJ> _render = the obj holding the properpty of <ARR<STR>> classNames. This classNames property is the array of css classes being applied.
-		Return:
-			@ OK: A string of css class selectors which is ready to be appended
-			@ NG: ""
-	*/
-	function renderHelpClassNames(_render) {
-		
-		var clsNames = [];
-		
-		if (ViBox.isArr(_render.classNames)) {
-			
-			for (var i = _render.classNames.length - 1; i >= 0; i--) {	
-			
-				if (ViBox.isStr(_render.classNames[i])) clsNames.push(_render.classNames[i]);				
-			}
-		}
-		
-		return (clsNames.length <= 0) ? "" : " " + clsNames.join(" ");
-	}
+	var renderHelpClassNames = reactHelp.renderClassNames;
 
 	var SignupProcess = React.createClass({
 		
@@ -755,4 +734,4 @@
 	ViBox.addModule("signupProcess", SignupProcess, SignupProcess.domEnhancer);
 	ViBox.addModule("bulletinBoard", BulletinBorad, BulletinBorad.domEnhancer);
 	
-}(ViBox));
+}(ViBox, ViBox.reactHelp));

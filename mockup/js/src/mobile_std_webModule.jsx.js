@@ -1,3 +1,4 @@
+// TODO: Add episodeList module
 (function (ViBox, React, reactHelp) {
 	
 	"use strict";
@@ -122,4 +123,4 @@
 	ViBox.addModule("contentShelf", ContentShelf, ContentShelf.domEnhancer);
 	ViBox.addModule("dramaWall", DramaWall);
 	
-}(ViBox, React, ViBox.reactHelp));
+}(ViBox, React, ViBox.exp_reactHelp));

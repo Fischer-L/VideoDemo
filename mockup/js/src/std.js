@@ -416,7 +416,7 @@ if (this.isDBG()) return this.exp_newModule(moduleID, data);
 					@ OK: A string of css class selectors which is ready to be appended
 					@ NG: ""
 			*/
-			function renderClassNames(src) {
+			renderClassNames : function (src) {
 				
 				var clsNames = ViBox.isObj(src) ? src.classNames : src;
 				

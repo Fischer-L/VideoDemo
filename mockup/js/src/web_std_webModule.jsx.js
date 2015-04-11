@@ -110,4 +110,4 @@
 	ViBox.addModule("dramaBox", DramaBox, null);
 	ViBox.addModule("contentBox", ContentBox, null);
 	
-}(ViBox, React, ViBox.reactHelp));
+}(ViBox, React, ViBox.exp_reactHelp));

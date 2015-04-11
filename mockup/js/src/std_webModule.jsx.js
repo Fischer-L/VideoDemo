@@ -734,4 +734,4 @@
 	ViBox.addModule("signupProcess", SignupProcess, SignupProcess.domEnhancer);
 	ViBox.addModule("bulletinBoard", BulletinBorad, BulletinBorad.domEnhancer);
 	
-}(ViBox, React, ViBox.reactHelp));
+}(ViBox, React, ViBox.exp_reactHelp));

@@ -147,7 +147,7 @@ ViBox.addModule("header",
 	}
 );
 
-ViBox.addModule("contentShelf",
+ViBox.addModule("To Del contentShelf",
 	/*	Arg:
 			<OBJ> data = {
 				<BOO> [unscrollable] = true means the contentShelf is unable to scroll; default is false
@@ -196,7 +196,7 @@ ViBox.addModule("contentShelf",
 	}
 );
 
-ViBox.addModule("dramaWall",
+ViBox.addModule("To Del dramaWall",
 	/*	Arg:
 			<OBJ> data = {
 				<STR> [wallTitle] = the title of this dramaWall

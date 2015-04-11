@@ -34,6 +34,7 @@ if (!String.prototype.trim) {String.prototype.trim = function () {return this.re
 		> _html2dom : Convert the HTML text into the real HTML element
 		[ public ]
 		> getIEVersion : Get the IR version
+		> simpleCopy : Make a simple copy of one obj. So-called simple copy is to copy String/Number/Bool/NULL/Undefined property only and ignore, no care of Date, Funciton or other recursive ot special state handling.
 		> isDBG : Tell if in the DBG mode
 		> isStr, isFunc, isObj, isHTMLElem, isArr, isDate : Check the corresponding data type
 		> hasClass : Find out if the specified CSS classes exist in the target element's className attribute
@@ -118,6 +119,15 @@ var ViBox = (function () {
 				}
 			}
 			return (rv === -1) ? NaN : rv;
+		},
+		/*	Arg:
+				<OBJ> src = the copy src obj
+			Return:
+				@ OK: the copy obj
+				@ NG: null
+		*/
+		simpleCopy : function (srcObj) {
+			return this.isObj(srcObj) ? JSON.parse(JSON.stringify(srcObj)) : null;
 		},
 		/*	Return:
 				@ DBG: true

@@ -1,4 +1,4 @@
-(function (ViBox, reactHelp) {
+(function (ViBox, React, reactHelp) {
 	
 	"use strict";
 		
@@ -122,4 +122,4 @@
 	ViBox.addModule("contentShelf", ContentShelf, ContentShelf.domEnhancer);
 	ViBox.addModule("dramaWall", DramaWall);
 	
-}(ViBox, ViBox.reactHelp));
+}(ViBox, React, ViBox.reactHelp));

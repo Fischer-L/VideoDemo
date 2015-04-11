@@ -1,4 +1,4 @@
-(function (ViBox, reactHelp) {
+(function (ViBox, React, reactHelp) {
 	
 	"use strict";
 	
@@ -734,4 +734,4 @@
 	ViBox.addModule("signupProcess", SignupProcess, SignupProcess.domEnhancer);
 	ViBox.addModule("bulletinBoard", BulletinBorad, BulletinBorad.domEnhancer);
 	
-}(ViBox, ViBox.reactHelp));
+}(ViBox, React, ViBox.reactHelp));
